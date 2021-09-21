@@ -1,0 +1,118 @@
+<% include ../partials/header %>
+<% include ../user-partials/header %>
+<% include ../functions/username %>
+<% include ../functions/textcontent %>
+
+</div>
+   <div id="offer-letter-content-session">
+	 <div class="offer-letter-page">
+		<div class="main-heading-of-mainpages d-flex">
+				<div class="back-link-of-page">
+					<a href="/user/<%= CurrentUser._id %>/<%= job._id %>/resume">
+						<img src="/images/home/arrow_back.svg" alt="back-arrow">
+					</a>
+				</div>
+				<div>
+				   <h4 id="send-offerletter-h4">Offer Letter</h4>
+				</div>
+		 </div>
+		
+		 <div class="offer-letter-data-container">
+		    <div class="row">
+			   <div class="col-lg-5 col-xl-4">
+				   <div class="candidate-data-container d-flex justify-content-center flex-column">
+					   <div class="candidate-img-div d-flex justify-content-center">
+						   <% if(getimgurl(candidate)){ %>
+								<img id="resume-main-image" src="<%= getimgurl(candidate) %>" alt="profile-image"> 
+							<% }else{ %>
+								<img id="resume-main-image" src="/images/home/profile-img.jpg" alt="profile-image">
+						    <% } %>
+					   </div>
+					   <p class="candidate-name"><%= getname(candidate) %></p>
+					   <p class="candidate-profession">
+						   <% if(profdata.length > 0){ %>
+							<%= profdata[0].position %>
+							<% }else{ %>
+							   Unknown   
+							<% } %>
+					   </p>
+					   <div class="candidate-basic-data d-flex justify-content-center">
+						   <div>
+							   <p>
+								   <img src="/images/profile/mail.svg"> <%= getemail(candidate) %>
+							   </p>
+							   <p> 
+									<img src="/images/profile/place.svg" > 
+									  <% if(!candidate.personaldetails.city && candidate.personaldetails.country){ %>
+												  Unknown , <%= candidate.personaldetails.country %>
+											<% }else if(candidate.personaldetails.city && !candidate.personaldetails.country){ %>
+												  <%= candidate.personaldetails.city %> , Unknown
+											<%}else{ %>
+												  Unknown
+											<%} %>
+							   </p>
+							   <p>
+								   <img src="/images/profile/call.svg" >
+								   <% if(candidate.personaldetails.contnum){ %>
+									  <%= candidate.personaldetails.contnum %>
+								   <% }else{ %>
+									   Unknown
+								   <% } %>
+							   </p>
+						   </div>
+					   </div>
+					   <p class="candidate-profdata">
+						     <% if(profdata.length > 0){ %>
+						     <% if(profdata[0].text){ %>
+						         <%= profdata[0].text %>
+						     <% } } %>
+				       </p>
+					   <p id="total-default"> <%= totaldefaulted %> <%= textdefaulted_offerletter() %></p>
+					   <p class="offerletter-buttons">
+						   <a type="button" id="button-send-offerletter" class="btn btn-primary" 
+							  href="/user/<%= employer._id %>/<%= job._id %>/resume"><%= textview_profile() %>
+						   </a>
+					   </p>
+					   <p class="offerletter-buttons"><a class="btn btn-sm" id="button-send-message" href="#"><%= textsendmessage() %></a></p>
+				   </div>
+			   </div>
+			   <div class="col-lg-7 col-xl-8">
+				  <div class="employer-data-container d-flex flex-column">
+					   <h5 id="send-offer-page" ><%= textofferletter() %></h5>
+					   <p class="company-name"><%= employer.organizationdetails.companyname %></p>
+					   <p class="company-address"><%= employer.personaldetails.Paddress %></p>
+					   <p class="contact-info"><%= getemail(employer) %>  <%= employer.personaldetails.contnum %></p>
+					   <form class="submit-forms-whole" action="/offerletter/<%= job._id %>" method="POST" enctype="multipart/form-data">
+						   <div class="name-exp-date d-flex justify-content-between">
+								<p>Mr. <%= getname(candidate) %></p>
+							    <div class="exp-date-container d-flex align-items-center">
+									<label for="expiry-date"><%= text_offerletter_expiry_date() %> : </label>
+							        <input id="expiry-date" type="date" name="expdate" required>
+							   </div>
+						   </div>
+						    <textarea class="form-control" rows="8" name="text" placeholder="write body here.." required></textarea>
+						   	
+						   <div class="attachment-button">
+							  <p> 
+								  <label for="attach-file-session3" class="col-form-label">
+								       <img id="see-attachment-button-edit-offerletter-page" src="/images/home/fileicon.jpeg" alt="attachment-img">
+								  </label> 
+								  <input type="file"  class="form-control d-none" id="attach-file-session3" name="filedata" multiple required>
+								  <span id="attachment-text3">No Files choosen, Yet.</span>
+							   </p>
+						   </div>
+						    <p class="send-offer-leter-button">
+								<button type="submit" id="send-offer-letterbutton" class="btn btn-primary">Send Offer Letter</button>
+							</p>
+					   </form>
+				  </div>
+				</div>
+			</div>
+		 </div>	    
+     </div>
+</div>
+
+</div>
+
+<% include ../dashboard/dashboard-popup %> 
+<% include ../partials/footer %>

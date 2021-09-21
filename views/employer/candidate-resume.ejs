@@ -1,0 +1,535 @@
+<% include ../partials/header %>
+<% include ../user-partials/header %>
+<% include ../functions/datetimeconvert %>
+<% include ../functions/username %>
+<% include ../functions/textcontent %>
+
+</div>
+		<div id="content-resume-session">
+			<div class="main-heading-of-mainpages d-flex">
+				<div class="back-link-of-page">
+					<a href="/user/<%= CurrentUser._id %>/employer/candidates">
+						<img src="/images/home/arrow_back.svg" alt="back-arrow">
+					</a>
+				</div>
+				<div>
+					<h4 id="main-heading-of-page">Resume</h4>
+				</div>
+			</div>
+	         <div class="row">
+				<div id="resume-short-data1" class="col-lg-5 col-xl-4">
+					<div id="biodata-container" class="d-flex flex-column align-items-center">
+   						<div class="resume-main-image">
+							<% if(getimgurl(user)){ %>
+								<img id="resume-main-image" src="<%= getimgurl(user) %>" alt="profile-image"> 
+							<% }else{ %>
+								<img id="resume-main-image" src="/images/home/profile-img.jpg" alt="profile-image">
+						    <% } %>
+						</div>
+						<div class="user-resume-name">
+						   <h4 class="resume-candidate-left-side-name"><%= getname(user) %></h4>
+							
+								
+						</div>
+						<div class="position-container">
+							<% if(profdata.length > 0){ %>
+							    <p><%= profdata[0].position %></p>
+							<% }else{ %>
+							    <p>Unknown</p>
+							<% } %>
+						</div>
+					    <div class="resume-email-field-session d-flex justify-content-center">
+							<div class="email-content">
+								<div class="resume-email">
+									  <p>
+										  <img class="resume-small-icon" src="/images/profile/mail.svg" alt="mail-icon">
+										  <span><%= getemail(user) %></span>
+										
+									  </p>
+								</div>
+								<div class="resume-email">
+									<p>
+										<img class="resume-small-icon" src="/images/profile/place.svg" alt="mail-icon">
+										<% if(!user.personaldetails.city && user.personaldetails.country){ %>
+										      <span>Unknown , <%= user.personaldetails.country %></span>
+										<% }else if(user.personaldetails.city && !user.personaldetails.country){ %>
+										      <span><%= user.personaldetails.city %> , Unknown</span>
+										<%}else{ %>
+										      <span>Unknown</span>
+										<%} %>
+									</p>
+								</div>
+								<div class="resume-email">
+									<p>
+										<img class="resume-small-icon" src="/images/profile/call.svg" alt="mail-icon">
+										<%if(user.personaldetails.contnum){ %>
+										     <span><%= user.personaldetails.contnum %></span>
+										<%}else{ %>
+										     <span>Unknown</span>
+										<%} %>
+									</p>
+							    </div>
+							</div>
+							
+						</div>	
+						<p id="total-default">
+							<%= totaldefault %> Defaulted Offer Letter
+						</p>
+						<% if( !job.offerletter && job.interview.length > 0){ %>
+						   <p id="total-default-2">
+							   <% var date = job.interview[job.interview.length - 1].date %>
+								Interview Date :  <%= job.interview[job.interview.length - 1].date.toDateString() %>
+						   </p>
+						   <p id="total-default-4">
+							   <% var date = job.interview[job.interview.length - 1].date %>
+								Interview time : <%= converttime(date) %>
+						   </p>
+						<% } %>
+						
+						<% if(CurrentUser.role === "employer" || CurrentUser.role === "consultant"){ %>
+							<div id="send-offer-letter-div">
+									<% if(job.offerletter){ %>
+										<p>
+											<a type="button" id="button-send-offerletter" class="btn btn-primary" 
+										       href="/user/<%= CurrentUser._id %>/employer/offerletter/<%= job._id %>">
+										       <%= textseeofferletter() %>
+									        </a>
+								        </p>
+									   <p><a class="btn btn-sm" id="button-send-message" href="#">Send Message</a></p>
+									<% } %>
+								    
+								    <% if(!job.offerletter && job.interview.length > 0){ %>
+										<p>
+											<a type="button" id="button-send-offerletter" class="btn btn-primary" 
+										       href="/user/<%= CurrentUser._id %>/candidate/<%= job._id %>">
+										       <%= textsendofferletter() %>
+ 									        </a>
+								        </p>
+								         <p>
+											<a type="button" id="button-schedule-nextinterview" class="btn btn-primary" 
+											   data-toggle="modal" data-target=".bd-nextinterview-modal-lg" >
+									          <%= textscheduleinterview() %>
+									        </a> 
+										 </p>
+								         <p>
+											<a type="button" id="button-reschedule-interview" class="btn btn-primary" 
+											   data-toggle="modal" data-target=".bd-rescheduleinterview-modal-lg">
+									          <%= textrescheduleinterview() %>
+									        </a> 
+										 </p>
+								         <p>
+											<a type="button" id="button-rejectbutton-employee" class="btn btn-primary" 
+											   data-toggle="modal" data-target="#employee-reject-offerletter">
+									          <%= textrejectcandidate() %>
+									        </a> 
+										 </p>
+								 		 <p>
+											 <a class="btn btn-sm" id="button-send-message" href="#"><%= textsendmessage() %></a>
+								         </p>
+									<% } %>
+						    </div>
+						<% } %>
+					</div>
+				</div>
+				<div id="resume-short-data2" class="col-lg-7 col-xl-8">
+					   <% if(job.interview.length > 0){ %>
+						<div id="employer-resume-interview1">
+							<div id="employer-ecah-interview-div" class="each-offerletter-candidate-data">
+								 <h5 id="candidate-interview-summary" >Interview Summary</h5>
+								 <% if(job.interview.length > 0){ %>
+									<% job.interview.forEach(function(interview){ %>
+									   <div class="each-intervie-of-candidate d-flex flex-column">
+											<p class="candidate-interview-title"><%= interview.title %> <span> - <%= getname(employer) %></span></p>
+											<p class="interview-candidate-job-position">Job position : <span><%= job.position %></span></p>
+											<p class="interview-date-and-time">Interview-Timing : <span><%= interview.date.toDateString() %> - <%= converttime(interview.date) %></span></p>
+											<p class="ecah-interview-status">Status : 
+											  <button type="button" class="candidate-each-intrerview-status-button">
+												  <i class="fas fa-bolt see-status-icon"></i> 
+												  <%= interview.status %></button> 
+										   </p>
+									   </div>   
+									<% }); %>
+								 <% }else{ %>
+									<div class="employer-dashboard-empty-box d-flex flex-column justify-content-center">
+										<p class="no-content-text">
+											No Interviews !
+										</p>
+										<p>
+											<img id="employer-dashboard-empty-box-pendingofferletters" src="/images/home/empty-view.svg">
+										</p>
+							        </div>
+								<% } %>
+						    </div>
+						</div>
+						<% } %>
+						<div id="employer-resume-interview2">
+							<div id="resume-edit-session" class="d-flex flex-column">
+							 <h4 class="resume-right-main-name"><%= getname(user) %> - 
+							<% if(profdata.length > 0){ %>
+									<span><%= profdata[0].position %></span>
+								<% }else{ %>
+									<span>Unknown</span>
+								<% } %></h4></h4>
+							<div class="proessional-summary">
+									<div class="form-group">
+										<label class="resume-sub-sessions" for="exampleFormControlTextarea1">Professional Summary</label>
+										<% if(profdata.length > 0){ %>
+										  <% if(CurrentUser.role === textemployer() || CurrentUser.role === textconsultant()) { %>
+											   <p class="prof-data-right"><%= profdata[0].text %></p>
+										  <% } } %>
+									</div>
+							</div>
+							<div class="workexp-session">
+								<div class="sub-title d-flex justify-content-between">
+									<h4>Work Experiences</h4>
+								</div>
+								<div class="workexp-feeds">
+									<% if(workexps.length > 0){ %>
+									 <% workexps.forEach(function(workexp){ %>
+										<div class="workexp-name d-flex justify-content-between align-items-center">
+											<div class="workexpname">
+												<p><%= workexp.role %>, <span><%= workexp.companyname %></span> 
+													<% if(workexp.fileurl.length > 0){ %>
+													  <a type="button" id="edit-button" class="btn btn-sm btn-primary" data-toggle="modal" 
+														 data-target=".bd-workexp<%= workexp._id %>-modal-lg">
+														  <img src="/images/resume/attach_file.svg" alt="attachment-img" class="attachment-img">
+													  </a>
+													<% } %>
+												</p>
+											</div>
+											<div id="workexp-session" class="dates-session d-flex">
+												<img class="resume-content-imges" src="/images/resume/calnder.svg" alt="calender-icon">
+													 <% if(workexp.workedfrom === workexp.Workedto){ %>
+													  <p class="expiry-date-of-offerletter-resume"><%= workexp.workedfrom  %></p><span>Currently working</span>
+													<% } else { %>
+													   <p class="expiry-date-of-offerletter-resume"><%= workexp.workedfrom  %> <%= workexp.Workedto  %></p>
+													<% } %>	
+											</div>
+										</div>
+										<img class="resume-content-imges-location" src="/images/profile/place.svg" alt="placeimage"><span class="city-name-session"><%= workexp.city %> , <%= workexp.country %></span>
+										<p class="descriptive-text"><%= workexp.text  %></p>
+									<% });  } %>
+								</div>
+							</div>
+							<div class="workexp-session">
+								<div class="sub-title d-flex justify-content-between">
+									<h4>Education</h4>
+								</div>
+								<div class="workexp-feeds">
+									<% if(educations.length > 0){ %>
+									 <% educations.forEach(function(education){ %>
+										<div class="workexp-name d-flex justify-content-between align-items-center">
+											<div class="workexpname">
+												<p>
+													<%= education.degree %>, <span><%= education.collagename %></span>
+													<% if(education.fileurl.length > 0){ %>
+													  <a type="button" id="edit-button" class="btn btn-sm btn-primary" data-toggle="modal" data-target=".bd-education<%= education._id %>-modal-lg">
+														<img src="/images/resume/attach_file.svg" alt="attachment-img" class="attachment-img">
+													  </a>
+													<% } %>
+												</p>
+											</div>
+											<div class="dates-session d-flex">
+												<img class="resume-content-imges" src="/images/resume/calnder.svg" alt="calender-icon">
+												<p class="first-span-date"><%= education.studiedfrom  %></p> <p class="second-span-date"><%= education.studiedto  %></p>	
+											</div>
+										</div>
+										<p id="grade-marks">Grade : <%= education.grade %></p>
+										<img class="resume-content-imges-location" src="/images/profile/place.svg" alt="placeimage"><span class="city-name-session"><%= education.city %> , <%= education.country %></span>
+										<p class="descriptive-text"><%= education.text  %></p>
+									<% });  } %>
+								</div>
+							</div>
+
+							<div class="workexp-session">
+								<div class="sub-title d-flex justify-content-between">
+									<h4>Awards & Honors</h4>
+								</div>
+								<div class="workexp-feeds">
+									<% if(awards.length > 0){ %>
+									 <% awards.forEach(function(award){ %>
+										<div class="workexp-name d-flex justify-content-between align-items-center">
+											<div class="workexpname">
+												<p>
+													<%= award.title %>
+												</p>
+											</div>
+											<div class="dates-session d-flex">
+												<img class="resume-content-imges" src="/images/resume/calnder.svg" alt="calender-icon">
+												<p><%= award.date  %></p>	
+											</div>
+										</div>
+										<p class="descriptive-text-for-award"><%= award.text  %></p>
+									<% });  } %>
+
+								</div>
+							</div>
+							<div class="workexp-session">
+								<div class="sub-title d-flex justify-content-between">
+									<h4>Projects</h4>
+								</div>
+								<div class="workexp-feeds">
+									<% if(projects.length > 0){ %>
+									 <% projects.forEach(function(project){ %>
+										<div class="workexp-name d-flex justify-content-between align-items-center">
+											<div class="workexpname">
+												<p>
+													<%= project.title %>
+												</p>
+											</div>
+											<div id="dates-session" class="dates-session d-flex">
+													<img class="resume-content-imges" src="/images/resume/calnder.svg" alt="calender-icon">
+													<% if(project.datefrom === project.dateto){ %>
+													  <p><%= project.datefrom  %></p> <span>Ongoing Project</span>
+													<% }else{ %>
+													 <p><%= project.datefrom  %> <%= project.dateto %></p>
+													<% } %>
+											</div>
+										</div>
+										<p class="descriptive-text"><%= project.text  %></p>
+									<% });  } %>
+								</div>
+							</div>
+								<div class="workexp-session">
+									<div class="workexp-feeds">
+										<% if(othersdata.length > 0){ %>
+										 <% othersdata.forEach(function(other){ %>
+											<div class="workexp-name d-flex justify-content-between align-items-center">
+												<div class="workexpname">
+													<p>
+														<%= other.title %>
+													</p>
+												</div>
+											</div>
+											<p class="descriptive-text"><%= other.description  %></p>
+										<% });  } %>
+									</div>
+								</div>
+						</div>
+						</div>
+				</div>
+
+
+<!-- Workexps Attachement Modal -->		
+<% workexps.forEach(function(workexp){ %>
+<div class="modal fade bd-workexp<%= workexp._id %>-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div id="modal-content" class="modal-content">
+		<h5 id="employer-send-offerletter-page" id="exampleModalLabel"><%= workexp.filetitle %></h5>
+				<button id="employer-send-offerletter-page-button" type="button" class="close" 
+						data-dismiss="modal" aria-label="Close">
+				  <span aria-hidden="true">&times;</span>
+				</button>
+		
+		        <div class="see-Attachment-resume-session d-flex justify-content-start">
+								<% if(workexp.fileurl.length > 0){ %>
+								  <% for(var i = 0 ; i < workexp.fileurl.length ; i++){ %>
+									<div class="pdf-preview">
+										<div class="img-session">
+											<a href="<%= workexp.fileurl[i].dataurl %>" target="_blank">
+												<img class="main-first-page-of-pdf" src="<%= convertimg(workexp.fileurl[i].dataurl).url %>" slt="pdf-img">
+											</a>
+											<div class="text-of-pdf-card d-flex justify-content-between">
+											  <% var data = workexp.fileurl[i].dataurl %>
+							<p class="offer-letter-text">Attachment<%= i+1 %>.<%= data.substring(data.lastIndexOf(".")+1) %></p>
+											</div>
+										</div>
+								    </div>
+									<% }} %>
+							 </div>
+			</div>
+	</div>
+</div>
+<% }); %>			
+
+
+<!-- Education Attachement Modal -->
+<% educations.forEach(function(education){ %>		
+<div class="modal fade bd-education<%= education._id %>-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div id="modal-content" class="modal-content">
+		<h5 id="employer-send-offerletter-page" id="exampleModalLabel"><%= education.filetitle %></h5>
+				<button id="employer-send-offerletter-page-button" type="button" class="close" 
+						data-dismiss="modal" aria-label="Close">
+				  <span aria-hidden="true">&times;</span>
+				</button>
+		        <div class="see-Attachment-resume-session d-flex justify-content-start">
+								<% if(education.fileurl.length > 0){ %>
+						          <% for(var i = 0 ; i < education.fileurl.length ; i++){ %>
+									<div class="pdf-preview">
+										<div class="img-session">
+											<a href="<%= education.fileurl[i].dataurl %>" target="_blank">
+												<img class="main-first-page-of-pdf" src="<%= convertimg(education.fileurl[i].dataurl).url %>" slt="pdf-img">
+											</a>
+											<div class="text-of-pdf-card d-flex justify-content-between">
+												<% var data = education.fileurl[i].dataurl %>
+										<p class="offer-letter-text">Attachment<%= i+1 %>.<%= data.substring(data.lastIndexOf(".")+1) %></p>
+											</div>
+
+										</div>
+								    </div>
+									<% }} %>
+							 </div>
+			</div>
+	</div>
+</div>	
+<% }); %>
+
+			
+<!-- Schedule next interview popup modal -->
+<%  if(CurrentUser.role === textemployer() || CurrentUser.role === textconsultant()){ %>
+<div class="modal fade bd-nextinterview-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div id="modal-content" class="modal-content">
+		<div class="preloader-all-pages main-loader-div">
+		  <svg class="loading-box">
+              <circle class="loader" fill="none" stroke-width="3" stroke-linecap="round" cx="24" 
+					cy="24" r="17"></circle>
+           </svg>
+        </div>
+			  <h5 id="employer-send-offerletter-page" id="exampleModalLabel">Schedule Next Interview</h5>
+				<button id="employer-send-offerletter-page-button" type="button" class="close" 
+						data-dismiss="modal" aria-label="Close">
+				  <span aria-hidden="true">&times;</span>
+				</button>
+		      <form class="submit-forms" id="send-offerletter-for-offerletter-page" action="/nextinterview/<%= job._id %>" method="POST">
+			      <div id="workexp-modal-body" class="modal-body">
+				    <div id="first-form-row" class="form-row">
+					   <div class="form-group col-md-6">
+						  <label for="offer-title" class="col-form-label">Interview Title</label>
+						  <input type="text" class="form-control" id="offer-title" name="title" required>
+					   </div>
+					  </div>
+					  <div id="second-form-row" class="form-row">
+						   <div class="form-group col-md-6">
+							  <label for="email" class="col-form-label">Interview Date</label>
+							  <input type="date" class="form-control" id="email" name="date" required>
+						   </div>
+						   <div class="form-group col-md-6">
+							  <label for="expdate" class="col-form-label">Expiring Time</label>
+							  <input type="time" class="form-control" id="expdate" name="time" required>
+					       </div>
+					   </div>
+					  <div class="send-offerletter-shortcut-div d-flex justify-content-center">
+						  <button id="each-offerletter-button-accept-3" type="submit" class="btn btn-sm btn-primary">Schedule Next Interview</button>
+					  </div>
+			     </div>
+			    </form>
+			</div>
+	</div>
+</div>
+
+<%  } %>
+				
+
+<!-- RE-interview popup modal -->
+<%  if(CurrentUser.role === textemployer() || CurrentUser.role === textconsultant()){ %>
+<% if(!job.offerletter && job.interview.length > 0){ %>
+<div class="modal fade bd-rescheduleinterview-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div id="modal-content" class="modal-content">
+		<div class="preloader-all-pages main-loader-div">
+		  <svg class="loading-box">
+              <circle class="loader" fill="none" stroke-width="3" stroke-linecap="round" cx="24" 
+					cy="24" r="17"></circle>
+           </svg>
+        </div>
+			  <h5 id="employer-send-offerletter-page" id="exampleModalLabel">Re-Schedule Interview</h5>
+				<button id="employer-send-offerletter-page-button" type="button" class="close" 
+						data-dismiss="modal" aria-label="Close">
+				  <span aria-hidden="true">&times;</span>
+				</button>
+		      <form class="submit-forms" id="send-offerletter-for-offerletter-page" action="/rescheduleinterview/<%= job._id %>" method="POST">
+			      <div id="workexp-modal-body" class="modal-body">
+				    <div id="first-form-row" class="form-row">
+					   <div class="form-group col-md-6">
+						  <label for="offer-title" class="col-form-label">Interview Title</label>
+						  <input type="text" class="form-control" id="offer-title" name="title" required  value="<%= job.interview[job.interview.length -1].title %>">
+					   </div>
+					  </div>
+					  <div id="second-form-row" class="form-row">
+						   <div class="form-group col-md-6">
+							  <label for="offer-title" class="col-form-label">Interview date</label>
+									<% var date = job.interview[job.interview.length - 1].date %> 
+									<% if(date.getMonth() < 10 && date.getDate() > 10){ %>
+										  <input class="form-control" id="offer-title" type="date" name="date" required 
+											   value="<%= date.getFullYear() %>-0<%= date.getMonth() +1 %>-<%= date.getDate() %>">
+										<% }else if(date.getMonth() < 10 && date.getDate() < 10){ %>
+											<input class="form-control" id="offer-title" type="date" name="date" required 
+											   value="<%= date.getFullYear() %>-0<%= date.getMonth() + 1%>-0<%= date.getDate() %>">
+										<% }else if(date.getMonth() > 10 && date.getDate() < 10){ %>
+											<input class="form-control" id="offer-title" type="date" name="date" required 
+											   value="<%= date.getFullYear() %>-<%= date.getMonth() +1 %>-0<%= date.getDate() %>">
+										<% }else{ %>
+											<input class="form-control" id="offer-title" type="date" name="date" required 
+											   value="<%= date.getFullYear() %>-<%= date.getMonth() +1  %>-<%= date.getDate() %>">
+										<% } %>
+						   </div>
+						   <div class="form-group col-md-6">
+							  <label for="expdate" class="col-form-label">interview Timing</label>
+									  <% var time = job.interview[job.interview.length - 1].date %> 
+									   <% if(time.getUTCHours() < 10 && time.getUTCMinutes() > 10){ %>
+										  <input  type="time" class="form-control" id="expdate" name="time" required 
+											   value="0<%= time.getUTCHours() %>:<%= time.getUTCMinutes() %>">
+										<% }else if(time.getUTCHours() < 10 && time.getUTCMinutes() < 10){ %>
+											<input  type="time" class="form-control" id="expdate" name="time" required 
+											   value="0<%= time.getUTCHours() %>:0<%= time.getUTCMinutes() %>">
+										<% }else if(time.getUTCHours() > 10 && time.getUTCMinutes() < 10){ %>
+											<input  type="time" class="form-control" id="expdate" name="time" required 
+											   value="<%= time.getUTCHours() %>:0<%= time.getUTCMinutes() %>">
+										<% }else{ %>
+											<input  type="time" class="form-control" id="expdate" name="time" required 
+											   value="<%= time.getUTCHours() %>:<%= time.getUTCMinutes() %>">
+										<% } %>
+						   </div>
+					  </div>
+					  <div class="send-offerletter-shortcut-div d-flex justify-content-center">
+						  <button id="each-offerletter-button-accept-3" type="submit" class="btn btn-sm btn-primary">Re-Schedule Interview</button>
+					  </div>
+			     </div>
+			    </form>
+			</div>
+	</div>
+</div>
+
+<%  } } %>
+			
+			
+<!--  Employer Reject Candidate thright interview popup -->
+<% if(CurrentUser.role === textemployer()){ %>
+<div class="modal fade" id="employee-reject-offerletter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+		<div class="preloader-all-pages main-loader-div">
+		  <svg class="loading-box">
+              <circle class="loader" fill="none" stroke-width="3" stroke-linecap="round" cx="24" 
+					cy="24" r="17"></circle>
+           </svg>
+        </div>
+      <div class="modal-body">
+          <div class="aadhar-accept-container d-flex flex-column">
+			  <h4>Reject Candidate</h4>
+			  <p class="accept-text">Please provide comment that why you are rejecting <strong><%= job.to.local.firstname %> <%= job.to.local.lastname %></strong>?
+				  candidate will able see this comment.
+			  </p>
+			  <form class="submit-forms" action="/reject/interview/<%= job._id %>" method="POST">
+					 <div class="take-aadhar-details">
+						<textarea class="form-control" id="employer-comment" rows="6" name="comment" 
+								  placeholder="Write comment or note  here. "></textarea>
+					</div>	  
+				    <div class="accept-or-reject-div d-flex justify-content-between">
+					  <a type="button" id="each-offerletter-reject" class="btn btn-sm" data-dismiss="modal">Discard</a>
+					  <button type="submit" id="each-offerletter-button-accept" class="btn btn-sm btn-primary" 
+							  data-toggle="modal">Reject Candidate</button>
+				   </div>
+			</form> 
+		  </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% } %>
+
+<% include ../dashboard/dashboard-popup %> 
+
+<% include ../partials/footer %>

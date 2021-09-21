@@ -1,0 +1,21 @@
+#register-col-lg-4{
+	background :#18A4E0;
+}
+
+#register-col-lg-8{
+	padding : 30px;
+}
+
+#register-type{
+	text-decoration : none;
+	color: #8098A8;
+}
+
+.col-12{
+	height : 30px;
+}
+
+.email-instrauction p {
+	font-size: 13px;
+    font-weight: 500;
+}

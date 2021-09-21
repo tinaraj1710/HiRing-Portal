@@ -1,0 +1,155 @@
+<% include ../partials/header %>
+<% include ../user-partials/header %>
+<% include ../functions/username %>
+<% include ../functions/textcontent %>
+
+</div>
+   <div id="offer-letter-content-session">
+	 <div class="offer-letter-page">
+			 <div class="main-heading-offerletter-employer d-flex justify-content-between">
+				 <h4 id="main-heading-of-page">Offer Letter</h4>
+				 <button type="button" id="each-offerletter-button-accept-3" class="btn btn-sm btn-primary" data-toggle="modal" 
+						 data-target=".bd-job-modal-lg">
+							<%= textsendofferletter() %>
+				 </button>
+			 </div>
+		     
+			 <div class="offer-letter-divs">
+				    <div class="filter-content d-flex justify-content-between align-items-center">
+					   <div class="employer-input-search d-flex align-items-center">
+						    <img id="seachbox" src="/images/main-pages/search.svg" alt="search-image">
+						   <input type="text" class="form-control" id="candidate-search" aria-describedby="emailHelp" placeholder="Search">
+					   </div>
+					   <div class="fiter-icon-div">
+						   <div class="filter-small-box">
+							   <img src="/images/main-pages/filter.svg"> <span>filter</span>
+						   </div>
+					   </div>
+						<div class="select-no-of-pages d-flex align-items-center">
+							<span>Show</span>
+							<div class="dropdown">
+							 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									<% if(paginateddata.results){ %>
+										  <%= paginateddata.limit %>
+									<% }  %>
+							 </button>
+							 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+								   <a class="dropdown-item" href="/user/<%= CurrentUser._id %>/employer/offerletter?page=1&limit=10">10</a>
+								   <a class="dropdown-item" href="/user/<%= CurrentUser._id %>/employer/offerletter?page=1&limit=11">11</a>
+								   <a class="dropdown-item" href="/user/<%= CurrentUser._id %>/employer/offerletter?page=1&limit=12">12</a>
+								   <a class="dropdown-item" href="/user/<%= CurrentUser._id %>/employer/offerletter?page=1&limit=13">13</a>
+								   <a class="dropdown-item" href="/user/<%= CurrentUser._id %>/employer/offerletter?page=1&limit=14">14</a>
+								   <a class="dropdown-item" href="/user/<%= CurrentUser._id %>/employer/offerletter?page=1&limit=15">15</a>
+								   <a class="dropdown-item" href="/user/<%= CurrentUser._id %>/employer/offerletter?page=1&limit=16">16</a>
+								   <a class="dropdown-item" href="/user/<%= CurrentUser._id %>/employer/offerletter?page=1&limit=17">17</a>
+								   <a class="dropdown-item" href="/user/<%= CurrentUser._id %>/employer/offerletter?page=1&limit=18">18</a>
+								   <a class="dropdown-item" href="/user/<%= CurrentUser._id %>/employer/offerletter?page=1&limit=19">19</a>
+								   <a class="dropdown-item" href="/user/<%= CurrentUser._id %>/employer/offerletter?page=1&limit=20">20</a> 
+							 </div>
+						    </div>
+							<span>results per page</span>
+					   </div>
+						
+					   <div class="pagination">
+						   <ul class="pager">
+							      <% if(paginateddata.previous){ %>
+							             <li class="pager__item pager__item--prev">
+											<a class="pager__link" href="/user/<%= CurrentUser._id %>/employer/offerletter?page=<%= paginateddata.previous.page %>&limit=<%= paginateddata.limit %>">
+											  <img class="candidate-page-left-right" src="/images/main-pages/arrow_left.svg"> 
+											</a>
+									 	</li>
+							      <% } %>
+								    
+							        <% if(paginateddata.pages){ %>
+							         <% for(var i = 0 ; i < paginateddata.pages ; i++){ %>
+							             	<% if(paginateddata.pages <= 4){ %>
+							                  <% if(paginateddata.pageno === (i+1)){ %>
+								                <li class="pager__item active"><a class="pager__link" 
+													href="/user/<%= CurrentUser._id %>/employer/offerletter?page=<%=i + 1%>&limit=<%= paginateddata.limit %>"><%= i + 1 %></a></li>
+							  				  <% }else{ %>
+								                 <li class="pager__item"><a class="pager__link" 
+													href="/user/<%= CurrentUser._id %>/employer/offerletter?page=<%=i + 1%>&limit=<%= paginateddata.limit %>"><%= i + 1 %></a></li>
+							 				  <% } %>							 
+											<% }else{ %>
+								                <% if(i <= (paginateddata.pageno + 1) && i >= (paginateddata.pageno - 1)){ %>
+							                       <% if(paginateddata.pageno === (i+1)){ %>
+													 <li class="pager__item active"><a class="pager__link" 
+														href="/user/<%= CurrentUser._id %>/employer/offerletter?page=<%=i + 1%>&limit=<%= paginateddata.limit %>"><%= i + 1 %></a></li>
+												  <% }else{ %>
+								                 		<li class="pager__item"><a class="pager__link" 
+															href="/user/<%= CurrentUser._id %>/employer/offerletter?page=<%=i + 1%>&limit=<%= paginateddata.limit %>"><%= i + 1 %></a></li>
+							 				  	  <% } %>
+							                    <% } %>
+							                    <% if(paginateddata.pageno > (paginateddata.pages - 3)){ %>
+							                       <% continue %>					  
+												<% }else{ %>
+							                        <% if(i === (paginateddata.pages-1)){ %>
+							   							 <li class="pager__item">..</li>
+														 <li class="pager__item"><a class="pager__link" 
+															href="/user/<%= CurrentUser._id %>/employer/offerletter?page=<%=i + 1%>&limit=<%= paginateddata.limit %>"><%= i + 1 %></a></li>		
+							   						<% } } } } } %>
+									<% if(paginateddata.next){ %>
+							             <li class="pager__item pager__item--next">
+											<a class="pager__link" href="/user/<%= CurrentUser._id %>/employer/offerletter?page=<%= paginateddata.next.page %>&limit=<%= paginateddata.limit %>">
+											  <img class="candidate-page-left-right" src="/images/main-pages/arrow_right.svg"> 
+											</a>
+									 	</li>
+							       <% } %>
+							</ul>
+
+					   </div>
+				    </div>
+				      <div class="offer-letter-content">
+						<% if(paginateddata.results){ %>
+				          <% if(paginateddata.results.length > 0){ %>
+						   <div class="offer-letter-header d-flex justify-content-between">
+							  <p class="employe-offer-letters-p"><%= text_candidate_name() %></p>
+							  <p class="employe-offer-letters-p"><%= text_designation() %></p>
+							  <p class="employe-offer-letters-p"><%= text_expirydate() %></p>
+							  <p class="employe-offer-letters-last-p"><%= text_status() %></p>
+						 </div>
+                          <% } } %> 
+						<div data-id="/api/user/<%= CurrentUser._id %>/employer/offerletter" id="seachbox-container">
+						<% if(paginateddata.results){ %>
+						<% if(paginateddata.results.length > 0){ %>
+						 <%  paginateddata.results.forEach(function(offerletter){ %>
+						  <a id="employer-each-offerletter-session" 
+						   href="/user/<%= CurrentUser._id %>/employer/offerletter/<%= offerletter._id %>">
+						   <div class="each-offer-letter d-flex justify-content-between">
+							  <div class="offerletter-comp d-flex align-items-center">
+								 <div class="comapny-img-from-offerletter">
+									  <% if(getimgurl(offerletter.to)){ %>
+									      <img src="<%= getimgurl(offerletter.to) %>" alt="profile-image"> 
+									<% }else{ %>
+										 <img src="/images/home/profile-img.jpg" alt="profile-image">
+									<% } %>
+								 </div>
+								  <p><%= getname(offerletter.to) %></p>
+							  </div>
+							  <p class="offer-letter-p-data"><%= offerletter.position %></p>
+							  <p class="offer-letter-p-data"><%= offerletter.offerletter.expiring.toDateString() %></p>
+							  <p class="offer-letter-p-data-end"><%= getstatus(offerletter) %> </p>
+						   </div>
+						</a>
+						<%  }); }else{ %>
+							<div class="employer-dashboard-empty-box d-flex flex-column justify-content-center">
+								<p class="no-content-text">
+									<%= text_no_offerletter() %>
+								</p>
+								<p>
+									<img id="employer-dashboard-empty-box-pendingofferletters" src="/images/home/empty-view.svg">
+								</p>
+							</div>	
+						<% } } %>
+                      </div>
+					</div>
+			 </div>
+			
+         </div>
+</div>
+
+</div>
+
+<% include ../dashboard/dashboard-popup %> 
+
+<% include ../partials/footer %>

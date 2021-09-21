@@ -1,0 +1,385 @@
+#our-body{
+	margin : 0px;
+	padding : 0px;
+}
+.notification-container-session
+
+.sidebar {
+	padding-top : 75px;
+	list-style: none;
+	text-decoration: none;
+	position :fixed;
+	top : 0px;
+	left : -210px;
+	width : 210px;
+	height: 100%;
+	z-index : 100;
+	background : #ffffff;
+	transition: all 0.5s ease;
+}
+
+.sidebar ul a{
+	text-decoration: none;
+	display: block;
+	height: 100%;
+	width : 100%;
+	line-height: 55px;
+	font-size : 14px;
+	color : #313131;
+	font-weight : 500;
+	padding-left: 30px;
+	box-sizing: border-box;
+	transition-property : padding;
+	transition-duration : 0.5s;
+}
+
+#sidebar-hr{
+	margin-left: 13px;
+    margin-right: 20px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border: 0;
+    height: 1px;
+    background: #333;
+    background-image: linear-gradient(to right, #ccc, #043353, #e5eff8);
+}
+
+.sidebar-two-buttons button{
+	margin : 10px 20px 0px;
+}
+
+.sidebar ul{
+	padding-left : 0px;
+}
+
+.sidebar ul li{
+	list-style : none;
+}
+
+.sidebar ul li:hover a{
+	padding-left: 40px;
+}
+
+.sidebar ul a i{
+   margin-right : 8px;
+}
+
+#check{
+	display: none;
+}
+
+#sidebar-label-elm{
+	display : block;
+	margin : 0px;
+}
+
+label #btn{
+	position: fixed;
+    cursor: pointer;
+    top: 23px;
+    left: 16px;
+    font-size: 28px;
+    color: #343a40;
+    z-index: 1050;
+    transition: all 0.5s ease;
+}
+
+#check:checked ~ .sidebar {
+  left : 0px;
+}
+
+@media (min-width: 992px) { 
+	.sidebar {
+		padding-top : 75px;
+		list-style: none;
+		text-decoration: none;
+		position :fixed;
+		top : 0px;
+		left : 0px;
+		width : 210px;
+		z-index : 100;
+		height: 100%;
+		background : #ffffff;
+		transition: all 0.5s ease;
+    }
+	
+	label #btn{
+		visibility : hidden;
+	}
+
+	#content-session{
+		margin-left : 210px;
+	}
+} 
+
+@media (max-width: 992px) { 
+    #content-session{
+		padding: 95px 18px 20px;
+	}
+		
+}
+
+
+
+/****************************
+/* Notification session ******
+/***************************/
+
+#checkbox-for-notification-label{
+	margin : 0px 10px;
+}
+
+#checkbox-for-notification-label img{
+	 width: 20px;
+     height: 20px;
+}
+.notification-bell {
+	width: 20px;
+    height: 20px;
+    margin-top: -4px;
+}
+
+#checkbox-for-notification-label span{
+	position : relative;
+	top:  -10px;
+	left:  -5px;
+	font-size : 12px;
+	font-weight : 700;
+	color : red;
+}
+
+#brand-name-session span{
+	font-weight : 600;
+	font-size:  16px;
+	margin-left : 42px;
+}
+
+#Company-name-session-in-nav span{
+	font-weight : 600;
+	font-size:  16px;
+}
+
+#nav-logout-button{
+	font-weight: 600;
+    color: #043353;
+    font-size: 14px;
+}
+
+.notification-container-session{
+	z-index: 1000;
+    border: 1px solid #d8dbdd;
+    background: white;
+    position: absolute;
+    top: -4px;
+    right: -1500px;
+    overflow: scroll;
+	max-height : 575px;
+	opacity : 0;
+}
+
+#checkbox-for-notification-label:hover{
+	cursor : pointer;
+}
+
+#checkbox-for-notification:checked ~ .notification-container-session{
+	 z-index: 1000;
+     border: 1px solid #d8dbdd;
+     background: white;
+     position: absolute;
+     top: -4px;
+	 right: 68px;
+	 opacity : 1;
+	 overflow: auto;
+	 min-width :320px;
+}
+
+.notifications-items{
+	padding-bottom : 5px;
+}
+
+.notification-container-session .notifications-items ul li{
+	list-style  :none;
+}
+
+.notification-container-session .notifications-items ul{
+	padding:0px;
+}
+
+.notification-container-session .notifications-items ul li a{
+	text-decoration: none;
+	display: block;
+	height: 100%;
+	width : 100%;
+	font-size : 13px;
+	color : #313131;
+	padding: 7px 18px 7px;
+	font-weight : 500;
+	box-sizing: border-box;
+}
+
+.see-status-icon{
+	margin-right: 2px;
+}
+
+
+.notification-container-session .notifications-items ul li a:hover{
+	background : #F4F7F9;
+}
+
+.notification-container-session .notification-header{
+	border-bottom: 1px solid #d8dbdd;
+    padding: 15px 0 10px;
+}
+
+
+.notification-container-session .notification-header span{
+	margin-left : 18px;
+	font-size : 18px;
+	font-weight : 600;
+}
+
+.notification-container-session .notifications-items .notification-img{
+	margin-top  :10px;
+	margin-right : 10px;
+}
+
+.notification-container-session .notifications-items .notification-name-ssession{
+	font-size : 16px;
+	font-weight:  600;
+}
+
+.notification-container-session .notifications-items .notification-type-ssession{
+	font-size : 12px;
+	font-weight:  500;
+}
+
+
+.notification-container-session .notifications-items ul li p{
+	margin-bottom : 0px;
+}
+
+.notification-container-session .notifications-items ul li img{
+	width: 50px;
+    height: 50px;
+    border-radius: 25px;
+	object-fit : cover;
+}
+
+.notification-container-session .notifications-items .notification-type-status-session .notification-content-type{
+	font-size : 12px;
+	font-weight : 600;
+}
+
+#notification-status-button{
+	font-weight: 700;
+    font-size: 10px;
+    border-radius: 23px;
+    padding: 6px 14px 3px;
+    margin-left: 6px;
+    background: #e9ecef;
+    border: none;
+    color:#2290db;
+}
+
+.notification-expiry-ssession{
+	font-size : 12px;
+	font-weight : 600;
+	margin-top : 2px;
+}
+
+.notification-job-title{
+	font-weight : 500;
+	font-size : 12px;
+}
+
+.no-content-text-of-notification{
+	margin-bottom: -11px;
+    margin-top: 26px;
+    font-weight: 500;
+    font-size: 13px;
+    color: #628094;
+    padding-left: 34px;
+    text-align: center;
+}
+
+#notification-empty-box{
+	width: 66%;
+    margin-top: 0px;
+    margin-bottom: 28px;
+}
+
+.notification-img-box-p{
+	text-align : center;
+}
+
+
+@media (max-width: 767.98px) { 
+	#Company-name-session-in-nav {
+	   position : absolute;
+		width : 0px;
+		height : 0px;
+		top : -50px;
+		opacity:  0;
+	}
+	
+}
+
+@media (max-width: 991.98px) { 
+	
+	.filter-content .employer-input-search {
+       width: 57% !important;
+    }
+	
+	.filter-content .employer-input-search #candidate-search-of-employes{
+		width : 340px;
+	}
+	
+	#myapplication-content-session .myapplication-container{
+		padding: 20px 18px !important;
+	}
+	
+	#myapplication-content-session{
+		padding: 100px 20px 20px !important;
+	}
+
+	.fiter-icon-div{ 
+	  position: absolute; 
+	  overflow: hidden; 
+	  clip: rect(0 0 0 0); 
+	  height: 1px; width: 1px; 
+	  margin: -1px; padding: 0; border: 0; 
+    } 
+	
+	.select-no-of-pages{ 
+	  position: absolute; 
+	  overflow: hidden; 
+	  clip: rect(0 0 0 0); 
+	  height: 1px; width: 1px; 
+	  margin: -1px; padding: 0; border: 0; 
+    } 
+
+}
+
+@media (max-width: 1199.98px) { 
+	.fiter-icon-div{
+	   position: absolute; 
+	  overflow: hidden; 
+	  clip: rect(0 0 0 0); 
+	  height: 1px; width: 1px; 
+	  margin: -1px; padding: 0; border: 0; 
+	}
+
+}
+
+
+@media (max-width: 991.98px) {
+	#myapplication-content-session .myapplication-container .each-application-data{
+		margin-right : 10px !important;
+	}
+	
+	.myapplication-header{
+		margin-right : 10px !important;
+	}
+
+
+}

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <g id="_check_box" data-name=" check_box" transform="translate(-100 -4320)">
+    <rect id="Path" width="24" height="24" transform="translate(100 4320)" fill="rgba(0,0,0,0)"/>
+    <path id="Icon" d="M119,4341H105a2,2,0,0,1-2-2v-14a2,2,0,0,1,2-2h14a2,2,0,0,1,2,2v14A2,2,0,0,1,119,4341Zm-12.585-10a1,1,0,0,0-.7,1.7l3.59,3.59a.993.993,0,0,0,1.41,0l7.58-7.589a1,1,0,1,0-1.41-1.411L110,4334.17l-2.881-2.88A.992.992,0,0,0,106.415,4331Z" fill="#043353"/>
+  </g>
+</svg>

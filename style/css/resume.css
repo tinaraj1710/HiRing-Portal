@@ -1,0 +1,339 @@
+#content-resume-session{
+	padding : 100px 50px;
+	background :  #F4F7F9;
+	overflow : auto;
+	margin-left : 0px;
+	transition : all 0.5s ease;
+	height : 100%;
+}
+
+@media (max-width: 991.98px) { 
+	#content-resume-session{
+		padding : 95px 25px 25px;
+	}
+}
+
+
+@media (min-width: 992px){
+	#content-resume-session{
+		margin-left : 210px;
+	}	
+}
+
+#resume-short-data1 , #resume-short-data2 {
+	margin : 20px 0px;
+}
+
+#resume-short-data2 #resume-edit-session .resume-right-main-name{
+	font-size : 25px;
+	font-weight : 600;
+}
+
+#resume-short-data2 #resume-edit-session .resume-right-main-name span{
+	font-size : 15px;
+	font-weight : 500;
+}
+
+#biodata-container{
+	border-radius : 8px;
+	background : white;
+	padding-bottom: 20px;
+}
+
+#biodata-container .user-resume-name .resume-candidate-left-side-name{
+	font-size: 20px;
+    font-weight: 600;
+}
+
+#biodata-container .position-container p{
+	font-size: 13px;
+    font-weight: 500;
+}
+
+#biodata-container #total-defaulted-candidate-profile{
+	font-weight : 600;
+	font-size : 14px;
+}
+
+
+
+.resume-small-icon{
+	width : 15px;
+	height : 15px;
+	margin-right: 5px;
+}
+
+.resume-email span{
+	font-size : 12px;
+	font-weight : 600;
+}
+
+#resume-main-image{
+	margin : 20px 0px 15px;
+	width : 120px;
+	height : 120px;
+	border-radius : 60px;
+	object-fit : cover;
+}
+
+
+#resume-edit-session{
+	width : 100%;
+	padding : 30px 35px;
+	border-radius : 8px;
+	background : white;
+}
+
+.resume-sub-sessions{
+	margin-top : 10px;
+	font-size : 17px;
+	font-weight:  700;
+}
+
+#resume-short-data2 #resume-edit-session .prof-data-right{
+	font-size : 13px;
+	font-weight : 500;
+}
+
+#resume-short-data2 #resume-edit-session .proessional-summary{
+	margin-bottom : 12px;
+}
+
+.workexp-session{
+	margin-top: 5px;
+}
+
+.see-Attachment-resume-session{
+	margin: 0px 30px 30px;
+}
+
+.see-Attachment-resume-session .pdf-preview{
+	margin-right : 18px;
+}
+
+#workexp-modal-body{
+	padding: 34px 42px 20px;
+}
+
+#workexp-modal-body .text-area-div-session {
+	margin-top : 12px;
+}
+
+.col-form-label{
+	padding-bottom : 0px;
+	font-weight : 700;
+}
+
+.sub-title{
+	margin-top  : 10px;
+	margin-bottom: 7px;
+}
+
+.sub-title h4{
+	font-size : 17px;
+	font-weight : 700;
+}
+
+.workexp-name p{
+	font-size : 13px;
+	margin-bottom : 0px;
+	font-weight : 700;
+}
+
+.workexp-name span{
+	font-weight : 500;
+}
+
+.resume-content-imges-add-button{
+	width: 13px;
+    height: 13px;
+    margin-right: 5px;
+    margin-top: -2px;
+}
+
+.resume-content-imges{
+	width: 13px;
+    height: 13px;
+    margin-right: 5px;
+    margin-top: 1px;
+}
+
+.resume-content-imges-location{
+	width: 13px;
+    height: 13px;
+    margin-right: 4px;
+    margin-top: -3px;
+}
+
+.workexp-feeds{
+	margin-top : 3px;
+}
+
+.workexp-feeds .workexp-name .dates-session .first-span-date{
+	font-size : 13px;
+	font-weight : 500;
+}
+
+#modal-content{
+	border-radius : 8px;
+}
+
+#modal-header-1 ,#modal-header-2 ,#modal-header-3 ,#modal-header-4 
+ {
+	border-radius : 0px;
+	padding: 24px 30px;
+    background: #0da5ffed;
+}
+
+#award-button , #workexp-button , #education-button , #certi-button , #update-button{
+	border-radius : 20px;
+	padding:7px 15px 5px;
+	font-size : 11px;
+	font-weight : 500;
+	background :#F8FAF0;
+	color :#18A4E0;
+	border : none;
+}
+
+
+#candidate-resume-prof-date{
+	margin-bottom : 8px;
+}
+
+#award-button:hover , #workexp-button:hover , #education-button:hover , #certi-button:hover ,  #update-button:hover{
+	box-shadow: rgba(244, 244, 244, 0) 0px 2px 0px 0px inset, rgba(0, 0, 0, 0.09) 0px 1px 9px 0px, rgba(0, 0, 0, 0.05) 0px 0px 0px 0px inset;
+}
+
+.descriptive-text{
+	font-size : 13px;
+	margin-bottom :16px;
+	font-weight : 500;
+}
+
+.descriptive-text-for-award{
+	margin-top: 10px; 
+	font-size : 13px;
+	margin-bottom :16px;
+	font-weight : 500;
+}
+
+.city-name-session{
+	font-size : 13px;
+	font-weight : 500;
+}
+
+.dates-session p{
+	font-size : 13px;
+	font-weight : 500;
+	
+}
+
+#exampleFormControlTextarea1{
+	background : #E5EFF8;
+	font-size: 13px;
+    font-weight: 500;
+}
+
+
+.user-perfessional-desc p{
+	font-weight : 500;
+	padding: 5px 40px 20px;
+	font-size : 13px;
+	text-align : start;
+	margin-bottom : 0px;
+}
+
+#modal-header-1 h5{
+	color : white;
+}
+
+#first-form-row input ,#second-form-row input , #third-form-row input , #forth-form-row input, #grade-session input{
+	width : 300px;
+}
+
+#first-form-row label ,#second-form-row label , #third-form-row label , #forth-form-row label  , #text-area-fleld label , #grade-session label{
+	padding : 0px;
+	font-weight : 500;
+	color :#2a85bb;
+}
+
+#form-check , .form-check-session{
+	padding: 0px;
+	margin : 0px 0px 25px;
+}
+
+#form-check input{
+	display : block;
+	margin-left : 2px;
+}
+
+
+#form-check label{
+	font-weight : 500;
+	color :#2a85bb;
+}
+
+#form-check p{
+	padding-top: 3px;
+    margin-left: 22px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #2a85bb;
+    margin-bottom: 0px;
+}
+
+#save-button-modal{
+	background : #1b1bd6;
+	color:  white;
+	font-weight : 500;
+	padding : 5px 30px;
+	margin-top : 15px;
+	margin-bottom : 15px;
+}
+
+#dates-session span , #workexp-session span{
+	margin-left : 5px;
+	font-weight : 700;
+	font-size : 13px;
+	color : green;
+}
+
+.expiry-date-of-offerletter-resume{
+	font-size : 12px;
+	font-weight : 500;
+}
+
+#grade-marks{
+	font-size: 13px;
+    font-weight: 600;
+    color: #2323ca;
+	margin-bottom : 0px;
+	padding-bottom : 0px;
+}
+
+#custom-session button{
+    height: 54px;
+    border: 2px dashed #043353;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 14px;
+    color: #043353;
+    background: #E5EFF8;
+}
+
+
+#edit-button{
+	border : none;
+	background : white;
+	color : #362599;
+	padding-right : 0px;
+}
+
+.attachment-img{
+	width : 18px;
+	height : 18px;
+}
+
+.resume-email{
+	text-align : start;
+}

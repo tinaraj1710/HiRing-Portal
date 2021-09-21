@@ -1,0 +1,159 @@
+.employer-dashboard-links{
+	font-size : 12px;
+	font-weight : 600;
+}
+
+
+.employer-dashboard .employer-dashboard-dashboard-text{
+   font-size : 22px;
+   font-weight : 700;
+}
+
+.employer-dashboard .row .col-lg-8 .employer-new-applicant{
+	margin-top : 20px;
+	margin-bottom: 20px;
+    background: white;
+    border-radius: 10px;
+    padding: 12px 15px 20px;
+   box-shadow: rgba(244, 244, 244, 0) 0px 6px 0px 0px inset, rgba(0, 0, 0, 0.07) 0px 2px 14px 3px, rgba(0, 0, 0, 0.05) 0px 0px 1px 0px inset;	
+}
+
+.employer-dashboard .row .col-lg-8 .employer-new-applicant .employer-dashboard-empty-box{
+	text-align : center;
+}
+
+#employer-dashboard-empty-box-img{
+	 width: 64%;
+    margin-top: 10px;
+    margin-bottom: 16px;
+}
+
+.employer-dashboard .row .col-lg-8 .employer-new-applicant .employer-dashboard-empty-box .no-content-text{
+	margin-bottom: -20px;
+    margin-top: 20px;
+    font-weight: 500;
+    font-size: 13px;
+    color: #628094;
+    padding-left: 40px;
+}
+
+
+#employer-dashboard-empty-box-pendingofferletters{
+	 width: 66%;
+    margin-top: 10px;
+    margin-bottom: 16px;
+}
+   
+
+.employer-dashboard .row .col-lg-8 .employer-new-applicant .employer-dashboard-click-link{
+	cursor : pointer;
+	color: black;
+	text-decoration : none;
+}
+
+
+.employer-dashboard .row .col-lg-8 .employer-new-applicant .new-applicant-header{
+	margin : 5px 15px;
+}
+
+.employer-dashboard .row .col-lg-8 .employer-new-applicant .new-applicant-header h5{
+	margin-bottom  :0px;
+	font-size : 20px;
+	font-weight : 700;
+}
+
+.employer-dashboard .row .col-lg-8 .employer-new-applicant .employee-dashboard-titles{
+   margin-left : 15px;
+}
+
+.employer-dashboard .row .col-lg-8 .employer-new-applicant .employee-dashboard-titles .name-session , .employer-dashboard .row .col-lg-8 .employer-new-applicant .employee-dashboard-titles .designation-session{
+   width  : 35%;
+   font-size : 18px;
+   font-weight : 600;
+}
+
+.employer-dashboard .row .col-lg-8 .employer-new-applicant .employee-dashboard-titles .status-session{
+	width  : 33%;
+   font-size : 18px;
+   font-weight : 600;
+}
+
+.employer-dashboard .row .col-lg-8 .employer-new-applicant .each-candidate-data{
+	padding: 10px 10px;
+    margin-top: 0px;
+}
+
+.employer-dashboard .row .col-lg-8 .employer-new-applicant .each-candidate-data:hover{
+	background : #F4F7F9;
+	border-radius : 5px;
+}
+
+.employer-dashboard .row .col-lg-8 .employer-new-applicant .each-candidate-data .user-image img{
+	width : 36px;
+	height : 36px;
+	border-radius : 18px;
+	object-fit : cover;
+}
+.employer-dashboard .row .col-lg-8 .employer-new-applicant .each-candidate-data .img-name {
+	width : 35%;
+}
+
+
+.employer-dashboard .row .col-lg-8 .employer-new-applicant .each-candidate-data .each-applicant-position-detail{
+    width: 35%;
+    margin-bottom: 0px;
+    line-height: 38px;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.employer-dashboard .row .col-lg-8 .employer-new-applicant .each-candidate-data .each-applicant-status-detail{
+    width  :33%;
+	margin-bottom  :0px;
+	line-height: 38px;
+    font-weight: 500;
+    font-size: 13px;
+}
+
+
+.user-name-p{
+	margin-bottom: 0px;
+    line-height: 38px;
+    font-size: 14px;
+    margin-left: 10px;
+	font-weight : 500;
+}
+
+#each-offerletter-link{
+	color : black;
+	text-decoration : none;
+}
+
+#each-offerletter-link:hover .each-application-data {
+	cursor : pointer;
+}
+
+
+@media (max-width: 992px) { 
+	/* .employer-dashboard .row .col-lg-8 .employer-new-applicant .employee-dashboard-titles{
+		border: 0;
+		clip: rect(0 0 0 0);
+		height: 1px;
+		margin: -1px;
+		overflow: hidden;
+		padding: 0;
+		position: absolute;
+		white-space: nowrap;
+		width: 1px;
+	}
+	
+	.employer-dashboard .row .col-lg-8 .employer-new-applicant .each-candidate-data .user-image img {
+		width: 100px;
+		height: 100px;
+		border-radius: 50px;
+		object-fit: cover;
+	} */
+		
+}
+
+

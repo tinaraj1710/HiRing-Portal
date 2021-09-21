@@ -1,0 +1,172 @@
+<% include ../functions/datetimeconvert %>
+<% include ../functions/username %>
+<% include ../functions/textcontent %>
+
+<% if(CurrentUser.role === "employer"){ %>
+				<div  class="employer-dashboard">
+					<h4 id="main-heading-of-page">Dashboard</h4>
+					<div class="row">
+						<div class="col-lg-8">
+							<div class="employer-new-applicant d-flex flex-column">
+								<div class="new-applicant-header d-flex justify-content-between">
+									<h5>Today's Interviews</h5>
+									<% if(todaysinterviews.length > 0){ %>
+									<p><a class="employer-dashboard-links" href="/user/<%= CurrentUser._id %>/employer/interviews">view all</a></p>                                     <% } %>
+								</div>
+								<% if(todaysinterviews.length > 0){ %>
+									<div class="employee-dashboard-titles d-flex">
+										<p class="name-session"><%= text_name() %></p>
+										<p class="designation-session"><%= text_interview_title() %></p>
+										<p class="status-session"><%= text_date_and_time()  %></p>
+									</div>
+								<% } %>
+								
+								 <% if(todaysinterviews.length > 0){ %>
+										<% todaysinterviews.forEach(function(todaysinterviews){ %>
+								          <a class="employer-dashboard-click-link" 
+											 href="/user/<%= CurrentUser._id %>/<%= todaysinterviews._id %>/resume">
+									        <div class="each-candidate-data d-flex">
+												<div class="img-name d-flex">
+												   <div class="user-image">
+													    <% if(getimgurl(todaysinterviews.to)){ %>
+															      <img src="<%= getimgurl(todaysinterviews.to) %>" alt="profile-image"> 
+															<% }else{ %>
+																  <img src="/images/home/profile-img.jpg" alt="profile-image">
+															<% } %>
+													</div>
+													<p class="user-name-p"><%= getname(todaysinterviews.to) %>(<%= todaysinterviews.interview.length %>)
+													</p>
+												</div>
+												<p class="each-applicant-position-detail">
+													<%= todaysinterviews.interview[todaysinterviews.interview.length - 1].title %>
+												</p>
+												<% var date = todaysinterviews.interview[todaysinterviews.interview.length - 1].date %>
+												<p class="each-applicant-status-detail">
+												 <%= todaysinterviews.interview[todaysinterviews.interview.length - 1].date.toDateString() %>-
+													<%= converttime(date) %>
+													
+												</p>
+											</div>
+										  </a>
+									   <%  }); %>
+								    <% }else{ %>
+									    <div class="employer-dashboard-empty-box d-flex flex-column">
+											<p class="no-content-text">
+												<%= text_no_interviews() %>
+											</p>
+											<p>
+												 <img id="employer-dashboard-empty-box-pendingofferletters" src="/images/home/empty-view.svg">
+											</p>
+								    	</div>
+								    <% } %>
+							</div>
+							
+							<div class="employer-new-applicant d-flex flex-column">
+								<div class="new-applicant-header d-flex justify-content-between">
+									<h5>Upcoming Interviews</h5>
+									<% if(upcominginterviews.length > 0){ %>
+									<p><a class="employer-dashboard-links" href="/user/<%= CurrentUser._id %>/employer/interviews">view all</a></p>  <% } %>
+								</div>
+								<% if(upcominginterviews.length > 0){ %>
+								  <div class="employee-dashboard-titles d-flex">
+									 <p class="name-session"><%= text_name() %></p>
+									 <p class="designation-session"><%= text_interview_title() %></p>
+									 <p class="status-session"><%= text_date_and_time()  %></p>
+								  </div>
+								<% } %>
+								
+								 <% if(upcominginterviews.length > 0){ %>
+										<% upcominginterviews.forEach(function(upcominginterviews){ %>
+								            <a class="employer-dashboard-click-link" 
+											   href="/user/<%= CurrentUser._id %>/<%= upcominginterviews._id %>/resume">
+											  <div class="each-candidate-data d-flex">
+												<div class="img-name d-flex">
+												   <div class="user-image">
+													    <% if(getimgurl(upcominginterviews.to)){ %>
+															      <img src="<%= getimgurl(upcominginterviews.to) %>" alt="profile-image"> 
+															<% }else{ %>
+																  <img src="/images/home/profile-img.jpg" alt="profile-image">
+															<% } %>
+													</div>
+													<p class="user-name-p"><%= getname(upcominginterviews.to) %>(<%= upcominginterviews.interview.length %>)
+													</p>
+												</div>
+												<p class="each-applicant-position-detail">
+													<%= upcominginterviews.interview[upcominginterviews.interview.length - 1].title %>
+												</p>
+												<% var date = upcominginterviews.interview[upcominginterviews.interview.length - 1].date %>
+												<p class="each-applicant-status-detail">
+												 <%= upcominginterviews.interview[upcominginterviews.interview.length - 1].date.toDateString() %>-<%= converttime(date) %>
+												</p>
+											 </div>
+											</a>
+										 
+									<%	}); }else { %>
+									    <div class="employer-dashboard-empty-box d-flex flex-column">
+											<p class="no-content-text">
+												<%= text_no_upcominginterviews() %>
+											</p>
+											<p>
+												 <img id="employer-dashboard-empty-box-pendingofferletters" src="/images/home/empty-view.svg">
+											</p>
+								    	</div>
+									<% } %>
+							</div>
+							
+							<div class="employer-new-applicant d-flex flex-column">
+								<div class="new-applicant-header d-flex justify-content-between">
+									<h5>Pending Offer Letter</h5>
+									<% if(pendingofferletters.length > 0){ %>
+									    <p><a class="employer-dashboard-links" href="/user/<%= CurrentUser._id %>/employer/offerletter">view all</a></p>						 <% } %>
+								</div>
+								 <% if(pendingofferletters.length > 0){ %>
+								    <div class="employee-dashboard-titles d-flex">
+										<p class="name-session"><%= text_name() %></p>
+										<p class="designation-session"><%= text_job_position() %></p>
+										<p class="status-session"><%= text_expirydate() %></p>
+									</div>
+								 <% } %>
+								
+								 <% if(pendingofferletters.length > 0){ %>
+										<% pendingofferletters.forEach(function(pendingofferletters){ %>
+								            <a class="employer-dashboard-click-link" 
+											   href="/user/<%= CurrentUser._id %>/employer/offerletter/<%= pendingofferletters._id %>">
+									             <div class="each-candidate-data d-flex">
+													<div class="img-name d-flex">
+													   <div class="user-image">
+														    <% if(getimgurl(pendingofferletters.to)){ %>
+															      <img src="<%= getimgurl(pendingofferletters.to) %>" alt="profile-image"> 
+															<% }else{ %>
+																  <img src="/images/home/profile-img.jpg" alt="profile-image">
+															<% } %>
+														</div>
+														<p class="user-name-p"><%=  getname(pendingofferletters.to) %></p>
+													</div>
+													<p class="each-applicant-position-detail">
+														<%= pendingofferletters.position %>
+													</p>
+													<p class="each-applicant-status-detail"><%= pendingofferletters.offerletter.expiring.toDateString() %></p>
+											     </div>
+										    </a>
+									<% }); %> 
+							    <%	} else {  %>
+								    <div class="employer-dashboard-empty-box d-flex flex-column">
+										<p class="no-content-text">
+											<%= text_no_pending_offerletters() %>
+										</p>
+										<p>
+											 <img id="employer-dashboard-empty-box-pendingofferletters" src="/images/home/empty-view.svg">
+										</p>
+								    </div>
+								<% } %>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-4">
+						
+					</div>
+				</div>
+<% } %>
+
+ <% include ../dashboard/dashboard-popup %> 
+

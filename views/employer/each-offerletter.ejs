@@ -1,0 +1,292 @@
+<% include ../partials/header %>
+<% include ../user-partials/header %>
+<% include ../functions/datetimeconvert %>
+<% include ../functions/username %>
+<% include ../functions/textcontent %>
+
+</div>
+   <div id="offer-letter-content-session">
+	 <div class="offer-letter-page">
+		 <div class="main-heading-of-mainpages d-flex">
+				<div class="back-link-of-page">
+					<a href="/user/<%= CurrentUser._id %>/employer/offerletter">
+						<img src="/images/home/arrow_back.svg" alt="back-arrow">
+					</a>
+				</div>
+				<div>
+					<h4  id="main-heading-of-page"><%= textofferletter() %></h4>
+				</div>
+		 </div>
+		 <div class="offer-letter-data-container">
+		    <div class="row">
+			   <div class="col-lg-5 col-xl-4">
+				   <div class="candidate-data-container d-flex justify-content-center flex-column">
+					   <div class="candidate-img-div d-flex justify-content-center">
+						    <% if(getimgurl(reciever)){ %>
+								       <img src="<%= getimgurl(reciever) %>" alt="profile-image"> 
+								 <% }else{ %>
+									  <img src="/images/home/profile-img.jpg" alt="profile-image">
+								 <% } %>
+					   </div>
+					   <p class="candidate-name"><%= getname(reciever) %></p>
+					   <p class="candidate-profession">
+						   <% if(profdata.length > 0){ %>
+							    <%= profdata[0].position %>
+							<% }else{ %>
+							    Unknown
+							<% } %>
+					   </p>
+					   <div class="candidate-basic-data d-flex justify-content-center">
+						   <div>
+							    <p>
+							   <img src="/images/profile/mail.svg"> <%= getemail(reciever) %>
+						         </p>
+						    	<p> 
+							    <img src="/images/profile/place.svg"> 
+							   <% if(!reciever.personaldetails.city && reciever.personaldetails.country){ %>
+										      Unknown , <%= reciever.personaldetails.country %>
+										<% }else if(reciever.personaldetails.city && !reciever.personaldetails.country){ %>
+										      <%= reciever.personaldetails.city %> , Unknown
+										<%}else{ %>
+										      Unknown
+										<%} %>
+						    	</p>
+						    	<p>
+						       <img src="/images/profile/call.svg" >
+							   <% if(reciever.personaldetails.contnum){ %>
+							        <%= reciever.personaldetails.contnum %>
+							  <%  }else{ %>
+								   Unknown
+							  <% } %>
+							   
+						   	    </p>
+						   </div>
+					   </div>
+					   <p class="candidate-profdata">
+						   <% if(profdata.length > 0){ %>
+						     <% if(profdata[0].text){ %>
+						          <span><%= profdata[0].text %></span>
+						     <% } } %>
+					   <% if(job.status === offerletter_sent()){ %>
+						    <p class="offerletter-buttons">
+							   <a type="button" id="withdraw-offerletter" class="btn btn-primary" data-toggle="modal"
+									  data-target="#employee-withdraw-offerletter"><%= textwithdraw_offerletter()  %></a>	
+					   		</p>
+						   <p class="offerletter-buttons">
+								 <a type="button" id="candidate-edit-offerletter" class="btn btn-primary" href="/user/<%= CurrentUser._id %>/editofferletter/<%= job._id %>"><%= textedit_offerletter() %></a>	
+							</p>
+					   <% } %>
+					   <% if(job.status === withdrawn()){ %>
+						    <p class="offerletter-buttons">
+							   <a type="button" id="withdraw-offerletter" class="btn btn-primary" ><i class="fas fa-check"></i> <%= textofferletter_withdrawn() %></a>	
+					   		</p>
+					   <% } %>
+					   <% if(job.status === accepted()){ %>
+							   <p class="offerletter-buttons">
+								   <a type="button" id="each-offerletter-button-accept-2" class="btn btn-primary" 
+									  href="#"><i class="fas fa-check"></i> Candidate has accepted your offer letter
+								   </a>
+							  </p>
+					          <p class="offerletter-buttons">
+								   <a type="button" id="each-offerletter-button-accept-3" class="btn btn-primary" data-toggle="modal"
+									  data-target="#employee-default"><%= textmark_as_defaulted() %>
+								   </a>
+							   </p>
+					           <p class="offerletter-buttons">
+								   <a type="button" id="joined-button" class="btn btn-primary" 
+									  href="/user/<%= CurrentUser._id %>/<%= job._id %>/joined"><i class="fas fa-check"></i><%= textjoined() %> 
+								   </a>
+							   </p>
+					   <% } %>
+					  <% if(job.status === defaulted()){ %>
+						   <p class="offerletter-buttons">
+							   <a type="button" id="defauled-offerletter-employer" class="btn btn-primary" 
+								  href="#"><i class="fas fa-times"></i> <%= textDefaulted() %>
+							   </a>
+					      </p>
+					   <% } %>
+					   <% if(job.status === rejected()){ %>
+						   <p class="offerletter-buttons">
+							   <a type="button" id="defauled-offerletter-employer" class="btn btn-primary" 
+								  href="#"><i class="fas fa-times"></i><%=  textrejected() %>
+							   </a>
+					      </p>
+					   <% } %>
+					   <p class="offerletter-buttons"><a class="btn btn-sm" id="button-send-offerletter" href="#">Send Message</a></p>
+					   <% if(job.status === defaulted()){ %>
+						   <% if(!job.offerletter.defaultcommentcompany.comment){ %>
+								<p class="offerletter-buttons">
+								   <a type="button" id="each-offerletter-button-accept-3" class="btn btn-primary" data-toggle="modal"
+									  data-target="#employee-default"> <%= textmark_as_defaulted() %>
+								   </a>
+								</p>
+					       <% } %>
+					   <% } %>
+				   </div>
+			   </div>
+			   <div class="col-lg-7 col-xl-8">
+				  <div class="employer-data-container d-flex flex-column">
+					   <h5 id="send-offer-page" >Offer Letter</h5>
+					   <p class="company-name"><%= sender.organizationdetails.companyname %></p>
+					   <p class="company-address"><%= sender.personaldetails.Paddress %></p>
+					   <p class="contact-info"><%= getemail(sender) %>  <%= sender.personaldetails.contnum %></p>
+					    <div class="name-exp-date d-flex justify-content-between">
+						     <p>Mr. <%= getname(reciever) %></p>
+							 <div class="exp-date-container">
+								<label for="expiry-date">Offerletter Expiry Date : <%= job.offerletter.expiring.toDateString() %></label>
+							 </div>
+						   </div>
+						   <div class="take-job-position">
+							  <div class="form-group">
+								<label for="jobposition">Job Position : <span><%= job.position %></span></label>
+  							  </div> 
+						   </div>
+						    <p class="job-description"> <%= job.offerletter.description %> </p>
+							<div class="attachment-button-and-container-offerletter d-flex justify-content-start">
+								<% if(job.offerletter.document.length > 0){ %>
+								  <% for(var i = 0 ; i < job.offerletter.document.length ; i++){ %>
+									<div class="pdf-preview">
+										<div class="img-session">
+											<a href="<%= job.offerletter.document[i].dataurl %>" target="_blank">
+				            <img class="main-first-page-of-pdf" src="<%= convertimg(job.offerletter.document[i].dataurl).url %>" slt="pdf-img">
+											</a>
+											<div class="text-of-pdf-card d-flex justify-content-between">
+												<% var data = job.offerletter.document[i].dataurl %>
+												<p class="offer-letter-text">Offerletter.<%= data.substring(data.lastIndexOf(".")+1) %></p>
+											</div>
+
+										</div>
+								    </div>
+									<% }} %>	
+								
+							 </div>
+					         
+					        <% if(job.status === joined()){ %>
+						        <p class="joined-para">
+								   <a type="button" id="joined-button-2" class="btn btn-primary"><i class="fas fa-check"></i> <%= textjoined() %> </a>
+							   </p>
+					        <% } %>
+					         <% if(job.status === defaulted()){ %>
+									 <% if(job.offerletter.defaultcommentcompany.comment && !job.offerletter.defaultcommentcandidate.comment){ %>
+									  <div class="company-default-message form-group">
+										  <label for="exampleFormControlTextarea1">Company default comment</label>
+										 <p class="default-comment-of-both"><%= job.offerletter.defaultcommentcompany.comment %></p>
+								     </div>
+								    <% } %>
+								     <% if(!job.offerletter.defaultcommentcompany.comment && job.offerletter.defaultcommentcandidate.comment){ %>
+									<div class="company-default-message form-group">
+										  <label for="exampleFormControlTextarea1">Candidate default comment</label>
+										 <p class="default-comment-of-both"><%= job.offerletter.defaultcommentcandidate.comment %></p>
+									  </div>
+								    <% } %>
+								 <% if(job.offerletter.defaultcommentcompany.comment && job.offerletter.defaultcommentcandidate.comment){ %>
+									<div class="company-default-message form-group">
+									  <label for="exampleFormControlTextarea1">Company default comment</label>
+									 <p class="default-comment-of-both"><%= job.offerletter.defaultcommentcompany.comment %></p>
+								 </div>
+								 <div class="company-default-message form-group">
+									  <label for="exampleFormControlTextarea1">Candidate default comment</label>
+									 <p class="default-comment-of-both"><%= job.offerletter.defaultcommentcandidate.comment %></p>
+								 </div>
+								    <% } %>
+								 <% } %>
+				  </div>
+				</div>
+			</div>
+		 </div>	    
+     </div>
+</div>
+
+
+<!--  Employer default popup -->
+ <% if(CurrentUser.role === textemployer()){ %>
+<div class="modal fade" id="employee-default" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+		<div class="preloader-all-pages main-loader-div">
+		    <svg class="loading-box">
+              <circle class="loader" fill="none" stroke-width="3" stroke-linecap="round" cx="24" 
+					cy="24" r="17"></circle>
+            </svg>
+         </div>
+      <div class="modal-body">
+          <div class="aadhar-accept-container d-flex flex-column">
+			  <h4>Mark as Default</h4>
+			  <p class="accept-text">Do you want to mark this candidate as Defaulted?
+			  Candidate will be notified.</p>
+			  <form class="submit-forms" action="/makedefault/<%= job._id %>/<%= job.author._id %>" method="POST">
+					 <div class="take-aadhar-details">
+						<textarea class="form-control" id="employer-comment" rows="6" name="comment" placeholder="Write comment or note  here. This will ne send to Candidate"></textarea>
+					</div>	  
+				    <div class="accept-or-reject-div d-flex justify-content-between">
+					  <a type="button" id="each-offerletter-reject" class="btn btn-sm" data-dismiss="modal">Discard</a>
+					  <button type="submit" id="each-offerletter-button-accept" class="btn btn-sm btn-primary" data-toggle="modal">Mark as Defaulted</button>
+				   </div>
+			</form> 
+		  </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% } %>
+
+<!-- Offerletter  Attachement Modal -->
+<div class="modal fade bd-attachment-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+		  <div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div id="modal-header-1" class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Offerletter Attachment</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						  <span aria-hidden="true">&times;</span>
+						</button>
+				</div>
+				  <% if(job.offerletter.document.length > 0){ %>
+				  <% for(var i = 0 ; i < job.offerletter.document.length ; i++){ %>
+				         <div class="modal-body d-flex justify-content-between">
+                            <div class="container links">
+						       <a href="<%= job.offerletter.document[i].dataurl %>" target="_blank"> Attachment No. <%= i+1 %></a>
+						   </div>
+      				     </div>
+					<% }} %>	  
+			</div>
+</div>
+</div>
+
+	
+	
+<!--  Employer Withdraw offerletter popup -->
+ <% if(CurrentUser.role === textemployer()){ %>
+<div class="modal fade" id="employee-withdraw-offerletter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+		<div class="preloader-all-pages main-loader-div">
+		  <svg class="loading-box">
+              <circle class="loader" fill="none" stroke-width="3" stroke-linecap="round" cx="24" 
+					cy="24" r="17"></circle>
+           </svg>
+        </div>
+      <div class="modal-body">
+          <div class="aadhar-accept-container d-flex flex-column">
+			  <h4>Withdraw Offer Letter</h4>
+			  <p class="accept-text">Do you want to Withdraw this Offer Letter</p>
+			  <form class="submit-forms" action="/withdraw/<%= job._id %>" method="POST">
+					 <div class="take-aadhar-details">
+						<textarea class="form-control" id="employer-comment" rows="6" name="comment" 
+								  placeholder="Write comment or note  here. "></textarea>
+					</div>	  
+				    <div class="accept-or-reject-div d-flex justify-content-between">
+					  <a type="button" id="each-offerletter-reject" class="btn btn-sm" data-dismiss="modal">Discard</a>
+					  <button type="submit" id="each-offerletter-button-accept" class="btn btn-sm btn-primary" 
+							  data-toggle="modal">Withdraw Offer Letter</button>
+				   </div>
+			</form> 
+		  </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% } %>
+
+
+<% include ../dashboard/dashboard-popup %> 
+<% include ../partials/footer %>

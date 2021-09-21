@@ -1,0 +1,61 @@
+<% include ../partials/header %>
+<% include ../functions/textcontent %>
+     <div class="fluid-container">
+		 <div id="login-page-main-container" class="row mx-md-5">
+			 <div id="register-col-lg-4" class="col-lg-4 d-none d-lg-block">
+				 <div class="img-container-of-register">
+					 <img id="signip-login-big-img" src="/images/home/signup.svg">
+				 </div>
+			 </div>
+			 <div id="col-lg-8" class="col-lg-8">
+			 	<div class="login-box d-flex justify-content-end mr-3 mr-md-5">
+			      <div class="login-button">
+			      </div>
+		  		</div>
+				<div class="user-type px-4 py-3 px-md-5 py-md-4">
+				  <div class="signup-with">
+				    <h4>Sign Up</h4>
+			      </div>
+			      <div class="signup-text">
+				     <p>Choose What defines you best</p>
+			      </div>
+				<a id="register-as-candidate" href="/user/<%= CurrentUser._id %>/registerrole/candidate">
+			      <div id="login-as-candidate" class="login-as d-flex justify-content-start align-items-center">
+				      <div class="candidate-icon">
+					      <img class="svg-img" src="/images/home/candidate-black.svg" alt="google-font-image" id="">
+				      </div>  
+				      <div class="just-text">
+					    <h4><%= textCandidate() %></h4>
+				      </div>
+			       </div>
+					</a>
+				   <a id="register-as-employee" href="/user/<%= CurrentUser._id %>/registerrole/employer">
+			       <div class="login-as d-flex justify-content-start align-items-center">
+				      <div class="company-icon">
+					      <img class="svg-img" src="/images/home/consultant.svg" alt="google-font-image">
+				       </div>
+				  	   <div class="just-text">
+					      <h4><%= textEmployer() %></h4>
+				       </div>
+			       </div>
+				   </a>
+				   <a id="register-as-consultant" href="/user/<%= CurrentUser._id %>/registerrole/consultant" class="d-none">
+			       <div class="login-as d-flex justify-content-start align-items-center">
+				      <div class="consultant-icon">
+					     <img class="svg-img" src="/images/home/employer.svg" alt="google-font-image">
+				      </div>
+				      <div class="just-text">
+					     <h4><%= textConsultant() %></h4>
+				      </div>
+			       </div>
+				</a>
+				</div>
+			 </div>
+		 </div>
+     </div>
+
+
+
+
+
+<% include ../partials/footer %>

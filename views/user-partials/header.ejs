@@ -1,0 +1,302 @@
+<% include ../functions/username %>
+<% include ../functions/textcontent %>
+<% include ../functions/datetimeconvert %>
+
+<nav class="navbar fixed-top navbar-light" id="main-navbar">
+	<div class="navbar-container">
+		<div id="navbar-row" class="row">
+		    <div id="brand-name-session" class="col-6 col-md-4 d-flex align-items-center">
+				<span>Brand Name</span>
+			</div>
+			<div id="Company-name-session-in-nav" class="col-md-4 d-flex align-items-center justify-content-center">
+				<span>Google</span>
+			</div>
+			<div id="navbar-row-second-col" class="col-6 col-md-4 d-flex align-items-center">
+				<ul class="navbar-nav ml-auto">
+					<div class="d-flex justify-content-end">
+							<% if(CurrentUser.local.firstname){ %>
+								<div class="prof-username d-flex align-items-center">
+									<% if(CurrentUser.role === textcandidate()){ %>
+									    <div class="prof-img-session">
+										   <% if(!CurrentUser.local.avatar){ %>
+											   <img id="profile-imges" src="/images/home/profile-img.jpg" alt="profileimg">
+											<% }else{ %>
+												<img id="profile-imges" src="<%= CurrentUser.local.avatar %>" alt="profileimg">
+											<% } %>
+										</div>
+										<div class="prof-username d-flex align-items-center">
+											<a href="/user/<%= CurrentUser._id %>/profile">
+									           <span id="username"><%= CurrentUser.local.firstname %> <%= CurrentUser.local.lastname %></span>
+									        </a>
+										</div>
+								   <% } %>
+								   <% if(CurrentUser.role === textemployer()){ %>
+									   <div class="prof-img-session">
+											 <% if(!CurrentUser.local.avatar){ %>
+											     <img id="profile-imges" src="/images/home/profile-img.jpg" alt="profileimg">
+											<% }else{ %>
+												<img id="profile-imges" src="<%= CurrentUser.local.avatar %>" alt="profileimg">
+											<% } %>
+										</div>
+										<div class="prof-username d-flex align-items-center">
+											<a href="/user/<%= CurrentUser._id %>/employer/profile">
+									          <span id="username"><%= CurrentUser.local.firstname %> <%= CurrentUser.local.lastname %></span>
+									        </a>
+										</div>
+										
+									<% } %>	 
+								</div>
+							<% }else if(CurrentUser.googleauth.firstname){ %>
+						          <% if(CurrentUser.role === textcandidate()){ %>
+										<div class="prof-img-session">
+											 <% if(!CurrentUser.googleauth.avatar){ %>
+											   <img id="profile-imges" src="/images/home/profile-img.jpg" alt="profileimg">
+											<% }else{ %>
+												<img id="profile-imges" src="<%= CurrentUser.googleauth.avatar %>" alt="profileimg">
+											<% } %>
+										</div>
+										<div class="prof-username d-flex align-items-center">
+											<a href="/user/<%= CurrentUser._id %>/profile">
+												<span id="username"><%=CurrentUser.googleauth.fullname %></span>
+											</a>
+										</div>
+								   <% } %>
+								   <% if(CurrentUser.role === textemployer()){ %>
+											<div class="prof-img-session">
+												 <% if(!CurrentUser.googleauth.avatar){ %>
+											   <img id="profile-imges" src="/images/home/profile-img.jpg" alt="profileimg">
+											<% }else{ %>
+												<img id="profile-imges" src="<%= CurrentUser.googleauth.avatar %>" alt="profileimg">
+											<% } %>
+											</div>
+											<div class="prof-username d-flex align-items-center">
+												<a href="/user/<%= CurrentUser._id %>/employer/profile">
+													<span id="username"><%=CurrentUser.googleauth.fullname %></span>
+												</a>
+											</div>
+									<% } %>	 
+							
+							<% }else{ %>
+						        <% if(CurrentUser.role === textcandidate()){ %>
+										<div class="prof-img-session">
+											<% if(!CurrentUser.linkedinauth.avatar){ %>
+											   <img id="profile-imges" src="/images/home/profile-img.jpg" alt="profileimg">
+											<% }else{ %>
+												<img id="profile-imges" src="<%= CurrentUser.linkedinauth.avatar %>" alt="profileimg">
+											<% } %>
+										</div> 
+										<div class="d-flex align-items-center">
+											 <a href="/user/<%= CurrentUser._id %>/profile">
+												 <span id="username"><%=CurrentUser.linkedinauth.fullname %></span>
+											</a> 
+										</div>
+						        <% } %>	 
+								<% if(CurrentUser.role === textemployer()){ %>
+										<div class="prof-img-session">
+											<% if(!CurrentUser.linkedinauth.avatar){ %>
+											   <img id="profile-imges" src="/images/home/profile-img.jpg" alt="profileimg">
+											<% }else{ %>
+												<img id="profile-imges" src="<%= CurrentUser.linkedinauth.avatar %>" alt="profileimg">
+											<% } %>
+										</div> 
+										<div class="d-flex align-items-center">
+											 <a href="/user/<%= CurrentUser._id %>/employer/profile">
+												 <span id="username"><%=CurrentUser.linkedinauth.fullname %></span>
+											</a> 
+										</div>	
+									<% } %>	 
+							<% } %>
+						    <input type="checkbox" id="checkbox-for-notification" class="d-none">
+						     <div class="notification-session d-flex align-items-center justify-content-center">
+								    <label id="checkbox-for-notification-label" for="checkbox-for-notification">
+									   <img src="/images/home/notifications.svg" alt="notification-img">
+										<% var count = 0; %>
+										 <% for(var i = 0 ; i < notifications.length ; i++){ %>
+											<% if(notifications[i].isRead === false){ %>
+											   <% count++; %>
+											<% } %>								   
+										<% } %>
+										<span>(<%= count %>)</span>
+								    </label> 
+						    </div>
+						    <div class="notification-container-session">
+							    <div class="notification-header">
+									<span>Notifications</span> <img class="notification-bell" 
+																	src="/images/home/notifications.svg" alt="notification-img">
+								</div>
+								<div class="notifications-items">
+									<ul>
+										<li>
+										   <% if(notifications.length > 0){ %>
+											<%  notifications.forEach(function(notification){ %>
+											<% if(notification.isRead === false){ %>
+											   <% if(notification.jobid.offerletter){ %>
+												<a href="/user/<%= CurrentUser._id %>/notification/offerletter/<%= notification._id %>">
+													<div class="Each-notification d-flex justify-content-start">
+														<div class="notification-img">
+															<% if(CurrentUser.role === "candidate"){ %>
+															    <% if(getimgurl(notification.jobid.author)){ %>
+																  <img src="<%= getimgurl(notification.jobid.author) %>">
+																<% }else{ %>
+																	 <img src="/images/home/profile-img.jpg">
+																<% } %>
+															<% } %>
+															<% if(CurrentUser.role === "employer"){ %>
+															    <% if(getimgurl(notification.jobid.to)){ %>
+																  <img src="<%= getimgurl(notification.jobid.to) %>">
+																<% }else{ %>
+																	 <img src="/images/home/profile-img.jpg">
+																<% } %>
+															<% } %>
+														</div>
+														<div class="notification-content d-flex flex-column">
+															<p class="notification-name-ssession">
+															<% if(CurrentUser.role === "employer"){ %>
+															    <%= getname(notification.jobid.to) %>
+															<% } %>
+															<% if(CurrentUser.role === "candidate"){ %>
+															    <%= getname(notification.jobid.author) %>
+															<% } %>
+																
+															</p>
+															<p class="notification-job-title"><%= notification.jobid.position %></p>
+															<div class="notification-type-status-session d-flex justify-content-start align-items-center">
+																<p class="notification-content-type">Offer Letter:</p>
+																<button id="notification-status-button" class="btn btn-sm btn-primary"><i class="fas fa-bolt see-status-icon"></i><%= notification.jobid.status %></button>
+															</div>
+															<p class="notification-expiry-ssession">Expired on:  <%= notification.jobid.offerletter.expiring.toDateString() %></p>
+														</div>
+													</div>
+											    </a>
+											<% } %>
+											<% if(!notification.jobid.offerletter && notification.jobid.interview.length > 0){ %>
+											    <a href="/user/<%= CurrentUser._id %>/notification/interview/<%= notification._id %>">
+													<div class="Each-notification d-flex justify-content-start">
+														<div class="notification-img">
+															<% if(getimgurl(notification.jobid.author)){ %>
+																  <img src="<%= getimgurl(notification.jobid.author) %>">
+															<% }else{ %>
+																 <img src="/images/home/profile-img.jpg">
+															<% } %>
+														</div>
+														<div class="notification-content d-flex flex-column">
+															<p class="notification-name-ssession"><%= getname(notification.jobid.author) %></p>
+															<p class="notification-job-title"><%= notification.jobid.position %></p>
+															<div class="notification-type-status-session d-flex justify-content-start align-items-center">
+																<p class="notification-content-type">Interview:</p>
+																<button id="notification-status-button" class="btn btn-sm btn-primary"><i class="fas fa-bolt see-status-icon"></i><%= notification.jobid.status %></button>
+															</div>
+                                                    <% var date = notification.jobid.interview[notification.jobid.interview.length -1].date %>
+															<p class="notification-expiry-ssession">Timing : <%= notification.jobid.interview[notification.jobid.interview.length -1].date.toDateString() %> - <%= converttime(date) %></p>
+														</div>
+													</div>
+											    </a>
+											<% } } }); %>
+											<% }else{ %>
+												<div class="employer-dashboard-empty-box d-flex flex-column">
+													<p class="no-content-text-of-notification">
+														No Notification !
+													</p>
+													<p class="notification-img-box-p">
+														 <img id="notification-empty-box" 
+															  src="/images/home/empty-view.svg">
+													</p>
+								    	    </div>
+											<% } %>
+											
+										</li>
+								    </ul>
+								</div>
+						    </div>
+							<div class="logout-button">
+								  <a class="nav-link" id="nav-logout-button" href="/dashboard/auth/logout">Logout</a>
+							</div> 
+					 </div> 
+				</ul> 
+	        </div>  <!-- col-6 col-lg-4 -->
+         </div>  <!-- row -->
+	</div> <!-- container -->
+</nav>
+
+
+ <div id="user-data-container">
+	    <input type="checkbox" id="check">
+			 <label id="sidebar-label-elm" for="check">
+				  <i class="fas fa-bars" id="btn"></i> 
+			 </label>
+		   <div class="sidebar">
+		       <ul>
+				  <% if(CurrentUser.role === textcandidate()){ %>
+				   <li>
+				     <a href="/user/<%= CurrentUser._id %>" id="dashboard-page">
+					   <img src="/images/profile/dashboard.svg" class="profile-page-nav-imgs" alt="paper-img"> <%= textDashboard() %>
+				     </a>
+			       </li>
+			     <li>
+				     <a id="myapplication-page" class="nav side-links" href="/user/<%= CurrentUser._id %>/resume">
+					   	<img src="/images/profile/paper.svg" class="profile-page-nav-imgs" alt="paper-img"> <%= textmyresume() %>
+				     </a>
+			     </li>
+			     <li>
+				     <a id="offerletter-page" class="nav side-links" href="/user/<%= CurrentUser._id %>/offerletter">
+					    	<img src="/images/profile/offerletter.svg" class="profile-page-nav-imgs" alt="paper-img"> <%= textofferletter() %> 
+				     </a>
+			      </li>
+			      <li>
+				     <a id="interviews-page" class="nav side-links" href="/user/<%= CurrentUser._id %>/interviews">
+				      	<img src="/images/profile/interview.svg" class="profile-page-nav-imgs" alt="paper-img"> <%= textinterviews() %>
+				     </a> 
+			      </li>
+			      <li>
+				      <a id="inbox-page" class="nav side-links" href="#">
+				         <img src="/images/profile/inbox.svg" class="profile-page-nav-imgs" alt="paper-img"> <%= textinbox() %>
+				     </a>
+			   </li>
+			 <% } %>
+				<% if(CurrentUser.role === textemployer() || CurrentUser.role === textconsultant()){ %>
+			        <li>
+				     <a href="/user/<%= CurrentUser._id %>" id="dashboard-page">
+					   <img src="/images/profile/dashboard.svg" class="profile-page-nav-imgs" alt="paper-img"> <%= textDashboard() %>
+				     </a>
+			       </li>
+			     <li>
+				     <a id="myapplication-page" class="nav side-links" href="/user/<%= CurrentUser._id %>/employer/candidates">
+					   	<img src="/images/profile/paper.svg" class="profile-page-nav-imgs" alt="paper-img"> <%= text_candidates() %>
+				     </a>
+			     </li>
+			     <li>
+				     <a id="offerletter-page" class="nav side-links" href="/user/<%= CurrentUser._id %>/employer/offerletter">
+					    	<img src="/images/profile/offerletter.svg" class="profile-page-nav-imgs" alt="paper-img"> <%= textofferletter() %>
+				     </a>
+			      </li>
+			      <li>
+				     <a id="interviews-page" class="nav side-links" href="/user/<%= CurrentUser._id %>/employer/interviews">
+				      	<img src="/images/profile/interview.svg" class="profile-page-nav-imgs" alt="paper-img"> <%= textinterviews() %>
+				     </a> 
+			      </li>
+			      <li>
+				      <a id="inbox-page" class="nav side-links" href="#">
+				         <img src="/images/profile/inbox.svg" class="profile-page-nav-imgs" alt="paper-img"> <%= textinbox() %>
+				     </a>
+			      </li>
+				   <li>
+				      <a id="employer-profile-page" class="nav side-links" href="/user/<%= CurrentUser._id %>/employer/profile">
+				         <img src="/images/profile/employer.svg" class="profile-page-nav-imgs-sec" alt="paper-img"> <%= textProfile() %>
+				     </a>
+			       </li>
+				  
+				   <hr id="sidebar-hr">
+					   <button type="button" id="sidebar-sendofferletter-button" class="btn btn-sm btn-primary" 
+							   data-toggle="modal" 
+							   data-target=".bd-job-modal-lg">
+							<%= textsendofferletter() %>
+				       </button>
+				       <button type="button" id="sidebar-sche-inte-button" class="btn btn-sm btn-primary" data-toggle="modal" 
+							   data-target=".bd-interview-modal-lg">
+							<%=  textscheduleinterview()  %>
+				       </button>
+				   
+     <% } %>
+		   </ul>
+			   
+

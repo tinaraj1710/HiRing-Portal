@@ -1,0 +1,67 @@
+<% include ../partials/header %>
+
+
+<div class="fluid-container">
+		 <div id="login-page-main-container" class="row mx-md-5">
+			 <div id="register-col-lg-4" class="col-lg-4 d-none d-lg-block">
+				 <div class="img-container-of-register">
+					 <img id="signip-login-big-img" src="/images/home/signup.svg">
+				 </div>
+			 </div>
+			 <div id="register-col-lg-8" class="col-lg-8 px-md-5">
+				<div class="login-box d-flex justify-content-end">
+			      <div class="login-button px-xl-4">
+				     <a id="login-button-home" href="/dashboard/auth/login" class="btn btn-md btn-primary">Login</a>
+			      </div>
+		  		</div>
+				<div class="user-type px-xl-4">
+				   <div class="login-with">
+				      <h4>Sign Up</h4>
+			       </div>
+			      <div class="login-with-auth d-flex justify-content-between">
+				  <div class="login-as-auth">
+					  <a id="link-to-login" href="/dashboard/auth/google"><span>Sign up with</span>
+					  <img class="svg-img-login" src="/images/login/Google-Button.svg"  alt="google-svg"></a>
+				  </div>
+				  <div class="login-as-auth">
+					  <a id="link-to-login" href="/dashboard/auth/linkedin"><span>Sign up with</span>
+						  <img class="svg-img-login" src="/images/login/linkedin-button.svg"  alt="linkedin-svg"></a>
+				  </div>
+			    </div>
+				  <form action="/dashboard/register" method="POST">
+					  <div class="form-row">
+						  <div class="form-group col-6">
+    						    <label class="form-label-input" for="exampleInputEmail1"><strong>First Name</strong></label>
+    						     <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="firstname">
+  						   </div>
+						   <div class="form-group col-6">
+    						    <label class="form-label-input" for="exampleInputEmail1"><strong>Last Name</strong></label>
+    						     <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="lastname">
+  						    </div>
+					  </div>
+					  <div class="form-group">
+    					  <label class="form-label-input" for="exampleInputEmail1"><strong>Email</strong></label>
+    						 <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email">
+  						</div>
+						<div class="form-row">
+						   <div class="form-group col-6">
+    						  <label class="form-label-input" for="exampleInputPassword1"><strong>Password</strong></label>
+    						   <input type="password" class="form-control" id="exampleInputPassword1" name="password">
+  						   </div>
+						   <div class="form-group col-6">
+    						<label class="form-label-input" for="exampleInputPassword1"><strong>Confirm Password</strong></label>
+    							<input type="password" class="form-control" id="exampleInputPassword1" name="confpass">
+  						   </div>
+						  </div>
+					 <button id="login-page-login-button" type="submit" class="btn btn-primary">Sign up</button>
+					</form>  
+				</div>
+			 </div>
+		 </div>
+     </div>
+
+
+   
+
+
+<% include ../partials/footer %>

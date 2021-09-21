@@ -1,0 +1,84 @@
+#col-lg-8{
+	min-width : 420px;
+	padding : 30px;
+}
+
+.fluid-container #login-page-main-container{
+	border: 1px solid #e3e3e3cf;
+	box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.06), 0px 2px 2px 0px rgba(0, 0, 0, 0.06);
+}
+
+
+.row {
+	height : 540px;
+}
+
+#col-lg-4{
+	background : #18A4E0;
+}
+
+.login-with-auth{
+	margin: 5px auto;
+}
+
+.login-as-auth{
+	padding: 0px 10px;
+    border-radius: 20px;
+    width: 47%;
+    text-align: center;
+    background: #f8faf0;
+    margin: 8px 0px 10px 0px;
+}
+
+.login-as-auth span{
+	font-size : 12px;
+	font-weight : 700;
+}
+
+#forgot-pass-link{
+	font-size : 13px;
+	font-weight : 500;
+}
+
+.form-label-input{
+	margin-bottom : 1px;
+}
+
+
+
+#login-page-login-button{
+	padding: 9px 11px 7px;
+    border-radius: 5px;
+    width: 50%;
+    font-size: 14px;
+    font-weight: 600;
+    background: #043353;
+}
+
+#link-to-login{
+	text-decoration : none;
+	color : #043353;
+	
+}
+
+.form-label-input{
+	font-size : 12px;
+	font-weight : 400;
+}
+
+.svg-img-login{
+	width : 35px;
+	height : 35px;
+	margin-left:0px;
+}
+
+.login-with h4{
+	margin-top: 20px;
+    font-weight: 600;
+}
+
+#signip-login-big-img{
+	margin-top: 235px;
+    margin-left: 6px;
+    width: 96%;
+}

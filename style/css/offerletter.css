@@ -1,0 +1,1572 @@
+#offer-letter-content-session{
+	padding: 100px 50px 20px;
+    background: #F4F7F9;
+    transition: all 0.5s ease;
+    height: 100%;
+    overflow: auto;
+	color : #043353;
+}
+
+
+
+#candidate-see-offerletter-company-details{
+	margin-bottom  : 20px;
+}
+
+.offer-letter-divs { 
+  margin-top : 20px;
+  margin-bottom  :20px;
+  background : white;
+  padding : 20px 30px;
+  border-radius : 10px;
+  box-shadow: rgba(244, 244, 244, 0) 0px 6px 0px 0px inset, rgba(0, 0, 0, 0.07) 0px 2px 14px 3px, rgba(0, 0, 0, 0.05) 0px 0px 1px 0px inset;	
+}
+
+#employer-send-offerletter-page{
+	font-size: 23px;
+    margin-top: 30px;
+    text-align: center;
+    font-weight: 600;
+}
+
+#User-role-main-top{
+	letter-spacing : 1px;
+	font-size: 22px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+}
+
+#employer-send-offerletter-page-button{
+	position: relative;
+    top: -47px;
+    left: 89%;
+    width: 49px;
+    height: 49px;
+    font-size: 25px;
+}
+
+
+#attchment-file-new-send-offerletter{
+	width : 23px;
+	height : 23px;
+	margin-left : -8px;
+}
+
+#send-offerletter-for-offerletter-page {
+	margin-top : -48px;
+	padding-bottom: 21px;
+}
+
+#send-offerletter-for-offerletter-page label{
+    color : #043353;
+	font-size : 14px;
+	font-weight : 600;
+	border-radius : 8px;
+}
+
+#send-offerletter-for-offerletter-page textarea{
+	background : #E5EFF8;
+	border : none;
+	font-size : 13px;
+	font-weight : 500;
+}
+
+#success-meessage-of-otp-verification , #failure-meessage-of-otp-verification , #faliure-meessage-of-aadhar-verification{
+	display : none;
+	font-size: 12px;
+    font-weight: 600;
+}
+
+#each-offerletter-button-accept-3 label{
+	font-weight : 500;
+	font-weight : 16px;
+	color: white;
+}
+
+#send-offerletter-for-offerletter-page input{
+	background : #E5EFF8;
+	border : none;
+	font-size : 13px;
+	font-weight : 500;
+}
+
+#send-offerletter-for-offerletter-page .send-offerletter-shortcut-div{
+	margin-top  :20px;
+}
+
+.offer-letter-divs .offer-letter-content .offer-letter-header{
+	margin-right: 58px;
+    margin-left: 10px;
+    margin-top: 45px;
+    margin-bottom: 10px;
+}
+
+.offer-letter-page .each-offer-letter .offerletter-comp img{
+	width: 42px;
+    height: 42px;
+    object-fit: cover;
+    border-radius: 21px;
+}
+
+#offer-letter-content-session .offer-letter-page .offer-letter-divs .offer-letter-content .offer-letter-header .employe-offer-letters-p{
+	width : 29%;
+	font-size : 18px;
+	font-weight : 600;
+	margin-bottom : 0px;
+}
+
+#offer-letter-content-session .offer-letter-page .offer-letter-divs .offer-letter-content .employer-dashboard-empty-box{
+	text-align: center;
+    margin-top: 45px;
+}
+
+#offer-letter-content-session .offer-letter-page .offer-letter-divs .offer-letter-content .employer-dashboard-empty-box .no-content-text{
+	    margin-bottom: -20px;
+    font-weight: 500;
+    font-size: 13px;
+    color: #628094;
+    padding-left: 40px;
+}
+
+#offer-letter-content-session .offer-letter-page .offer-letter-divs .offer-letter-content .employer-dashboard-empty-box img{
+	width: 55%;
+    margin-top: 10px;
+    margin-bottom: 16px;
+}
+    
+
+
+#offer-letter-content-session .offer-letter-page .offer-letter-divs .offer-letter-content .offer-letter-header .employe-offer-letters-last-p{
+	width : 13%;
+	font-size : 18px;
+	font-weight : 600;
+	margin-bottom : 0px;
+}
+
+#offer-letter-content-session .offer-letter-page .offer-letter-divs .offer-letter-content .each-offer-letter{
+    padding: 10px;
+    margin-right: 30px;
+    transition: all 0.3s ease;
+}
+
+#offer-letter-content-session .offer-letter-page .offer-letter-divs .offer-letter-content .each-offer-letter:hover {
+	background : #F4F7F9;
+	border-radius : 5px;
+	
+}
+
+#offer-letter-content-session .offer-letter-page .offer-letter-divs .offer-letter-content #employer-each-offerletter-session{
+	text-decoration : none;
+	color : black;
+}
+
+
+#offer-letter-content-session .offer-letter-page .offer-letter-divs .offer-letter-content .each-offer-letter .offerletter-comp{
+	width : 27%;
+}
+
+#offer-letter-content-session .offer-letter-page .offer-letter-divs .offer-letter-content .each-offer-letter .offerletter-comp p{
+    font-size: 14px;
+    margin-bottom: 0px;
+    margin-left: 7px;
+    line-height: 40px;
+	font-weight : 500;
+}
+
+#offer-letter-content-session .offer-letter-page .offer-letter-divs .offer-letter-content .each-offer-letter .offer-letter-p-data{
+	width : 27%;
+	line-height : 40px;
+	 margin : 0px;
+	font-size : 14px;
+	font-weight : 500;
+}
+
+#offer-letter-content-session .offer-letter-page .offer-letter-divs .offer-letter-content .each-offer-letter .offer-letter-p-data-last{
+	width : 15%;
+	line-height : 40px;
+	 margin : 0px;
+	font-size : 14px;
+	font-weight : 500;
+}
+
+
+#offer-letter-content-session .offer-letter-page .offer-letter-divs .offer-letter-content .each-offer-letter .offer-letter-p-data-end{
+    width : 15%;
+	margin : 0px;
+	line-height : 40px;
+	font-size : 14px;
+	font-weight : 500;
+}
+
+#side-button{
+	margin-left : 20px;
+}
+
+
+/**********************
+interviews page style
+/ *********************/
+
+#interviews-content-session{
+	padding: 100px 50px 20px;
+    background: #f4f7f9;
+    transition: all 0.5s ease;
+    height: 100%;
+    overflow: auto;
+	color : #043353;
+}
+
+#candidate-reject-offer-modal-p{
+	margin-bottom : 0px;
+}
+
+#candidate-reject-offer-modal-input{
+	margin-top : 15px;
+}
+
+
+#main-heading-of-page{
+	font-size : 23px;
+	font-weight : 700;
+}
+
+#interviews-content-session .interviews-container{
+	  margin-top : 20px;
+	  margin-bottom  :20px;
+	  background : white;
+	  padding : 20px 30px;
+	  border-radius : 10px;
+	  box-shadow: rgba(244, 244, 244, 0) 0px 6px 0px 0px inset, rgba(0, 0, 0, 0.07) 0px 2px 14px 3px, rgba(0, 0, 0, 0.05) 0px 0px 1px 0px inset;
+}
+
+#interviews-content-session .interviews-container #seachbox-container .employer-dashboard-empty-box{
+	margin-top: 45px;
+	text-align :center;
+}
+
+#interviews-content-session .interviews-container #seachbox-container .employer-dashboard-empty-box .no-content-text{ 
+	margin-bottom: -20px;
+    font-weight: 500;
+    font-size: 13px;
+    color: #628094;
+    padding-left: 40px;
+}
+
+
+#interviews-content-session .interviews-container #seachbox-container .employer-dashboard-empty-box img {
+	width: 55%;
+    margin-top: 10px;
+    margin-bottom: 16px;
+}
+
+
+
+#interviews-content-session .interviews-container .interview-header{
+	margin-right: 42px;
+    margin-left: 10px;
+    margin-top: 45px;
+    margin-bottom: 10px;
+}
+
+#interviews-content-session .interviews-container .each-interview-data{
+	padding: 10px;
+    margin-right: 30px;
+    transition: all 0.3s ease;
+}
+
+#interviews-content-session .interviews-container .employee-interviews-page-link{
+	text-decoration : none;
+	cursor : pointer;
+	color : black;
+}
+
+
+#interviews-content-session .interviews-container .interview-header p{
+	width : 27%;
+	font-weight : 600;
+	font-size : 18px;
+	margin-bottom : 0px;
+}
+
+#interviews-content-session .interviews-container .interview-header .interview-employer-last-subtitle{
+	width : 23%;
+	font-weight : 600;
+	font-size : 18px;
+	margin-bottom : 0px;
+}
+
+#interviews-content-session .interviews-container .each-interview-data .interview-sender-details{
+	width : 27%;
+}
+
+
+#interviews-content-session .interviews-container .each-interview-data .interview-sender-details .Interview-candidate-name{
+	font-size : 14px;
+	margin-bottom : 0px;
+	margin-left : 10px;
+	line-height : 40px;
+	font-weight : 500;
+}
+
+#interviews-content-session .interviews-container .each-interview-data .interview-sender-details img{
+	width :42px;
+	height :42px;
+	object-fit :cover;
+	border-radius : 21px;
+}
+
+#interviews-content-session .interviews-container .each-interview-data .employee-interview-p{
+	width : 27%; 
+	font-size : 14px;
+	margin-bottom : 0px;
+	line-height : 40px;
+	font-weight : 500;
+}
+
+#interviews-content-session .interviews-container .each-interview-data .interview-employer-last-p{
+	width: 23%;
+    font-size: 13px;
+    margin-bottom: 0px;
+    line-height: 40px;
+    font-weight: 500;
+}
+
+
+.interview-sender-company{
+	margin-left : 12px;
+}
+
+
+#interviews-content-session .interviews-container .each-interview-data:hover{
+	background : #F4F7F9;
+	border-radius : 5px;
+}
+
+
+/*************************
+my application candidate
+/*************************/
+
+#myapplication-content-session{
+	padding: 100px 50px 20px;
+    background: #f4f7f9;
+    transition: all 0.5s ease;
+    height: 100%;
+    overflow: auto;
+	color : #043353;
+}
+
+#myapplication-content-session  .employee-candidate-h4{
+	font-size : 22px;
+	font-weight : 700;
+}
+
+#myapplication-content-session .myapplication-container{
+	  margin-top : 29px;
+	  margin-bottom  :20px;
+	  background : white;
+	  padding :20px 30px;
+	  border-radius : 10px;
+	 box-shadow: rgba(244, 244, 244, 0) 0px 6px 0px 0px inset, rgba(0, 0, 0, 0.07) 0px 2px 14px 3px, rgba(0, 0, 0, 0.05) 0px 0px 1px 0px inset;
+	
+}
+
+#myapplication-content-session .myapplication-container #seachbox-container .employer-dashboard-empty-box{
+	text-align : center;
+	margin-top : 45px;
+}
+
+#myapplication-content-session .myapplication-container #seachbox-container .employer-dashboard-empty-box .no-content-text{
+	margin-bottom: -20px;
+    font-weight: 500;
+    font-size: 13px;
+    color: #628094;
+    padding-left: 40px;
+}
+
+#myapplication-content-session .myapplication-container #seachbox-container .employer-dashboard-empty-box img{
+	width: 55%;
+    margin-top: 10px;
+    margin-bottom: 16px;
+}
+
+.myapplication-header{
+	margin-right : 30px;
+	margin-left : 10px;
+	margin-top : 25px;
+	margin-bottom : 10px;
+}
+
+#seachbox{
+	position: relative;
+    top: 0px;
+    left: 30px;
+    width: 13px;
+    height: 13px; 
+}
+
+.filter-content{
+    padding-left: 0;
+    margin-left: -6px;
+	padding-bottom : 20px;
+}
+
+.filter-content .employer-input-search{
+	width : 38%;
+}
+
+.filter-content .employer-input-search #candidate-search , .filter-content .employer-input-search #candidate-from-search ,.filter-content .employer-input-search #candidate-search-of-employes{
+	padding-left: 38px;
+	border : none;
+	background : #F4F7F9;
+	border-radius : 20px;
+	font-weight : 500;
+	font-size : 14px;
+	padding-top : 10px;
+}
+
+.filter-content .fiter-icon-div .filter-small-box{
+	border : 1px solid #F4F7F9;
+	padding: 0px 11px 2px;
+	box-shadow: rgba(244, 244, 244, 0) 0px 2px 0px 0px inset, rgba(0, 0, 0, 0.09) 0px 1px 9px 0px, rgba(0, 0, 0, 0.05) 0px 0px 0px 0px inset;
+	border-radius : 15px;
+}
+
+.filter-content .fiter-icon-div .filter-small-box img{
+	width : 13px;
+	height : 13px;
+	margin-bottom : 2px; 
+}
+
+.filter-content .fiter-icon-div .filter-small-box span{
+	font-size  : 13px;
+	font-weight : 600;
+}
+
+.filter-content .select-no-of-pages span{
+	font-size  : 12px;
+	font-weight : 600;
+}
+
+.filter-content .select-no-of-pages .dropdown button{
+	border-radius: 20px;
+    font-size: 12px;
+    border: none;
+    background: white;
+    color: black;
+    box-shadow: 0px 3px 11px 5px rgba(0, 0, 0, 0.04), 0px 4px 11px 0px rgba(0, 0, 0, 0.04);
+    padding: 3px 12px 1px;
+    margin-left: 6px;
+    margin-right: 6px;
+    font-weight: 600;
+}
+
+
+.filter-content .select-no-of-pages .num-pages-div{
+	display: inline-block;
+    border-radius: 20px;
+    padding: 2px 8px;
+    margin-left: 7px;
+    margin-right: 5px;
+    box-shadow: rgba(244, 244, 244, 0) 0px 2px 0px 0px inset, rgba(0, 0, 0, 0.09) 0px 1px 9px 0px, rgba(0, 0, 0, 0.05) 0px 0px 0px 0px inset;
+    font-size: 14px;
+    font-weight: 500;
+    height: 23px;
+}
+
+.filter-content .select-no-of-pages .num-pages-div img{
+	width : 22px;
+	height : 22px;
+	margin-top : 0px;
+}
+
+.filter-content .select-no-of-pages .num-pages-div
+span{
+	margin-left : 5px;
+	font-size : 13px;
+	font-weight : 600;
+	margin-right : -6px;
+}
+
+/* ------------------------------ PAGINTION BEGIN ------------------------------ */
+
+.candidate-page-left-right{
+	margin-top: -3px;
+    margin-left: -1px;
+    width: 22px;
+    height: 22px;
+}
+
+.pager {
+  margin-bottom : 0px;
+  font-size: 0;
+  text-align: center;
+  padding-left : 0px;
+}
+ 
+
+.pager__item {
+  position: relative;
+  width: inherit; 
+  display: inline-block;
+  vertical-align: top;
+  font-size: 15px;
+  font-weight: bold;
+  margin: 0 2px;
+}
+
+ .pager__item.active .pager__link {
+  line-height : 25px;
+  font-size : 12px;
+  background-color: #18A4E0;
+  border-color: #ffb74d;
+  color: #fff;
+  text-decoration: none;
+}
+
+.pager__item--prev svg, .pager__item--next svg {
+  width: 8px;
+  height: 12px;
+}
+
+.pager__item--prev , .pager__item--next {
+	border-radius : 30px;
+	box-shadow: rgba(244, 244, 244, 0) 0px 0px 20px 20px inset, rgba(0, 0, 0, 0.09) 0px 0px 15px 1px, rgba(0, 0, 0, 0.05) 0px 0px 0px 0px inset;
+}
+
+.pager__item--next .pager__link svg {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+  -webkit-transform-origin: center center;
+          transform-origin: center center;
+}
+
+.pager__link {
+  line-height : 24px;
+  font-size : 13px;
+  border-radius: 30px;
+  display: block;
+  text-align: center;
+  width: 22px;
+  height: 22px;
+  color: #2f3640;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.pager__link:hover, .pager__link:focus, .pager__link:active {
+  background-color: #18A4E0;
+  border-color: #ffb74d;
+  color: #fff;
+  text-decoration: none;
+  margin : 0px;
+}
+
+
+.pager .pager__item.active + .pager__item .pager__link, .pager .pager__item:hover + .pager__item .pager__link {
+  border-left-color: #18A4E0;
+} 
+
+/* ------------------------------ PAGINTION END ------------------------------ */
+
+
+#myapplication-content-session .myapplication-container .filter-content .input-search .employer-input-search{
+	background : #F4F7F9;
+	border : none;
+}
+
+#myapplication-content-session .myapplication-container .myapplication-header .myapplication-subtitles{
+	width :29%;
+	font-weight : 600;
+	font-size : 18px;
+	margin-bottom : 0px;
+}
+
+#myapplication-content-session .myapplication-container .myapplication-header .myapplication-status-subtitle{
+	width :13%;
+	font-weight : 600;
+	font-size : 18px;
+	margin-bottom : 0px;
+}
+
+.main-heading-of-mainpages .back-link-of-page {
+	margin-top: -2px;
+	margin-right : 10px;
+}
+
+.main-heading-of-mainpages .back-link-of-page img{
+	width : 25px;
+}
+
+#myapplication-content-session .myapplication-container .each-application-data .application-sender-details{
+	width : 33.33%;
+}
+
+#myapplication-content-session .myapplication-container .each-application-data .application-sender-details img{
+	width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+#myapplication-content-session .myapplication-container .each-application-data .application-sender-details{
+	width : 27%; 
+}
+
+
+#myapplication-content-session .myapplication-container .each-application-data .application-sender-details p{
+	font-size: 14px;
+    margin-bottom: 0px;
+    margin-left: 7px;
+    line-height: 40px;
+	font-weight : 500;
+}
+
+#myapplication-content-session .myapplication-container .application-other-datas , #myapplication-content-session .myapplication-container .application-other-lastdatas{
+	width : 27%; 
+	font-size : 14px;
+	margin-bottom : 0px;
+	line-height : 40px;
+	font-weight : 500;
+}
+
+#myapplication-content-session .myapplication-container .candidate-application-other-lastdatas{
+	width : 15%; 
+	font-size : 14px;
+	margin-bottom : 0px;
+	line-height : 40px;
+	font-weight : 500;
+}
+
+#myapplication-content-session .myapplication-container .application-other-lastdatas{
+	width : 12%;
+}
+
+#myapplication-content-session .myapplication-container .each-application-data{
+	padding : 10px;
+	margin-right : 30px;
+	transition : all 0.3s ease;
+}
+
+#myapplication-content-session .myapplication-container .each-application-data:hover{
+	background : #F4F7F9;
+	border-radius: 5px;
+}
+
+/***********************
+ecah-offer-letter page
+/***********************/
+#offer-letter-content-session .offer-letter-page .each-offerletter-container .each-offerletter-company-details{
+    border-radius : 7px;
+	padding: 25px 20px;
+	background :white;
+	transition: all 0.5s ease;
+}
+
+.back-link-of-page{
+	margin-top : -2px;
+	margin-right : 5px;
+}
+
+.each-offer-letter-h4{
+	margin-bottom  : 20px;
+}
+
+#offer-letter-content-session .offer-letter-page .each-offerletter-container .each-offerletter-company-details .company-img-container{
+	text-align : center;
+}
+
+#offer-letter-content-session .offer-letter-page .each-offerletter-container .each-offerletter-company-details .company-img-container img{
+    width: 120px;
+    height: 120px;
+    border-radius: 60px;
+    object-fit: cover;
+}
+
+#offer-letter-content-session .offer-letter-page .each-offerletter-container .each-offerletter-company-details p{
+	margin-bottom: 0px;
+    padding: 0px;
+    line-height: 27px;
+    font-weight: 600;
+    font-size: 12px;
+}
+
+.attachment-button-and-container-offerletter{
+	margin-top: 20px;
+    margin-bottom: 18px;
+}
+
+#attachment-label-offerletter-page{
+	padding:  0;
+}
+
+ #attachment-text ,  #attachment-text2 ,  #attachment-text3 , #attachment-text4{
+	margin: 0;
+    line-height: 42px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-left: 8px;
+} 
+
+#update-button-p-of-edit-offerletter{
+	text-align : end;
+}
+
+.attachment-button-and-container-offerletter .pdf-preview {
+	margin-right : 15px;
+}
+
+.pdf-preview .img-session{
+	width: 108px;
+    height: 95px;
+    border: 1px solid #becedd;
+    border-radius: 3px;
+}
+
+.pdf-preview .img-session .main-first-page-of-pdf{
+	width: 106px;
+    height: 73px;
+    overflow-y: hidden;
+	object-fit : cover;
+}
+
+.pdf-preview .img-session .text-of-pdf-card{
+	background: #e5eff8;
+    height: 20px;
+    line-height: 0;
+}
+
+.pdf-preview .img-session .text-of-pdf-card .offer-letter-text{
+    margin-top: 10px;
+    padding-left: 6px;
+    font-size: 9px;
+    font-weight: 700;
+}
+
+
+.pdf-preview .img-session .text-of-pdf-card .offer-letter-text img{
+    width: 16px;
+    height: 16px;
+}
+
+.pdf-preview .img-session .text-of-pdf-card .cross-button-of-pdf{
+    margin-top: 3px;
+    padding-right: 2px;
+}
+
+.pdf-preview .img-session .text-of-pdf-card .cross-button-of-pdf img{
+	width : 17px;
+	height : 17px;
+}
+
+#offer-letter-content-session .offer-letter-page .each-offerletter-container .each-offerletter-company-details #see-offerletter-accept-button-p{
+    margin-left : 0px;
+	text-align : center;
+	margin-bottom : 8px;
+}
+
+#offer-letter-content-session .offer-letter-page .each-offerletter-container .each-offerletter-company-details #offerletter-buttons-of-each-offerletter-candidate{
+    margin-left : 0px;
+	text-align : center;
+}
+
+
+
+
+#offer-letter-content-session .offer-letter-page .each-offerletter-container .each-offerletter-company-details .each-offerletter-company-name{
+   margin-top : 10px;
+	margin-left : 0px;
+	margin-bottom : 10px;
+	line-height : 30px;
+	font-weight : 600;
+	font-size : 20px;
+	text-align :center;
+}
+
+
+#offer-letter-content-session .offer-letter-page .each-offerletter-container .each-offerletter-company-details span{
+	color : #18A4E0;
+	margin-right : 7px;
+}
+
+#offer-letter-content-session .offer-letter-page .each-offerletter-container .each-offerletter-company-details .company-vision{
+	margin: 15px 8px 15px;
+    font-weight: 500;
+    font-size: 13px;
+    text-align: center;
+    line-height: 21px;
+}
+
+
+#offer-letter-content-session .offer-letter-page .each-offerletter-container .each-offerletter-candidate-data{
+	border-radius : 7px;
+	padding: 30px;
+	background :white;
+	transition: all 0.5s ease;
+	margin-bottom : 30px;
+}
+
+#offer-letter-content-session .offer-letter-page .each-offerletter-container .each-offerletter-candidate-data .each-offerletter-main-text .exp-date-container{
+	margin-top : 17px;
+}
+
+#offer-letter-content-session .offer-letter-page .each-offerletter-container .each-offerletter-candidate-data  .each-offerletter-company-short-details p{
+	margin-bottom : 0px;
+	font-size : 13px;
+	font-weight : 500;
+}
+
+#offer-letter-content-session .offer-letter-page .each-offerletter-container .each-offerletter-candidate-data  .each-offerletter-company-short-details .company-name{
+	margin-top: 15px;
+    margin-bottom: 15px;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+
+#offer-letter-content-session .offer-letter-page .each-offerletter-container .each-offerletter-candidate-data .each-offerletter-main-text .candidate-name{
+	margin-top: 20px;
+    margin-bottom: 0px;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+#offer-letter-content-session .offer-letter-page .each-offerletter-container .each-offerletter-candidate-data .each-offerletter-main-text .exp-date-container #exp-date-candidate{
+	height: 35px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+#offer-letter-content-session .offer-letter-page .each-offerletter-container .each-offerletter-candidate-data .each-offerletter-main-text .job-position-candidate-page{
+	margin-top: 0px;
+	font-size: 14px;
+    font-weight: 600;
+}
+
+#offer-letter-content-session .offer-letter-page .each-offerletter-container .each-offerletter-candidate-data .each-offerletter-main-text .sender-text{
+	margin-top : 8px;
+	font-size : 13px;
+	font-weight : 500;
+}
+
+#offer-letter-content-session .offer-letter-page .each-offerletter-container .each-offerletter-candidate-data .each-offerletter-main-text 
+.address-session{
+	margin-top : 0px;
+	margin-bottom : 0px;
+	font-size : 13px;
+	font-weight : 500;
+}
+
+.each-offerletter-candidate-data h5{
+	font-size : 22px;
+	font-weight : 700;
+}
+
+.input-file-of-attachment-div{
+	margin-left : 0px;
+	text-align : start !important; 
+}
+
+.input-file-of-attachment-div label{
+	font-size : 11px;
+	font-weight : 700 !important;
+	color : white !important;
+}
+
+
+#each-offerletter-reject , #button-send-message{
+	margin-right: 5px;
+    padding: 8px 20px 6px;
+    border: 1px solid #D3DDE6;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    background: #F8FAF0;
+    color: #043353;
+    transition: all 0.3s ease;
+}
+
+#each-offerletter-button-accept  ,  #button-schedule-interview , #each-offerletter-button-accept-2 , #each-offerletter-button-accept-3 , #joined-button , #joined-button-2 , #button-schedule-nextinterview , #button-reschedule-interview , #button-rejectbutton-employee , #withdraw-offerletter , .each-offerletter-button-accept-4 , #sidebar-sendofferletter-button , #sidebar-sche-inte-button , #candidate-edit-offerletter ,
+#aadhar-attachment-button{
+	margin-left: 5px;
+    padding: 8px 20px 6px;
+    border: 1px solid #D3DDE6;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    background: #18A4E0;
+    color: #FFFFFF;
+    transition: all 0.3s ease;
+}
+
+#aadhar-attachment-button{
+	margin-left: 0px;
+    border-radius: 0px;
+    padding: 11px 30px 9px;
+}
+
+#aadhar-attchment-svg{
+	width : 18px;
+	height : 18px;
+}
+
+#each-offerletter-button-accept-2 , .each-offerletter-button-accept-4{
+    padding: 10px 17px 8px;
+    margin-left: 0;
+    font-weight: 600;
+    font-size: 10px;
+    color: #043353;
+    background: #E5EFF8;
+    border: 2px solid #18A4E0;
+
+}
+
+.each-offerletter-button-accept-4{
+	line-height : 15px;
+}
+
+
+#each-offerletter-button-accept-3 , #joined-button-2 , #sidebar-sendofferletter-button , #sidebar-sche-inte-button{
+    padding: 10px 37px 7px;
+    margin-left: 0px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+#sidebar-sendofferletter-button {
+	padding : 10px 32px 7px;
+	background : #043353;
+	font-size : 12px;
+	margin-left : 15px;
+	font-weight : 600;
+	margin-bottom : 6px;
+}
+
+
+#sidebar-sche-inte-button{
+	padding : 9px 22px 7px;
+	margin-left : 15px;
+	font-size : 12px;
+	font-weight : 600;
+	margin-bottom : 6px;
+}
+
+#joined-button{
+	padding: 8px 70px 7px;
+    margin-left: 0px;
+}
+
+#withdraw-offerletter{
+    font-size: 12px;
+    padding: 10px 29px 7px;
+    margin-left: 0px;
+    font-weight: 600;
+}
+
+#candidate-edit-offerletter{
+	font-size: 12px;
+    padding: 10px 49px 7px;
+    margin-left: 0px;
+    font-weight: 600;
+}
+
+
+#button-accept-offerletter , #button-send-offerletter , #send-offer-letterbutton , #defauled-offerletter-employer {
+	margin-left: 5px;
+    padding: 9px 18px 6px;
+    border: 1px solid #D3DDE6;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    background: #043353;
+    color: #FFFFFF;
+    transition: all 0.3s ease;
+}
+
+#defauled-offerletter-employer{
+	margin-left: 0;
+    padding: 9px 64px 7px;
+    background: #d64519;
+}
+
+#button-markdefault-offerletter , #button-reject-offerletter {
+	margin-left: 5px;
+    padding: 7px 20px 5px;
+    border: 1px solid #D3DDE6;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    font-weight: ;
+    background: #ce3333;
+    color: #FFFFFF;
+    transition: all 0.3s ease;
+}
+
+#button-reject-offerletter{
+	 background: red;
+}
+
+#button-send-offerletter , #button-send-message{
+    margin-left: 0px;
+    padding: 10px 50.5px 7px;
+    font-size: 13px;
+
+}
+
+#button-send-message{
+	background : #D3DDE6;
+	padding : 8px 56px 6px;
+}
+
+#button-schedule-interview {
+   margin-left  : 0px;
+   padding : 7px 30px;
+	font-size : 14px;
+}
+
+#button-schedule-nextinterview{
+	margin-left: 0px;
+    padding: 10px 40px 7px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+#button-reschedule-interview{
+	margin-left: 0px;
+    padding: 10px 28.5px 7px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+
+#button-rejectbutton-employee{
+	background: #f51b1bcf;
+    border: none;
+    margin-left: 0px;
+    padding: 10px 48px 7px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+#send-offer-letter-div{
+	margin-bottom : 20px;
+	
+}
+
+#send-offer-letter-div p{
+	margin-bottom : 7px;
+}
+
+#each-offerletter-attachment-link{
+	color: #196d91;
+    background: white;
+    border: none;
+    padding-left: 0;
+    font-weight: 500;
+    font-size: 15px;
+}
+
+.resume-email p{
+	margin-bottom : 0px;
+}
+
+.email-content {
+	margin-bottom  : 15px;
+}
+
+#each-offerletter-button-accept:hover , #each-offerletter-reject:hover , #button-accept-offerletter:hover{
+	cursor: pointer;
+	border-color :#D3DDE6 ;
+	box-shadow: 0 4px 10px 8px rgba(0, 0, 0, 0.04), 0 6px 20px 2px rgba(0, 0, 0, 0.04);
+}
+
+.aadhar-accept-container .take-default-reason-details{
+	margin-bottom  :30px;
+}
+
+
+.aadhar-accept-container{
+	padding: 5px 32px 10px;
+    text-align: center;
+	border-radius : 10px;
+}
+
+.aadhar-accept-container h4{
+	font-size : 22px;
+	font-weight : 700;
+	margin-bottom : 20px;
+}
+
+.aadhar-accept-container p{
+    font-size: 13px;
+    padding: 4px 44px 10px;
+    font-weight: 500;
+}
+
+
+.aadhar-accept-detail-container{
+	padding: 5px 32px 10px;
+    text-align: center;
+	border-radius : 10px;
+}
+
+.accept-text{
+	margin-bottom : 5px;
+}
+
+#aadhar-attachment-img-attachment{
+	padding: 0;
+    text-align: start;
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0;
+    margin-left: 5px;
+    margin-bottom: 4px;
+}
+
+.aadhar-accept-container .take-aadhar-details{
+	margin-top : 25px;
+}  
+
+.aadhar-accept-container .take-aadhar-details input{
+	height: 40px;
+    border-radius: 4px;
+    background: #E5EFF8;
+    border: none;
+    margin-bottom: 40px;
+    font-size: 12px;
+    font-weight: 600;
+    font-style: italic;
+    letter-spacing: 0px;
+    padding-top: 9px;
+	
+}
+
+.company-default-message label{
+	font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 0px;
+}
+
+.company-default-message .default-comment-of-both{
+	font-size : 13px;
+	font-weight : 500;
+	margin-bottom : 0px;
+}
+
+#offer-letter-content-session .offer-letter-page .each-offerletter-container .each-offerletter-candidate-data .defaulted-text-area .user-default-message label{
+	font-weight : 500;
+	font-size : 15px;
+	margin-bottom  : 0px;
+}
+
+#content-resume-session .row #resume-short-data1 #biodata-container #total-default{
+	font-weight: 600;
+    font-size: 12px;
+    margin-bottom: 15px;
+}
+
+#content-resume-session .row #resume-short-data1 #biodata-container #total-default-2{
+	font-weight: 700;
+    font-size: 12px;
+    margin-bottom: 4px;
+}
+
+#content-resume-session .row #resume-short-data1 #biodata-container #total-default-4{
+	font-weight: 700;
+    font-size: 12px;
+    margin-bottom: 15px;
+}
+
+#content-resume-session .row #resume-short-data1 #biodata-container .user-perfessional-desc #user-prof-text{
+	margin-bottom : 0px;
+}
+
+
+#candidate-comment{
+    font-size: 13px;
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 30px;
+    background: #E5EFF8;
+    border: none;
+}
+
+@media (min-width: 992px) { 
+	#offer-letter-content-session{
+		margin-left : 210px;
+	}
+	
+	#interviews-content-session{
+		margin-left : 210px;
+	}
+	
+	#myapplication-content-session{
+		margin-left : 210px;
+	}
+	
+}
+
+/***********************
+send-offerletter page
+/**********************/
+
+#offer-letter-content-session .offer-letter-page .offer-letter-data-container {
+   margin : 10px 0px;	
+}
+
+
+#offer-letter-content-session .offer-letter-page .offer-letter-data-container .row .col-xl-4 .candidate-data-container , #offer-letter-content-session .offer-letter-page .offer-letter-data-container .row .col-xl-8 .employer-data-container{
+	border-radius: 8px;
+    background: white;
+    padding: 20px 30px;
+	margin-bottom  : 20px;
+}
+
+#send-offerletter-h4{
+	margin-right : 20px;
+	font-weight : 700;
+}
+
+
+#offer-letter-content-session .offer-letter-page .offer-letter-data-container .row .col-xl-4 .candidate-img-div img{
+	margin-bottom : 10px;
+	width: 120px;
+    height: 120px;
+    border-radius: 60px;
+    object-fit: cover;
+}
+
+#offer-letter-content-session .offer-letter-page .offer-letter-data-container .row .col-xl-4 .candidate-data-container .candidate-name{
+	text-align  : center;
+	font-weight : 600;
+	font-size : 20px;
+	margin-bottom  : 2px;
+}
+  
+#offer-letter-content-session .offer-letter-page .offer-letter-data-container .row .col-xl-4 .candidate-data-container .candidate-profession{
+	text-align  : center;
+	font-weight :500;
+	font-size : 12px;
+}
+
+#offer-letter-content-session .offer-letter-page .offer-letter-data-container .row .col-xl-4 .candidate-data-container .candidate-basic-data img{
+	width : 15px;
+	height : 15px;
+	margin-right : 5px;
+}
+
+#offer-letter-content-session .offer-letter-page .offer-letter-data-container .row .col-xl-4 .candidate-data-container .candidate-basic-data p{
+	margin-bottom : 0px;
+	font-size : 12px;
+	font-weight : 600;
+	line-height : 22px;
+}
+
+#offer-letter-content-session .offer-letter-page .offer-letter-data-container .row .col-xl-4 .candidate-data-container .candidate-profdata{
+	font-size: 13px;
+    font-weight: 500;
+    margin-top: 15px;
+    margin-bottom: 12px;
+}
+
+#offer-letter-content-session .offer-letter-page .offer-letter-data-container .row .col-xl-4 .candidate-data-container .offerletter-buttons{
+	text-align : center;
+	margin-bottom : 10px;
+}
+
+#offer-letter-content-session .offer-letter-page .offer-letter-data-container .row .col-xl-4 .candidate-data-container #total-default{
+	text-align: center;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+#offer-letter-content-session .offer-letter-page .offer-letter-data-container .row .col-xl-8 .employer-data-container{
+	padding-top : 30px;
+	padding-bottom : 30px;
+}
+
+#send-offer-page{
+	margin-top: 10px;
+	font-size: 22px;
+    font-weight: 700;
+	
+}
+
+#offer-letter-content-session .offer-letter-page .offer-letter-data-container .row .col-xl-8 .employer-data-container .company-name{
+	margin-top: 15px;
+    margin-bottom: 15px;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+#offer-letter-content-session .offer-letter-page .offer-letter-data-container .row .col-xl-8 .employer-data-container .company-address{
+	margin-bottom : 0px;
+	font-size : 13px;
+	font-weight : 500;
+}
+
+#offer-letter-content-session .offer-letter-page .offer-letter-data-container .row .col-xl-8 .employer-data-container .contact-info{
+	font-size : 13px;
+	font-weight : 500;
+	margin-bottom : 25px;
+}
+
+#offer-letter-content-session .offer-letter-page .offer-letter-data-container .row .col-xl-8 .employer-data-container form .name-exp-date p{
+	font-size: 15px;
+    font-weight: 600;
+}
+
+#offer-letter-content-session .offer-letter-page .offer-letter-data-container .row .col-xl-8 .employer-data-container form .name-exp-date .exp-date-container label{
+	font-size  : 13px;
+	margin-right : 8px;
+	margin-bottom : 0px;
+}
+
+
+#offer-letter-content-session .offer-letter-page .offer-letter-data-container .row .col-xl-8 .employer-data-container form .name-exp-date .exp-date-container input{
+	font-size  : 13px;
+	font-weight : 600;
+	background : #ECECEC;
+	border-radius : 3px;
+	border : 1px solid #007bff6e;
+	height: 30px;
+}
+
+#see-attachment-button-edit-offerletter-page{
+	width: 108px;
+    height: 95px;
+	cursor : pointer;
+}
+
+
+#offer-letter-content-session .offer-letter-page .offer-letter-data-container .row .col-xl-8 .employer-data-container form .take-job-position .form-group label{
+	margin-bottom : 0px;
+}
+
+#offer-letter-content-session .offer-letter-page .offer-letter-data-container .row .col-xl-8 .employer-data-container form .take-job-position .form-group input ,  #offer-letter-content-session .offer-letter-page .offer-letter-data-container .row .col-xl-8 .employer-data-container form textarea{
+	background : #ECECEC;
+	border : none;
+}
+
+#offer-letter-content-session .offer-letter-page .offer-letter-data-container .row .col-xl-8 .employer-data-container form .send-offer-leter-button{
+	text-align : end;
+}
+
+#offer-letter-content-session .offer-letter-page .offer-letter-data-container .row .col-xl-8 .employer-data-container form #edit-offerletter-jobposition{
+    margin-bottom: 0px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+#offer-letter-content-session .offer-letter-page .offer-letter-data-container .row .col-xl-8 .employer-data-container form #edit-offerletter-jobposition-input{
+	background: #ECECEC;
+    border: none;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+
+ #offer-letter-content-session .offer-letter-page .offer-letter-data-container .row .col-xl-8 .employer-data-container form textarea{
+	margin-bottom: 20px;
+    margin-top: 15px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/********************************************
+see-offere-letter-of-candidate from employer
+/********************************************/
+
+#offer-letter-content-session .offer-letter-page .offer-letter-data-container .row .col-xl-4 .candidate-data-container-from-employer , #offer-letter-content-session .offer-letter-page .offer-letter-data-container .row .col-xl-8 .employer-data-container{
+	border-radius: 8px;
+    background: white;
+    padding: 20px 30px;
+	margin-bottom  : 20px;
+}
+
+#offer-letter-content-session .offer-letter-page .offer-letter-data-container .row .col-xl-8 .employer-data-container .joined-para{
+	text-align : end;
+}
+
+#edit-offerletter-atachment-button{
+	margin-left: 4px;
+    width: 18px;
+    height: 22px;
+}
+
+#each-offerletter-attachment-icon{
+	margin-top : 13px;
+}
+
+#edit-offerletter-attachment-div{
+	margin-top : 15px;
+}
+
+#offer-letter-content-session .offer-letter-page .offer-letter-data-container .row .col-xl-8 .employer-data-container .name-exp-date p{
+	font-weight: 700;
+    margin-bottom: 0px;
+    font-size: 15px;
+}
+
+
+#offer-letter-content-session .offer-letter-page .offer-letter-data-container .row .col-xl-8 .employer-data-container .name-exp-date .exp-date-container label{
+	font-size  : 12px;
+	font-weight : 600;
+}
+
+#offer-letter-content-session .offer-letter-page .offer-letter-data-container .row .col-xl-8 .employer-data-container .take-job-position .form-group{
+	margin-bottom : 0px;
+}
+
+#offer-letter-content-session .offer-letter-page .offer-letter-data-container .row .col-xl-8 .employer-data-container .take-job-position .form-group label{
+	margin-bottom: 0px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+#offer-letter-content-session .offer-letter-page .offer-letter-data-container .row .col-xl-8 .employer-data-container .job-description{
+	margin-top: 7px;
+    font-weight: 500;
+	margin-bottom : 5px;	
+    font-size: 13px;
+}
+
+.aadhar-accept-container .accept-text{
+	font-size: 12px;
+    font-weight: 500;
+	
+}
+
+.aadhar-accept-container  form  #employer-comment{
+	border: none;
+    background: rgb(229, 239, 248);
+    font-size: 12px;
+    margin-bottom: 25px;
+    margin-top: 0px;
+    color: #043353;
+    font-weight: 600;
+	
+}
+
+/********************
+My Application page 
+/********************/
+
+#myapplication-content-session .myapplication-container .myapplication-header .candidate-myapplication-subtitles{
+	margin-bottom : 0px;
+	font-weight : 600;
+	font-size : 20px;
+	width: 27%;
+}
+
+#myapplication-content-session .myapplication-container .myapplication-header .candidate-myapplication-subtitles-last{
+	margin-bottom : 0px;
+	font-weight : 600;
+	font-size : 20px;
+	width: 16%;
+}
+
+
+.offer-letter-divs .offer-letter-content .offer-letter-header .candidate-offerletter-subtitles{
+	margin-bottom : 0px;
+	font-weight : 600;
+	font-size : 20px;
+	width: 27%;
+}
+
+.offer-letter-divs .offer-letter-content .offer-letter-header .candidate-offerletter-subtitles-last{
+	margin-bottom : 0px;
+	font-weight : 600;
+	font-size : 20px;
+	width: 14%;
+}
+
+
+@media (max-width: 991.98px) { 
+	#offer-letter-content-session{
+		padding : 95px 25px 25px;
+	}
+}
+
+/******************************
+Each interview page of candidate
+/*******************************/
+#employer-resume-interview1{
+	height : auto;
+	padding-bottom : 20px;
+}
+
+
+
+#employer-ecah-interview-div{
+	border-radius: 7px;
+    padding: 30px;
+    background: white;
+    transition: all 0.5s ease;
+}
+
+
+
+#candidate-interview-summary{
+	margin-bottom : 5px;
+	font-size : 22px;
+}
+
+.each-intervie-of-candidate{
+	margin-top : 20px;
+}
+
+.each-intervie-of-candidate .candidate-interview-title{
+	margin-bottom : 4px;
+	font-size:  18px;
+	font-weight : 600;
+}
+.each-intervie-of-candidate .candidate-interview-title span{
+	font-size:  13px;
+	font-weight : 500;
+}
+
+.each-intervie-of-candidate .interview-candidate-job-position{
+	margin-bottom : 0px;
+	font-size:  14px;
+	font-weight : 500;
+}
+
+.each-intervie-of-candidate .interview-candidate-job-position span{
+	font-weight : 600;
+} 
+
+.each-intervie-of-candidate .interview-date-and-time{
+	margin-bottom : 0px;
+	font-size:  14px;
+	font-weight : 500;
+}
+
+.each-intervie-of-candidate .interview-date-and-time span{
+	font-weight : 600;
+} 
+
+
+.each-intervie-of-candidate .ecah-interview-status{
+	margin-bottom : 0px;
+	font-size:  14px;
+	font-weight : 500;
+}
+
+.each-intervie-of-candidate .ecah-interview-status span{
+	font-weight : 600;
+} 
+
+.candidate-each-intrerview-status-button{
+	font-weight: 600;
+    font-size: 11px;
+    border-radius: 23px;
+    padding: 7px 15px 5px;
+    margin-left: 6px;
+    background: #e9ecef;
+    border: none;
+    color: #2290db;
+}
+

@@ -1,0 +1,229 @@
+#username{
+	font-size : 13px;
+	font-weight :700;
+}
+
+.navbar-container{
+	width : 96%;
+}
+
+
+#linkedin-profile-imges{
+	width : 40px;
+	height : 40px;
+	border-radius : 20px;
+	margin-right  :6px;
+}
+
+#dashboard-page-logout-button{
+	margin-top : 3px;
+}
+
+#dashboard-page-logout-button a{
+	font-weight : 700;
+	font-size : 13px;
+}
+
+#usertype{
+	margin-left : 10%;
+}
+
+.prof-img-session{
+	margin-right: 6px;
+    display: flex;
+    align-items: center;
+}
+
+
+
+.profile-img {
+	width : 32px;
+	height : 32px;
+	margin-right : 10px;
+	border-radius : 16px;
+	object-fit : cover;
+}
+
+.user-page-container{
+	margin : 0px 5%
+}
+
+.nav .side-links{
+	display: flex;
+    align-items: center;
+	padding : 12px 25px;
+}
+
+#v-pills-home-tab , #v-pills-profile-tab , #v-pills-messages-tab , #v-pills-settings-tab{
+	text-decoration : none;
+	font-weight : 18px;
+}
+
+#fa-th-large{
+	margin-right : 15px;
+}
+
+.profile-page-nav-imgs{
+	width: 20px;
+    height: 20px;
+    margin-right: 12px;
+}
+
+.profile-page-nav-imgs-sec{
+	margin-top : -7px;
+	width: 26px;
+    height: 26px;
+    margin-right: 12px;
+}
+
+
+#user-data-container{
+	height : 100vh;
+}
+
+
+.logout-button{
+	width  : 0px;
+}
+
+/***************
+candidate profile
+/***************/
+
+
+#content-session{
+	padding: 100px 50px 20px;
+    background: #F4F7F9;
+    transition: all 0.5s ease;
+    height: 100%;
+    overflow: auto;
+	color : #043353;
+}
+
+.candidate-dashboard  .candidate-data{
+	width : 25%;
+	text-align : center
+} 
+
+.candidate-dashboard > .row > .col-lg-8 > .row > .col-12{
+	margin-top : 20px;
+	margin-bottom : 0px;
+}
+
+.candidate-dashboard > .row > .col-lg-8 > .row .candidate-stats , .candidate-dashboard > .row > .col-lg-8 > .row .my-offer-letter-div {
+	margin-bottom : 20px;
+	background : white;
+	border-radius : 10px;
+	padding: 12px 15px 20px;
+	box-shadow: rgba(244, 244, 244, 0) 0px 6px 0px 0px inset, rgba(0, 0, 0, 0.07) 0px 2px 14px 3px, rgba(0, 0, 0, 0.05) 0px 0px 1px 0px inset;	
+}
+
+.candidate-dashboard  .row  .col-lg-8  .row .my-offer-letter-div .employer-dashboard-empty-box{
+	text-align : center;
+	margin-top : 20px;
+}
+
+.candidate-dashboard  .row  .col-lg-8  .row .my-offer-letter-div .employer-dashboard-empty-box .no-content-text{
+	margin-bottom: -20px;
+    font-weight: 500;
+    font-size: 13px;
+    color: #628094;
+    padding-left: 40px;
+}
+
+.candidate-dashboard > .row > .col-lg-8 > .row .candidate-stats , .candidate-dashboard > .row > .col-lg-8 > .row .my-offer-letter-div .candidate-dashboard-see-offerletter{
+	text-align : start;
+	text-decoration : none;
+	cursor : pointer;
+	color : black;
+}
+
+.candidate-dashboard > .row > .col-lg-8 > .row .candidate-stats .my-stats h5{
+    font-size: 20px;
+    font-weight: 600;
+    margin-left: 25px;
+    margin-top: 5px;
+	margin-bottom : 0px;
+	
+}
+
+.candidate-dashboard > .row > .col-lg-8 > .row .candidate-stats .all-stats-record .candidate-data .data-record{
+	margin-top: 17px;
+    font-size: 37px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.candidate-dashboard > .row > .col-lg-8 > .row .candidate-stats .all-stats-record .candidate-data .job-status{
+	font-size: 12px;
+    line-height: 4px;
+    font-weight: 600;
+}
+
+#deafulted-div{
+	border-right : 1px solid #18A4E0;
+}
+
+
+@media (max-width: 992px)
+    #content-session {
+       padding: 20px 10px;
+}
+
+
+.candidate-dashboard > .row > .col-lg-8 > .row .my-offer-letter-div .row{
+	height: auto;
+    margin: 0px 5px;
+    padding: 10px 16px 10px;
+	transition: all 0.3s ease;
+}
+
+.candidate-dashboard > .row > .col-lg-8 > .row .my-offer-letter-div .row:hover{
+	background : #F4F7F9;
+	border-radius : 5px;
+}
+
+.candidate-dashboard > .row > .col-lg-8 > .row .my-offer-letter-div h4{
+	margin-left: 15px;
+    margin-top: 8px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.candidate-dashboard > .row > .col-lg-8 > .row .my-offer-letter-div .row .left-session .sender-details p{
+	margin: 0px;
+    margin-left: 15px;
+    font-weight: 500;
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+.candidate-dashboard > .row > .col-lg-8 > .row .my-offer-letter-div .row .right-session p , .candidate-dashboard > .row > .col-lg-8 > .row .my-offer-letter-div .row .right-session-sec .secp{
+	margin: 0px;
+	margin-left : 15px;
+	font-size : 13px;
+	font-weight : 500;
+	text-align : end;
+}
+
+.candidate-dashboard > .row > .col-lg-8 > .row .my-offer-letter-div .row .right-session-sec .firstp{
+	margin-top : 5px;
+	margin-bottom : 0px;
+	margin-left : 15px;
+	font-size : 13px;
+	font-weight : 500;
+	text-align : end;
+}
+
+
+
+#offer-letter-col-12{
+	margin-top  : -70px;
+}
+
+.offer-letter-company-name img{
+	width : 50px;
+	height : 50px;
+	border-radius : 25px;
+}
+

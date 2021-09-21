@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="73.257" height="81" viewBox="0 0 73.257 81">
+  <g id="employer" transform="translate(-863.999 -466)">
+    <g id="spacer" transform="translate(863.999 466)" fill="rgba(255,255,255,0)" stroke="rgba(0,0,0,0)" stroke-width="1">
+      <rect width="73.257" height="81" stroke="none"/>
+      <rect x="0.5" y="0.5" width="72.257" height="80" fill="none"/>
+    </g>
+    <g id="employer-2" data-name="employer" transform="translate(858.951 466.574)">
+      <circle id="Ellipse_14" data-name="Ellipse 14" cx="15.092" cy="15.092" r="15.092" transform="translate(26.14 6.426)" fill="#fff"/>
+      <path id="Path_107" data-name="Path 107" d="M67.477,55.1C65.42,50.51,56.3,47.736,49.385,46.254L41.23,51.278l-8.154-5.024C26.16,47.736,17.043,50.51,14.984,55.1c-3.412,7.612-3.936,27.821-3.936,27.821H71.414S70.889,62.712,67.477,55.1ZM41.23,78.683,37.71,73l1.6-14h3.849l1.6,14Zm2.094-21.259H39.137L37.71,52.475h7.043Z" transform="translate(0 -8.966)" fill="#fff"/>
+    </g>
+  </g>
+</svg>

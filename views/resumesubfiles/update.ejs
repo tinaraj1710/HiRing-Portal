@@ -1,0 +1,322 @@
+<!-- All resume update models -->
+
+<!-- WORKEXP UPDATE MODAL -->
+<div class="workexpsession" id="<%= workexps.length %>">
+	<% var count = 0 %>
+<% if(workexps.length > 0){ %>
+  <% workexps.forEach(function(workexp){ %>
+	<% count = count + 1 %>
+	<div class="modal fade bd-<%= workexp._id %>-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div id="modal-content" class="modal-content">
+		<div class="preloader-all-pages main-loader-div">
+		  <svg class="loading-box">
+              <circle class="loader" fill="none" stroke-width="3" stroke-linecap="round" cx="24" 
+					cy="24" r="17"></circle>
+           </svg>
+        </div>
+		<h5 id="employer-send-offerletter-page" id="exampleModalLabel">Update Work Experience</h5>
+				<button id="employer-send-offerletter-page-button" type="button" class="close" 
+						data-dismiss="modal" aria-label="Close">
+				  <span aria-hidden="true">&times;</span>
+				</button>
+		      <form class="submit-forms" id="send-offerletter-for-offerletter-page" action="/user/workexp/<%= workexp._id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+			      <div id="workexp-modal-body" class="modal-body">
+				      <div id="first-form-row" class="form-row">
+								<div class="form-group col-md-6">
+								<label for="recipient-name" class="col-form-label">Title</label>
+								<input type="text" class="form-control" id="recipient-name" name="role" value="<%= workexp.role %>">
+							  </div>
+							   <div class="form-group col-md-6">
+								<label for="recipient-name" class="col-form-label">Company Name</label>
+								<input type="text" class="form-control" id="recipient-name" name="companyname" value="<%= workexp.companyname %>" >
+							  </div>
+						  </div>	
+						  <div id="second-form-row" class="form-row">
+							  <div class="form-group col-md-6">
+								<label for="worked-from" class="col-form-label">Worked from</label>
+								<input type="date" class="form-control checkdatastart" id="updatedatefrom<%= count %>" name="workedfrom" value="<%= workexp.workedfrom %>">
+							  </div>
+							  <div class="form-group col-md-6">
+								<label for="worked-to" class="col-form-label">Worked To</label>
+								<input type="date" class="form-control checkdateend" id="updatedatecompl<%= count %>" name="workedto" value="<%= workexp.Workedto %>">
+							  </div>
+							</div>
+							  <div id="form-check" class="form-check">
+						        <label class="form-check-label" for="exampleCheckboxes">Currently Working On Their</label>
+                                <input type="checkbox" class="form-check-input checkboxsession" id="exampleCheckboxes<%= count %>" name="currentworking" value="yes"><p>( If yes Then click on checkbox )</p>
+                          </div>
+							  <div id="forth-form-row" class="form-row">
+								<div class="form-group col-md-6">
+								 <label for="recipient-name" class="col-form-label">File Title</label>
+								 <input type="text" class="form-control" id="recipient-name" name="filetitle" value="<%= workexp.filetitle %>">
+							   </div>
+					      </div>
+					      <div id="forth-form-row" class="form-row">
+							 <div id="input-file-of-attachment" class="col-md-12">
+							   <button id="each-offerletter-button-accept-3" type="button" class="btn btn-sm btn-primary">
+								  <label for="attach-file-session3" id="attachment-label-offerletter-page" class="col-form-label"> 
+									  <img id="attchment-file-new-send-offerletter" src="/images/main-pages/white-attach-file.svg"                                                alt="attchment-image" > Attach file </label> </button> <span id="attachment-text3">No Files choosen, Yet.</span> 
+								 <input type="file" class="d-none form-control" id="attach-file-session3" name="educationfiles" multiple required>
+							 </div>
+					     </div>
+					   <div id="third-form-row" class="form-row text-area-div-session">
+							   <div class="form-group col-md-6">
+								 <label for="recipient-name" class="col-form-label">City</label>
+								 <input type="text" class="form-control" id="recipient-name" name="city" value="<%= workexp.city %>">
+							   </div>
+							   <div class="form-group col-md-6">
+								 <label for="recipient-name" class="col-form-label">Country</label>
+								 <input type="text" class="form-control" id="recipient-name" name="country" value="<%= workexp.country %>">
+							   </div>
+							</div>
+
+							  <div id="text-area-fleld" class="form-group">
+								<label for="message-text" class="col-form-label">Description</label>
+								<textarea class="form-control" id="message-text" rows="5" name="text"><%= workexp.text %></textarea>
+							  </div>
+				      <div class="send-offerletter-shortcut-div d-flex justify-content-center">
+						  <button id="each-offerletter-button-accept-3" type="submit" class="btn btn-sm btn-primary">Save</button>
+					  </div>
+			     </div>
+			    </form>
+			</div>
+	</div>
+</div>
+<%  }); } %>
+</div>
+
+
+
+<!-- Education UPDATE  MODEL -->
+<% if(educations.length > 0){ %>
+  <% educations.forEach(function(education){ %>
+
+<div class="modal fade bd-<%= education._id %>-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div id="modal-content" class="modal-content">
+		<div class="preloader-all-pages main-loader-div">
+		  <svg class="loading-box">
+              <circle class="loader" fill="none" stroke-width="3" stroke-linecap="round" cx="24" 
+					cy="24" r="17"></circle>
+           </svg>
+        </div>
+		<h5 id="employer-send-offerletter-page" id="exampleModalLabel">Update Education Details</h5>
+				<button id="employer-send-offerletter-page-button" type="button" class="close" 
+						data-dismiss="modal" aria-label="Close">
+				  <span aria-hidden="true">&times;</span>
+				</button>
+		      <form class="submit-forms" id="send-offerletter-for-offerletter-page" action="/user/education/<%= education._id %>?_method=PUT" method="POST"  enctype="multipart/form-data">
+			      <div id="workexp-modal-body" class="modal-body">
+				      <div id="first-form-row" class="form-row">
+						<div class="form-group col-md-6">
+						<label for="recipient-name" class="col-form-label">Degree</label>
+						<input type="text" class="form-control" id="recipient-name" name="degree" value="<%= education.degree %>">
+					  </div>
+					   <div class="form-group col-md-6">
+						<label for="recipient-name" class="col-form-label">College Name</label>
+						<input type="text" class="form-control" id="recipient-name" name="collagename" value="<%= education.collagename %>">
+					  </div>
+				  </div>
+				  <div id="third-form-row" class="form-row">
+					  <div class="form-group col-md-6">
+						<label for="feild-of-study" class="col-form-label">Field Of Study</label>
+						<input type="text" class="form-control" id="feild-of-study" name="studyfield" value="<%= education.studyfield %>">
+					  </div> 
+				  </div>
+				  <div id="second-form-row" class="form-row">
+					  <div class="form-group col-md-6">
+						<label for="recipient-name" class="col-form-label">Year of Joining</label>
+						<input type="date" class="form-control" id="recipient-name" name="studiedfrom" value="<%= education.studiedfrom %>">
+					  </div>
+					  <div class="form-group col-md-6">
+						<label for="recipient-name" class="col-form-label">Year Of Completion</label>
+						<input type="date" class="form-control" id="recipient-name" name="studiedto" value="<%= education.studiedto %>">
+					  </div>
+					</div>
+				  <div id="forth-form-row" class="form-row">
+						<div class="form-group col-md-6">
+							<label for="recipient-name" class="col-form-label">File Title</label>
+							<input type="text" class="form-control" id="recipient-name" name="filetitle" value="<%= education.filetitle %>">
+						</div>
+				  </div>
+				<div id="forth-form-row" class="form-row">
+							 <div id="input-file-of-attachment" class="col-md-12">
+							   <button id="each-offerletter-button-accept-3" type="button" class="btn btn-sm btn-primary">
+								  <label for="attach-file-session4" id="attachment-label-offerletter-page" class="col-form-label"> 
+									  <img id="attchment-file-new-send-offerletter" src="/images/main-pages/white-attach-file.svg"                                                alt="attchment-image" > Attach file </label> </button> <span id="attachment-text4">No Files choosen, Yet.</span> 
+								 <input type="file" class="d-none form-control" id="attach-file-session4" name="educationfiles" multiple required>
+							 </div>
+					     </div>
+				   <div id="third-form-row" class="form-row text-area-div-session">
+					   <div class="form-group col-md-6">
+						 <label for="recipient-name" class="col-form-label">City</label>
+						 <input type="text" class="form-control" id="recipient-name" name="city" value="<%= education.city %>">
+					   </div>
+					   <div class="form-group col-md-6">
+						 <label for="recipient-name" class="col-form-label">Country</label>
+						 <input type="text" class="form-control" id="recipient-name" name="country" value="<%= education.country %>">
+					   </div>
+					</div>
+				      <div id="grade-session" class="form-group">
+						 <label for="recipient-name" class="col-form-label">Grade</label>
+						 <input type="text" class="form-control" id="recipient-name" name="grade" value="<%= education.grade %>">
+					   </div>
+					
+					  <div id="text-area-fleld" class="form-group">
+						<label for="message-text" class="col-form-label">Description</label>
+						<textarea class="form-control" id="message-text" rows="5" name="text"><%= education.text %></textarea>
+					  </div>
+					  <div class="send-offerletter-shortcut-div d-flex justify-content-center">
+						  <button id="each-offerletter-button-accept-3" type="submit" class="btn btn-sm btn-primary">Save</button>
+					  </div>
+			     </div>
+			    </form>
+			</div>
+	</div>
+</div>
+<%  }); } %>
+
+
+<!-- Awards and Honors  MODEL -->
+<% if(awards.length > 0){ %>
+  <% awards.forEach(function(award){ %>
+
+<div class="modal fade bd-<%= award._id %>-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div id="modal-content" class="modal-content">
+		<div class="preloader-all-pages main-loader-div">
+		  <svg class="loading-box">
+              <circle class="loader" fill="none" stroke-width="3" stroke-linecap="round" cx="24" 
+					cy="24" r="17"></circle>
+           </svg>
+        </div>
+		<h5 id="employer-send-offerletter-page" id="exampleModalLabel">Update Awards & Honors</h5>
+				<button id="employer-send-offerletter-page-button" type="button" class="close" 
+						data-dismiss="modal" aria-label="Close">
+				  <span aria-hidden="true">&times;</span>
+				</button>
+		      <form class="submit-forms" id="send-offerletter-for-offerletter-page" action="/user/award/<%= award._id %>?_method=PUT" method="POST">
+			      <div id="workexp-modal-body" class="modal-body">
+				      <div id="first-form-row" class="form-row">
+						<div class="form-group col-md-6">
+						   <label for="recipient-name" class="col-form-label">Title</label>
+						   <input type="text" class="form-control" id="recipient-name" name="title" value="<%= award.title %>">
+				        </div>
+				     </div>	
+				     <div id="second-form-row" class="form-group">
+						<label for="message-text" class="col-form-label">Date When you won medal</label>
+						<input type="date" class="form-control" id="message-text" name="date" value="<%= award.date %>">
+					  </div>
+				    <div  id="text-area-fleld" class="form-group">
+						<label for="message-text" class="col-form-label">Something About Award</label>
+						<textarea class="form-control" id="message-text"  rows="5" name="text"><%= award.text %></textarea>
+					  </div>
+				      <div class="send-offerletter-shortcut-div d-flex justify-content-center">
+						  <button id="each-offerletter-button-accept-3" type="submit" class="btn btn-sm btn-primary">Save</button>
+					  </div>
+			     </div>
+			    </form>
+			</div>
+	</div>
+</div>
+<%  }); } %>
+
+
+<!-- PROJECT UPDATE MODAL -->
+<div class="projectsession" id="<%= projects.length %>">
+	<% var count = 0 %>
+<% if(projects.length > 0){ %>
+<% projects.forEach(function(project){ %>
+<% count++ %>
+<div class="modal fade bd-<%= project._id %>-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div id="modal-content" class="modal-content">
+		<div class="preloader-all-pages main-loader-div">
+		  <svg class="loading-box">
+              <circle class="loader" fill="none" stroke-width="3" stroke-linecap="round" cx="24" 
+					cy="24" r="17"></circle>
+           </svg>
+        </div>
+		<h5 id="employer-send-offerletter-page" id="exampleModalLabel">Update Project Details</h5>
+				<button id="employer-send-offerletter-page-button" type="button" class="close" 
+						data-dismiss="modal" aria-label="Close">
+				  <span aria-hidden="true">&times;</span>
+				</button>
+		      <form  class="submit-forms" id="send-offerletter-for-offerletter-page" action="/user/project/<%= project._id %>?_method=PUT" method="POST">
+			      <div id="workexp-modal-body" class="modal-body">
+				       <div id="first-form-row" class="form-row">
+					   <div class="form-group col-md-6">
+						 <label for="recipient-name" class="col-form-label">Title</label>
+						 <input type="text" class="form-control" id="recipient-name" name="title" value="<%= project.title %>">
+				       </div>
+				     </div>
+				      <div id="second-form-row" class="form-row">
+				     <div class="form-group  col-md-6">
+						<label for="projectstart" class="col-form-label">Date of Start</label>
+						<input type="date" class="form-control" id="projectstart<%= count %>" name="datestart" value="<%= project.datefrom %>">
+					  </div>
+				     <div id="third-form-row" class="form-group  col-md-6">
+						<label for="projectcomplete" class="col-form-label">Date of Completion</label>
+						<input type="date" class="form-control" id="projectcomplete<%= count %>" name="datecompl" value="<%= project.dateto %>">
+					  </div>
+				  </div>
+				     <div id="form-check" class="form-check">
+						  <label class="form-check-label" for="exampleCheck15">Currently Working On Project</label>
+                          <input type="checkbox" class="form-check-input" id="exampleCheck15<%= count %>" name="ongoingproj" value="yes"><p>( If yes Then click on checkbox )</p>
+                     </div>
+				  <div  id="text-area-fleld" class="form-group">
+						<label for="message-text" class="col-form-label">Something About Your Project</label>
+						<textarea class="form-control" id="message-text"  rows="5" name="text" ><%= project.text %></textarea>
+					  </div>
+				      <div class="send-offerletter-shortcut-div d-flex justify-content-center">
+						  <button id="each-offerletter-button-accept-3" type="submit" class="btn btn-sm btn-primary">Save</button>
+					  </div>
+			         </div>
+			    </form>
+			</div>
+	</div>
+</div>
+<%  }); } %>
+</div>
+
+
+<!-- OTHERS UPDATE  MODEL -->
+<% if(othersdata.length > 0){ %>
+  <% othersdata.forEach(function(other){ %>
+
+<div class="modal fade bd-<%= other._id %>-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div id="modal-content" class="modal-content">
+		<div class="preloader-all-pages main-loader-div">
+		  <svg class="loading-box">
+              <circle class="loader" fill="none" stroke-width="3" stroke-linecap="round" cx="24" 
+					cy="24" r="17"></circle>
+           </svg>
+        </div>
+		<h5 id="employer-send-offerletter-page" id="exampleModalLabel">Update Others Data</h5>
+				<button id="employer-send-offerletter-page-button" type="button" class="close" 
+						data-dismiss="modal" aria-label="Close">
+				  <span aria-hidden="true">&times;</span>
+				</button>
+		      <form class="submit-forms" id="send-offerletter-for-offerletter-page" action="/user/other/<%= other._id %>?_method=PUT" method="POST">
+			      <div id="workexp-modal-body" class="modal-body">
+				       <div id="first-form-row" class="form-row">
+						<div class="form-group col-md-6">
+						   <label for="recipient-name" class="col-form-label">Title</label>
+						   <input type="text" class="form-control" id="recipient-name" name="title" value="<%= other.title %>">
+				        </div>
+				     </div>	
+				    <div id="text-area-fleld" class="form-group">
+						<label for="message-text" class="col-form-label">Description</label>
+						<textarea class="form-control" id="message-text"  rows="5" name="description"><%= other.description  %></textarea>
+					  </div>
+				      <div class="send-offerletter-shortcut-div d-flex justify-content-center">
+						  <button id="each-offerletter-button-accept-3" type="submit" class="btn btn-sm btn-primary">Save</button>
+					  </div>
+			         </div>
+			    </form>
+			</div>
+	</div>
+</div>
+<%  }); } %>

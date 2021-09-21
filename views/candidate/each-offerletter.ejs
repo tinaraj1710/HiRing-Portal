@@ -1,0 +1,363 @@
+<% include ../partials/header %>
+<% include ../user-partials/header %>
+<% include ../functions/datetimeconvert %>
+<% include ../functions/username %>
+<% include ../functions/textcontent %>
+
+</div>
+   <div id="offer-letter-content-session">
+		<div class="offer-letter-page">
+			<div class="d-flex">
+			 <div class="back-link-of-page">
+					<a href="/user/<%= CurrentUser._id %>/offerletter">
+						<img src="/images/home/arrow_back.svg" alt="back-arrow">
+					</a>
+				</div>
+				<div>
+					<h4 id="main-heading-of-page" class="each-offer-letter-h4">Offer Letter</h4>
+				</div>
+			</div>
+			 <div class="each-offerletter-container">
+				 <div class="row">
+					 <div id="candidate-see-offerletter-company-details" class="col-lg-5 col-xl-4">
+						 <% if(sender){ %>
+						  <div class="each-offerletter-company-details d-flex flex-column">
+							 <div class="company-img-container">
+								 <% if(getimgurl(sender)){ %>
+								       <img src="<%= getimgurl(sender) %>" alt="profile-image"> 
+								 <% }else{ %>
+									  <img src="/images/home/profile-img.jpg" alt="profile-image">
+								 <% } %>
+							 </div>
+							 <p class="each-offerletter-company-name"><%= sender.organizationdetails.companyname %></p>
+							  <div class="d-flex justify-content-center">
+								  <div>
+									     <p><span><i class="fas fa-square-full"></i></span><%= sender.organizationdetails.websiteurl %></p>
+										 <p><span><i class="fas fa-square-full"></i></span><%= getemail(sender) %></p>
+										 <p><span><i class="fas fa-square-full"></i></span>
+										   <% if(!sender.personaldetails.city && sender.personaldetails.country){ %>
+														  Unknown , <%= sender.personaldetails.country %>
+													<% }else if(sender.personaldetails.city && !sender.personaldetails.country){ %>
+														  <%= sender.personaldetails.city %> , Unknown
+													<%}else{ %>
+														  Unknown
+													<%} %>
+										  </p>
+										 <p><span><i class="fas fa-square-full"></i></span><%= sender.organizationdetails.totalemployees %></p>
+								  </div>
+							  </div>
+							
+							  
+							 <p class="company-vision"><%= sender.organizationdetails.aboutcompany %></p>
+							 <% if(offerletter.status === accepted()){ %>
+								  <p id="see-offerletter-accept-button-p">
+									   <button type="button" class="each-offerletter-button-accept-4" class="btn btn-primary" 
+										  ><i class="fas fa-check"></i> You have accepted this offer letter
+									   </button>
+							      </p>
+							 <% } %>
+							  
+							 <p id="offerletter-buttons-of-each-offerletter-candidate"><a class="btn btn-sm" id="button-send-message" href="#">Send Message</a></p> 
+							  
+							 			 
+						  </div>
+						 <% } %>
+					 </div>
+					 <div class="col-lg-7 col-xl-8">
+						 <div class="each-offerletter-candidate-data">
+							 <h5><%= textofferletter() %></h5>
+							 <% if(sender){ %>
+							   <div class="each-offerletter-company-short-details">
+								 <p class="company-name"><%= sender.organizationdetails.companyname %></p>
+								 <p><%= sender.personaldetails.Paddress  %></p>
+								 <p><%= getemail(sender) %>  <%= sender.personaldetails.contnum %></p>
+							   </div>
+							 
+							 <% if(reciever){ %>
+								<div class="each-offerletter-main-text">
+									<div class="d-flex justify-content-between">
+										<p class="candidate-name">Mr. <%= getname(reciever) %></p>
+										<div class="exp-date-container">
+								          <label for="expiry-date" id="exp-date-candidate"><%= text_offerletter_expiry_date() %> : <%= offerletter.offerletter.expiring.toDateString() %></label>
+							 			</div>
+									</div>
+									 <p class="job-position-candidate-page"><%= text_job_position() %> : <%= offerletter.position %></p>
+									 <p class="sender-text"><%= offerletter.offerletter.description  %></p>
+									 <p class="address-session"><%= reciever.personaldetails.Paddress %></p>
+									 <p class="address-session"><%= getemail(reciever) %> <%= reciever.personaldetails.contnum %></p>
+							    </div> 
+							 <% } %>
+							 <% } %>
+							  <div class="attachment-button-and-container-offerletter d-flex justify-content-start">
+								  <% if(offerletter.offerletter.document.length > 0){ %>
+								  <% for(var i = 0 ; i < offerletter.offerletter.document.length ; i++){ %>
+									<div class="pdf-preview">
+										<div class="img-session">
+											<a href="<%= offerletter.offerletter.document[i].dataurl %>" target="_blank">
+												<img class="main-first-page-of-pdf" src="<%= convertimg(offerletter.offerletter.document[i].dataurl).url %>" slt="pdf-img">
+											</a>
+											<div class="text-of-pdf-card d-flex justify-content-between">
+												<% var data = offerletter.offerletter.document[i].dataurl %>
+												<p class="offer-letter-text">Offerletter.<%= data.substring(data.lastIndexOf(".")+1) %></p>
+											</div>
+
+										</div>
+								    </div>
+									<% }} %>
+							  </div>
+							 <div class="each-offerletter-signature-session d-flex justify-content-end">
+								 <div class="accept-or-reject-buttons">
+									 <% if(offerletter.status === rejected()){ %>
+										<a type="button" id="button-reject-offerletter" class="btn btn-sm"><%= textrejected() %> <i class="far fa-window-close"></i></a> 
+									 <% } %>
+									<% if(offerletter.status === offerletter_sent()){ %>
+									 <a type="button" id="each-offerletter-reject" class="btn btn-sm" href="/user/<%= CurrentUser._id %>/candidatereject/<%= offerletter._id %>"><%= text_reject() %>
+									 </a>
+									 <a type="button" id="button-accept-offerletter" class="btn btn-primary" data-toggle="modal" data-target="#acceptaadharmodal">
+  Accept
+</a>                                  <% } %>
+									 <% if(offerletter.status === defaulted()){ %>
+										 <% if(offerletter.offerletter.defaultcommentcompany.comment && !offerletter.offerletter.defaultcommentcandidate.comment){ %>
+										 <a type="button" id="button-reject-offerletter" class="btn btn-sm"><%= textDefaulted() %> <i class="far fa-window-close"></i></a> 
+									     <a type="button" id="button-reject-offerletter" class="btn btn-sm" data-toggle="modal" 
+											data-target="#candidate-default">Comment <i class="far fa-window-close"></i></a>
+									    <% } %>
+									    <% if(!offerletter.offerletter.defaultcommentcompany.comment && offerletter.offerletter.defaultcommentcandidate.comment){ %>
+									       <a type="button" id="button-accept-offerletter" class="btn btn-primary"><%= textDefaulted() %> <i class="far fa-window-close"></i></a>
+									    <% } %>
+									    <% if(offerletter.offerletter.defaultcommentcompany.comment && offerletter.offerletter.defaultcommentcandidate.comment){ %>
+										   	<a type="button" id="button-accept-offerletter" class="btn btn-primary"><%= textDefaulted() %> <i class="far fa-window-close"></i></a>						
+									    <% } %>
+									 <% } %>
+									 <% if(offerletter.status === accepted()){ %>
+										<a type="button" id="button-accept-offerletter" class="btn btn-primary" data-toggle="modal" data-target="#candidate-default"> Don't want to join </a>
+									 <%  } %>
+									 <% if(offerletter.status === joined()){ %>
+										 <p class="joined-para">
+											 <a type="button" id="each-offerletter-button-accept-3" class="btn btn-primary">
+												 <i class="fas fa-check"></i> <%= textjoined() %> </a>
+							             </p>
+									 <% } %>
+								 </div>
+							 </div>
+							 
+							 <div class="d-flex flex-column">
+								 <% if(offerletter.status === defaulted()){ %>
+									 <% if(offerletter.offerletter.defaultcommentcompany.comment && !offerletter.offerletter.defaultcommentcandidate.comment){ %>
+									  <div class="company-default-message form-group">
+										  <label for="exampleFormControlTextarea1">Company default comment</label>
+										  <p class="default-comment-of-both"><%= offerletter.offerletter.defaultcommentcompany.comment %></p>
+								     </div>
+								    <% } %>
+								     <% if(!offerletter.offerletter.defaultcommentcompany.comment && offerletter.offerletter.defaultcommentcandidate.comment){ %>
+									<div class="company-default-message form-group">
+										  <label for="exampleFormControlTextarea1">Candidate default comment</label>
+										  <p class="default-comment-of-both" ><%= offerletter.offerletter.defaultcommentcandidate.comment %></p>
+									  </div>
+								    <% } %>
+								 <% if(offerletter.offerletter.defaultcommentcompany.comment && offerletter.offerletter.defaultcommentcandidate.comment){ %>
+									<div class="company-default-message form-group">
+									  <label for="exampleFormControlTextarea1">Company default comment</label>
+									 <p class="default-comment-of-both"><%= offerletter.offerletter.defaultcommentcompany.comment %></p>
+								 </div>
+								 <div class="company-default-message form-group">
+									  <label for="exampleFormControlTextarea1">Candidate default comment</label>
+									 <p class="default-comment-of-both"><%= offerletter.offerletter.defaultcommentcandidate.comment %></p>
+								 </div>
+								    <% } %>
+								 <% } %>
+							 </div>
+						 </div>
+					 </div>
+				 </div>
+			</div>
+		</div>
+    </div>
+
+
+<!-- Aadhar accept Modal -->
+<div class="modal fade" id="acceptaadharmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+          <div class="aadhar-accept-container d-flex flex-column">
+			  <h4>Accept Offer Letter </h4>
+			  <p> Please note once you accept the offer letter and do not join this will be recorded in your parmanent record. Any Employer in future would be able to access this infornmation.  </p>
+			  <div class="accept-or-reject-div d-flex justify-content-between">
+				  <a type="button" id="each-offerletter-reject" class="btn btn-sm" data-dismiss="modal">Discard</a>
+				  <a type="button" id="each-offerletter-button-accept" class="btn btn-primary" data-toggle="modal" data-target="#accept-aadhar-<%= offerletter._id %>" data-dismiss="modal">Accept</a>
+			  </div>
+		  </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Aadhar accept with data Modal -->
+ <% if(CurrentUser.role === "candidate"){ %>
+<div class="modal fade" id="accept-aadhar-<%= offerletter._id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+		 <div class="preloader-all-pages main-loader-div aadhar-loadar-candidate">
+		     <svg class="loading-box">
+                 <circle class="loader" fill="none" stroke-width="3" stroke-linecap="round" cx="24" 
+				     	cy="24" r="17"></circle>
+             </svg>
+         </div>
+      <div class="modal-body">
+          <div class="aadhar-accept-container d-flex flex-column">
+              <div id="faliure-meessage-of-aadhar-verification" class="alert alert-danger" role="alert">
+				  Your Mobile number does not exist.Please try again.
+              </div>
+			  <h4>Verify Identity</h4>
+			  <p class="accept-text">Please enter your Aadhar no. to verify your identity.
+			  An OTP will be send to phone number linked to your 
+			  Aadhar Card</p>
+			  <form data-form="/verifyaadhar/<%= CurrentUser._id %>/job/<%= offerletter._id %>" action="/verifyaadhar/<%= CurrentUser._id %>/job/<%= offerletter._id %>" method="POST" enctype="multipart/form-data">
+					<div class="Aadhar-card-attachment">
+						<p id="aadhar-attachment-img-attachment">Aadhar-card Image/pdf </p>
+						<div id="forth-form-row">
+							 <div class="input-file-of-attachment-div" id="input-file-of-attachment">
+							   <button id="aadhar-attachment-button" type="button" class="btn btn-sm btn-primary">
+								  <label for="attach-file-session" id="attachment-label-offerletter-page" class="col-form-label"> 
+									  <img id="aadhar-attchment-svg" src="/images/main-pages/white-attach-file.svg"                                                alt="attchment-image" > Attach file </label> </button> <span id="attachment-text">No Files choosen, Yet.</span> 
+								 <input type="file" class="d-none form-control" id="attach-file-session" name="filedata" required>
+							 </div>
+					    </div>
+				    </div>
+				    
+				    <div class="take-aadhar-details">
+						<p id="aadhar-attachment-img-attachment">Aadhar-card Numbar</p>
+						<input type="text" id="aadhar-num" class="form-control" name="aadharnum" placeholder="Enter Your Aadhar Number {ex : 1234 1234 1234 1234}" required>
+					</div>	
+				    <div class="take-aadhar-details">
+						<p id="aadhar-attachment-img-attachment">Phone Number</p>
+						<input type="tel" id="aadhar-num" class="form-control" name="phonenum" required>
+					</div>	 
+				    <div class="accept-or-reject-div d-flex justify-content-between">
+					  <a type="button" id="each-offerletter-reject" class="btn btn-sm phone_number-attchment-reject" data-dismiss="modal">Discard</a>
+					  <button type="submit" id="each-offerletter-button-accept" class="btn btn-sm btn-primary" data-toggle="modal">Accept Offer Letter</button>
+				   </div>
+			</form> 
+		  </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% } %>
+
+<!-- Candidate default popup -->
+ <% if(CurrentUser.role === "candidate"){ %>
+<div class="modal fade" id="candidate-default" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+		<div class="preloader-all-pages main-loader-div">
+		     <svg class="loading-box">
+                 <circle class="loader" fill="none" stroke-width="3" stroke-linecap="round" cx="24" 
+				     	cy="24" r="17"></circle>
+             </svg>
+         </div>
+      <div class="modal-body">
+          <div class="aadhar-accept-container d-flex flex-column">
+			  <% if(offerletter.offerletter.defaultcommentcompany.comment && !offerletter.offerletter.defaultcommentcandidate.comment){ %>
+			      <h4>Comment</h4>
+			      <p id="candidate-reject-offer-modal-p" class="accept-text">Please provide comment here.<br> 
+					  This will be sent to the employer.
+			      </p>
+			  <% } %>
+			  <% if(offerletter.status === accepted()){ %>
+					<h4>Reject Offer</h4>
+			        <p id="candidate-reject-offer-modal-p" class="accept-text">Are you sure you want to reject this offer?<br>
+			  This will go on your permanent record and any employer in future will be able to see this.</p>
+			 <%  } %>
+			  <form class="submit-forms" action="/makedefault/<%= offerletter._id %>/<%= offerletter.to._id %>" method="POST">
+					 <div id="candidate-reject-offer-modal-input" class="take-aadhar-details">
+						<textarea class="form-control" id="candidate-comment" rows="6" name="comment" placeholder="Write Comment Here..."></textarea>
+					</div>	  
+				    <div class="accept-or-reject-div d-flex justify-content-between">
+					  <a type="button" id="each-offerletter-reject" class="btn btn-sm" data-dismiss="modal">Discard</a>
+				<% if(offerletter.offerletter.defaultcommentcompany.comment && !offerletter.offerletter.defaultcommentcandidate.comment){ %>
+			       <button type="submit" id="each-offerletter-button-accept" class="btn btn-sm btn-primary" data-toggle="modal">Send comment</button>
+			    <% } %>
+			    <% if(offerletter.status === accepted()){ %>
+					 <button type="submit" id="each-offerletter-button-accept" class="btn btn-sm btn-primary" data-toggle="modal">Reject Offer</button>
+			    <%  } %>
+				   </div>
+			</form> 
+		  </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% } %>
+
+
+<!-- Offerletter  Attachement Modal -->
+<div class="modal fade bd-attachment-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+		  <div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div id="modal-header-1" class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Offerletter Attachment</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						  <span aria-hidden="true">&times;</span>
+						</button>
+				</div>
+				  <% if(offerletter.offerletter.document.length > 0){ %>
+				  <% for(var i = 0 ; i < offerletter.offerletter.document.length ; i++){ %>
+				         <div class="modal-body d-flex justify-content-between">
+                            <div class="container links">
+						       <a href="<%= offerletter.offerletter.document[i].dataurl %>" target="_blank"> Attachment No. <%= i+1 %></a>
+						   </div>
+      				     </div>
+					<% }} %>	  
+			</div>
+</div>
+</div>
+
+<!-- Verify phone number session -->
+<button type="button" id="OTP-verification-modal-button" class="btn btn-primary d-none" data-toggle="modal" 
+		data-target="#otp-verification" data-dismiss="modal">Accept</button>
+
+<div class="modal fade" id="otp-verification" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+		<div class="preloader-all-pages main-loader-div otp-loadar-candidate">
+		     <svg class="loading-box">
+                 <circle class="loader" fill="none" stroke-width="3" stroke-linecap="round" cx="24" 
+				     	cy="24" r="17"></circle>
+             </svg>
+         </div>
+      <div class="modal-body">
+          <div class="aadhar-accept-container d-flex flex-column">
+			  <div id="success-meessage-of-otp-verification" class="alert alert-success" role="alert">
+				  OTP verification is successful.
+              </div>
+			  <div id="failure-meessage-of-otp-verification" class="alert alert-danger" role="alert">
+				  OTP verification is Failed.please re-enter your OTP.
+              </div>
+			  <h4>Verify Identity</h4>
+			  <p class="accept-text" id="otp-phone-number-and-aadhar1"></p>
+			  <p class="accept-text" id="otp-phone-number-and-aadhar2"></p>
+			  <form data-formsec="/verifyotp/<%= CurrentUser._id %>/job/<%= offerletter._id %>" action="/verifyotp/<%= CurrentUser._id %>/job/<%= offerletter._id %>" method="POST" enctype="multipart/form-data">
+				    <div class="take-aadhar-details">
+						<p id="aadhar-attachment-img-attachment">OTP</p>
+						<input type="Number" id="aadhar-num" class="form-control" name="code" required>
+					</div>
+				  <div class="take-aadhar-details d-none">
+						<input id="phone_input" type="Number" id="aadhar-num" class="form-control" name="phonenum" value="">
+				  </div>
+				    <div class="accept-or-reject-div d-flex justify-content-end">
+					  <button type="submit" id="each-offerletter-button-accept" class="btn btn-sm btn-primary" data-toggle="modal">Submit</button>
+				   </div>
+			</form> 
+		  </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<% include ../partials/footer %>

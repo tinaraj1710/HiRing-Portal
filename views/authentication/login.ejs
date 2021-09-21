@@ -1,0 +1,54 @@
+<% include ../partials/header %>
+
+
+<div class="fluid-container">
+		 <div id="login-page-main-container" class="row mx-md-5">
+			 <div id="col-lg-4" class="col-lg-4 d-none d-lg-block">
+				 <div class="img-container-of-register">
+					 <img id="signip-login-big-img" src="/images/home/signup.svg">
+				 </div>
+			 </div>
+			 <div id="col-lg-8" class="col-lg-8 px-md-5">
+				<div class="login-box d-flex justify-content-end">
+			      <div class="login-button px-xl-4">
+				     <a id="login-button-home" href="/dashboard" class="btn btn-md btn-primary">Sign Up</a>
+			      </div>
+		  		</div>
+				<div class="user-type px-xl-4">
+				  <div class="login-with">
+				    <h4>Login</h4>
+			      </div>
+			      <div class="login-with-auth d-flex justify-content-between">
+				  <div class="login-as-auth">
+					  <a id="link-to-login" href="/dashboard/auth/google"><span>Login with</span>
+					  <img class="svg-img-login" src="/images/login/Google-Button.svg"  alt="google-svg"></a>
+				  </div>
+				  <div class="login-as-auth">
+					  <a id="link-to-login" href="/dashboard/auth/linkedin"><span>Login with</span>
+						  <img class="svg-img-login" src="/images/login/linkedin-button.svg" alt="linkedin-svg"></a>
+				  </div>
+			    </div>
+				  <form action="/dashboard/auth/login" method="POST">
+  						<div class="form-group">
+    						<label class="form-label-input" for="exampleInputEmail1"><strong>Email</strong></label>
+    						<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email">
+  						</div>
+ 						 <div class="form-group">
+    						<label class="form-label-input" for="exampleInputPassword1"><strong>Password</strong></label>
+    							<input type="password" class="form-control" id="exampleInputPassword1" name="password"><a id="forgot-pass-link" href="/dashboard/forgot"> Forgot Password</a>
+  						</div>
+					    
+						<button id="login-page-login-button" type="submit" class="btn btn-primary">Login</button>
+					</form>  
+				</div>
+			 </div>
+		 </div>
+     </div>
+
+     <img src=""
+
+
+   
+
+
+<% include ../partials/footer %>

@@ -1,0 +1,85 @@
+<% include ../partials/header %>
+<% include ../user-partials/header %>
+<% include ../functions/username %>
+
+</div>
+   <div id="myapplication-content-session">
+	  <h4 id="main-heading-of-page">My Applications</h4>
+	   <div class="myapplication-container">
+		   <div class="filter-content d-flex justify-content-between align-items-center">
+					   <div class="employer-input-search d-flex align-items-center">
+						    <img id="seachbox" src="/images/main-pages/search.svg" alt="search-image">
+						   <input type="text" class="form-control" id="candidate-search" aria-describedby="emailHelp" placeholder="Search">
+					   </div>
+					   <div class="fiter-icon-div">
+						   <div class="filter-small-box">
+							   <img src="/images/main-pages/filter.svg"> <span>filter</span>
+						   </div>
+					   </div>
+					   <div class="select-no-of-pages">
+							<span>Show</span>
+							<div class="num-pages-div">
+								<span>10</span>
+							   <img src="/images/main-pages/arrow_down.svg"> 
+						   </div>
+							<span>results per page</span>
+					   </div>
+					   <div class="pagination">
+						   <ul class="pager">
+								   <li class="pager__item pager__item--prev">
+									  <a class="pager__link" href="#">
+										<img class="candidate-page-left-right" src="/images/main-pages/arrow_left.svg"> 
+									  </a>
+									</li>
+									<li class="pager__item active"><a class="pager__link" href="#">1</a></li>
+									<li class="pager__item"><a class="pager__link" href="#">2</a></li>
+									<li class="pager__item"><a class="pager__link" href="#">3</a></li>
+									<li class="pager__item"><a class="pager__link" href="#">...</a></li>
+									<li class="pager__item"><a class="pager__link" href="#">10</a></li>
+									<li class="pager__item pager__item--next">
+										<a  class="pager__link" href="#">
+											<img class="candidate-page-left-right" src="/images/main-pages/arrow_right.svg"></a>
+									</li>
+							</ul>
+
+					   </div>
+		   </div>
+		   <div class="myapplication-header d-flex justify-content-between">
+			   <p class="candidate-myapplication-subtitles">Company Name</p>
+			   <p class="candidate-myapplication-subtitles">Designation</p>
+			   <p class="candidate-myapplication-subtitles">Date and Time</p>
+			   <p class="candidate-myapplication-subtitles-last">Status</p>
+		   </div>
+		   <% if(alljobs.length > 0){ %>
+		    <%  alljobs.forEach(function(application){ %>
+			   <div class="each-application-data d-flex justify-content-between">
+					   <div class="application-sender-details d-flex">
+						   <div class="user-image">
+							   <img src="https://img.icons8.com/officel/2x/person-male.png" alt="company-img">
+						   </div>
+						   <p class="application-sender-company">
+							 <%= getname(application.author)%> 
+						   </p>
+					   </div>
+					   <% if(application.offerletter){ %>
+						      <p class="application-other-datas"><%= application.position %></p>
+							  <p class="application-other-datas"><%= application.offerletter.expiring.toDateString() %></p>
+							  <p class="candidate-application-other-lastdatas">Offer Letter</p>
+						<% } %>
+				        <% if(application.interview.length > 0 && !application.offerletter){ %>
+				          <% if(application.interview[application.interview.length - 1]){ %>
+				   				<p class="application-other-datas"><%= application.interview[application.interview.length - 1].title %></p>
+								<p class="application-other-datas">
+									<%= application.interview[application.interview.length - 1].date.toDateString() %> - <%= application.interview[application.interview.length - 1].date.getUTCHours() %>:<%= application.interview[application.interview.length - 1].date.getUTCMinutes() %>
+				                </p>
+								<p class="candidate-application-other-lastdatas">Interview(<%= application.interview.length %>)</p>
+				            <% } %>
+				        <% } %>
+				</div>
+		   <%  }); } %>
+	   </div>
+   </div>
+
+</div>
+
+<% include ../partials/footer %>

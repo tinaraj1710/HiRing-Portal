@@ -1,0 +1,34 @@
+<% getname = function(userobj){ %>
+	  <% if(userobj.local.firstname){ %>
+		 <%  var name  = userobj.local.firstname + " " + userobj.local.lastname; %>
+	  <% }else if(userobj.googleauth.fullname){ %>
+		 <%  var name  = userobj.googleauth.fullname; %>
+	  <% }else{ %>
+	     <% var name = userobj.linkedinauth.fullname; %>
+	 <% } %>
+	   <% return name; %>
+<% } %> 
+
+
+<% getemail = function(userobj){ %> 
+   <% if(userobj.local.email){ %>
+		 <%  var email  = userobj.local.email; %>
+	  <% }else if(userobj.googleauth.email){ %>
+		 <%  var email  = userobj.googleauth.email; %>
+	  <% }else{ %>
+	     <% var email = userobj.linkedinauth.email; %>
+	 <% } %>
+	   <% return email; %>
+<% } %>
+
+
+<% getimgurl = function(userobj){ %>
+	<% if(userobj.local.email){ %>
+		 <%  var imgurl = userobj.local.avatar; %>
+	  <% }else if(userobj.googleauth.email){ %>
+		 <%  var imgurl  = userobj.googleauth.avatar; %>
+	  <% }else{ %>
+	     <% var imgurl = userobj.linkedinauth.avatar; %>
+	 <% } %>
+	   <% return imgurl; %>
+<% } %>

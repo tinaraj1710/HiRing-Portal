@@ -1,0 +1,196 @@
+<% include ../partials/header %>
+<% include ../user-partials/header %>
+<% include ../functions/username %>
+
+</div>
+    <div id="content-profile-session">
+		   <div class="main-heading-of-mainpages d-flex">
+				<div class="back-link-of-page">
+					<a href="/user/<%= CurrentUser._id %>">
+						<img src="/images/home/arrow_back.svg" alt="back-arrow">
+					</a>
+				</div>
+				<div>
+					<h4 id="main-heading-of-page">My Profile</h4>
+				</div>
+			</div>
+	       
+			<div class="profile-data rounded-left">
+				<div class="img-container-session">
+					<div class="row">
+						<div id="first-img-col" class="col-12 col-md-6">
+							<div class="img-div d-flex">
+								<!-- Profile image session -->
+								<label for="attach-file-session-img" id="attachment-label-offerletter-page" class="col-form-label">
+								<div class="profile-img-selector">
+									<div class="d-flex flex-column">
+										 <% if(getimgurl(user)){ %>
+												 <img id="main-img-of-profile" src="<%= getimgurl(user) %>" alt="profile-image"> 
+											<% }else{ %>
+												 <img id="main-img-of-profile" src="/images/home/profile-img.jpg" alt="profile-image">
+											<% } %>
+											 <img id="main-img-of-profile-sec2" src="" alt="profile-image">
+										     
+										
+										
+									</div>
+									<div id="hidden-part-profile-div" class="d-flex flex-column">
+										<div class="hidden-part-profile-cont">
+											<i id="profile-camara-icon" class="fas fa-camera"></i>
+										</div>
+									</div>
+									<div class="d-flex flex-cloumn justify-content-center">
+										<form class="submit-forms" action="/user/<%= CurrentUser._id %>/profile/img/update" 
+											  method="POST" enctype="multipart/form-data">
+											<input type="file" class="d-none form-control" id="attach-file-session-img" 
+												   name="filedata" accept='image/*'>
+											<button class="select-img-caption" type="submit">Upload</button>
+									    </form>
+									</div>
+									
+								</div>
+								</label>  
+								<div class="user-name-post">
+								   <h4 id="user-name-of-profile" class="profile-page-username"><%= getname(user) %> 
+									   <button class="edit-main-button-of-profile-page1"><img src="/images/profile/edit.svg" alt="edit-img"></button></h4>
+									
+										   <% if(user.local.firstname){ %>
+											  <%  var name  = user.local.firstname + " " + user.local.lastname; %>
+											  <% }else if(user.googleauth.fullname){ %>
+												 <%  var name  = user.googleauth.fullname; %>
+											  <% }else{ %>
+												 <% var name = user.linkedinauth.fullname; %>
+											 <% } %>
+										<form class="submit-forms" id="edit-username-form" action="/user/<%= user._id %>/profile/name" method="POST" 
+											  class="profile-page-form"> 
+											<div class="d-flex justify-content-between">
+												<div class="input-to-profile-username-update">
+												   <input type="text" class="d-none form-control" name="fullname" value="<%= name %>">
+											    </div>
+											    <div class="input-to-profile-username-update">
+												   <button type="submit" id="first-save-button" class="btn btn-md btn-primary">
+													  Save
+												   </button>
+											    </div>
+											</div>
+										</form>
+									 <% if(profdata.length > 0){ %>
+									     <p id="user-passion-text"> <%= profdata[0].position %> <button class="edit-main-button-of-profile-page2"><img src="/images/profile/edit.svg" alt="edit-img"></button></p>
+									 <%  }else{ %>
+									      <p id="user-passion-text"> Unknown <button class="edit-main-button-of-profile-page2"><img src="/images/profile/edit.svg" alt="edit-img"></button></p>
+									  <% } %>
+									   <form class="submit-forms" id="edit-username-form2" action="/user/<%= user._id %>/profile/position" method="POST" class="profile-page-form"> 
+										   <div class="d-flex justify-content-between">
+											<div class="input-to-profile-username-update2">
+												<% if(profdata.length > 0){ %>
+												     <input type="text" class="d-none form-control" name="position" value="<%= profdata[0].position %>">
+												<% }else{ %>
+												     <input type="text" class="d-none form-control" name="position" value="">
+												<% } %>
+												
+											</div>
+											<div class="input-to-profile-username-update">
+												<button type="submit" id="first-save-button2" class="btn btn-md btn-primary">
+													Save
+												</button>
+											</div>
+										   </div>
+										</form>
+								</div>
+					        </div>
+						</div>
+						<div id="second-img-col" class="col-12 col-md-6">
+							<div class="resume-button">
+							   <a href="/user/<%= user._id %>/resume"> 
+								   <button type="button" class="view-edit-button" class="btn btn-md btn-success">
+								      View & Edit Resume
+								   </button>
+							   </a>
+						    </div>
+						</div>
+					</div>
+				</div>
+				<div class="form-session">
+					<form action="/user/<%= user._id %>/profile" method="POST" class="profile-page-form submit-forms">
+					   <div class="form-row">
+						  <div class="form-group col-md-4">
+						     <label for="inputEmail4">D.O.B</label>
+						     <input type="Date" class="form-control" id="inputEmail4" name="DOB" value="<%= user.personaldetails.DOB %>">
+						  </div>
+						  <div class="form-group col-md-8">
+						    <label class="gender-session" for="inputPassword4" id="<%= user.personaldetails.gender %>">Gender</label>
+							  <div class="gender-selector-div d-flex">
+								  <input class="radio-buttons" type="radio" name="gender" value="male" id="male">
+									  <label for="male">male</label>
+						  		  <input class="radio-buttons"  type="radio" name="gender" id="female" value="female"> 
+									  <label for="female">female</label>
+						  		  <input class="radio-buttons" type="radio" name="gender" id="others" value="others"> 
+									  <label for="others">others</label>
+							  </div>
+						</div>
+					  </div>
+					 <div class="form-row">
+						  <div class="form-group col-md-4">
+							<label for="inputAddress">Permanent Address</label>
+							<input type="text" class="form-control" id="inputAddress" name="paddress" value="<%= user.personaldetails.Paddress %>">
+						  </div>
+						  <div class="form-group col-md-4">
+							<label for="inputAddress2">city</label>
+							<input type="text" class="form-control" id="inputAddress2" name="city" value="<%= user.personaldetails.city %>">
+						  </div>
+						  <div class="form-group col-md-4">
+							<label for="inputAddress2">State</label>
+							<input type="text" class="form-control" id="inputAddress2" name="state" value="<%= user.personaldetails.state %>">
+						  </div>
+					 </div>
+					  <div class="form-row">
+						<div class="form-group col-md-4">
+						  <label for="inputCity">Country</label>
+						  <input type="text" class="form-control" id="inputCity" name="country" value="<%= user.personaldetails.country %>">
+						</div>
+						<div class="form-group col-md-4">
+						  <label for="inputCity">Zip code</label>
+						  <input type="Number" class="form-control" id="inputCity" name="zipcode" value="<%= user.personaldetails.zipcode %>">
+						</div>
+					  </div>
+						<div class="form-row">
+						<div class="form-group col-md-4">
+						  <label for="inputCity">Email</label>
+							<% if(user.local.email){ %>
+								 <%  var email  = user.local.email; %>
+							  <% }else if(user.googleauth.email){ %>
+								 <%  var email  = user.googleauth.email; %>
+							  <% }else{ %>
+								 <% var email = user.linkedinauth.email; %>
+							<% } %>
+							<input type="text" class="form-control" id="inputCity" value="<%= email %>" disabled>
+						</div>
+						<div class="form-group col-md-4">
+						  <label for="inputCity">Contact No.</label>
+						  <input type="tel" class="form-control" id="inputCity" name="cont1" value="<%= user.personaldetails.contnum %>">
+						</div>
+						 <div class="form-group col-md-4">
+						  <label for="inputCity">Alternate Contact No.</label>
+						  <input type="tel" class="form-control" id="inputCity" name="cont2" value="<%= user.personaldetails.Altcontnum %>">
+						 </div>
+					  </div>
+					  <div class="submit-buttons-profile d-flex justify-content-center">
+						  <div class="discard-button">
+							   <button class="discard-button-1" class="btn btn-md btn-primary">Discard</button>
+						  </div>
+						   <div class="save-form-button">
+					      <button class="save-form-button-1" type="submit" class="btn btn-md btn-primary">Save</button> 
+						  </div>
+					  </div>
+					  
+					</form>
+				</div>
+	    </div>
+</div>
+
+
+
+		
+
+
+<% include ../partials/footer %>

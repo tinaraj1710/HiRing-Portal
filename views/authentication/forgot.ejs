@@ -1,0 +1,38 @@
+<% include ../partials/header %>
+
+
+<div class="fluid-container">
+		 <div id="login-page-main-container" class="row mx-md-5">
+			<div id="register-col-lg-4" class="col-lg-4 d-none d-lg-block">
+				 <div class="img-container-of-register">
+					 <img id="signip-login-big-img" src="/images/home/signup.svg">
+				 </div>
+			</div>
+			<div id="col-lg-8" class="col-lg-8 px-md-5">
+				<div class="user-type px-xl-4 py-lg-5">
+				  <div class="login-with">
+				    <h4>Reset Password</h4>
+			      </div>
+					<div class="email-instrauction">
+						<p>
+							Please Enter the registered email address then we will send you email that will have link to reset your password.
+						</p>
+					</div>
+			      
+				  <form action="/dashboard/forgot" method="POST">
+  						<div class="form-group">
+    						<label class="form-label-input" for="exampleInputEmail1"><strong>Email</strong></label>
+    						<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email">
+  						</div>
+						<button id="login-page-login-button" type="submit" class="btn btn-primary">Send Email</button>
+					</form>  
+				</div>
+			</div>
+		 </div>
+     </div>
+
+
+   
+
+
+<% include ../partials/footer %>

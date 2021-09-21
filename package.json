@@ -1,0 +1,40 @@
+{
+  "name": "employeeprojectfinal",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tina",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^3.2.1",
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.0",
+    "cloudinary": "^1.27.0",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.5",
+    "cookie-session": "^1.4.0",
+    "crypto": "^1.0.1",
+    "dotenv": "^10.0.0",
+    "ejs": "^2.6.2",
+    "express": "^4.17.1",
+    "express-session": "^1.17.2",
+    "expressjs": "^1.0.1",
+    "fs": "0.0.1-security",
+    "googleapis": "^87.0.0",
+    "locus": "^2.0.4",
+    "messagebird": "^3.6.4",
+    "method-override": "^3.0.0",
+    "moment": "^2.29.1",
+    "mongoose": "^6.0.6",
+    "multer": "^1.4.3",
+    "nodemailer": "^6.6.3",
+    "passport": "^0.4.1",
+    "passport-google-oauth20": "^2.0.0",
+    "passport-linkedin-oauth2": "^2.0.0",
+    "passport-local": "^1.0.0",
+    "twilio": "^3.67.2"
+  }
+}

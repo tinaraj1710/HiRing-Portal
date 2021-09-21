@@ -1,0 +1,270 @@
+<!-- Function for getting status of offer Letter -->
+<% getstatus  = function(jobobj){ %>
+
+   <% if(jobobj.status === "offerletter-sent"){ %>
+	 <%	var status = "Offerletter-sent"; %>
+
+   <% }else if(jobobj.status === "accepted"){ %>
+	 <%	var status = "Accepted"; %>
+
+   <% }else if(jobobj.status === "rejected"){ %>
+	  <% var status = "Rejected"; %>
+
+   <% }else if(jobobj.status === "defaulted"){ %>
+	  <% var status = "Defaulted"; %>
+
+   <% }else if(jobobj.status === "withdrawn"){ %>
+
+			<% var status = "Withdrawn"; %>   
+	<%  }else if(jobobj.status === "interview-scheduled"){ %>
+	   <% var status = "Interview-scheduled"; %>
+
+   <% }else if(jobobj.status === "rescheduled"){ %>
+	   <% var status = "Re-scheduled"; %>
+
+   <% }else if(jobobj.status === "joined"){ %>
+	   <% var status = "joined"; %>
+   <% }else{ %>
+	   <% var status = ""; %>
+   <% } %> 
+
+    <% return status %>
+<% } %>
+
+
+
+<!-- Text replacement functions -->
+<!-- offerletter_sent -->
+<%  offerletter_sent = function(){ %>
+	<% return "offerletter-sent"; %> 
+<% } %> 
+
+<!-- accepted -->
+<%  accepted = function(){ %>
+	<% return "accepted"; %> 
+<% } %> 
+
+<!-- rejected -->
+<%  rejected = function(){ %>
+	<% return "rejected"; %> 
+<% } %> 
+
+<!-- defaulted -->
+<%  defaulted = function(){ %>
+	<% return "defaulted"; %> 
+<% } %> 
+
+ <!-- withdrawn -->
+<%  withdrawn = function(){ %>
+	<% return "withdrawn"; %> 
+<% } %> 
+
+<!-- interview_scheduled -->
+<%  interview_scheduled = function(){ %>
+	<% return "interview-scheduled"; %> 
+<% } %> 
+
+<!-- rescheduled -->
+<%  rescheduled = function(){ %>
+	<% return "rescheduled"; %> 
+<% } %> 
+
+<!-- joined -->
+<%  joined = function(){ %>
+	<% return "joined"; %> 
+<% } %> 
+
+<!-- Navbar session -->
+<% textDashboard = function(){ %>
+   <% return "Dashboard" ; %> 
+<%  } %>
+
+<% textmyresume = function(){ %>
+   <% return "My Resume" ; %> 
+<%  } %>
+
+<% textinbox = function(){ %>
+   <% return "Inbox" ; %> 
+<%  } %>
+
+<% textinterviews = function(){ %>
+   <% return "Interviews" ; %> 
+<%  } %>
+
+<% text_candidates = function(){ %>
+   <% return "Candidates" ; %> 
+<%  } %>
+
+
+<!-- ========================================== -->
+<% textEmployer = function(){ %>
+   <% return "Employer" ; %> 
+<%  } %>
+
+<% textCandidate = function(){ %>
+   <% return "Candidate" ; %> 
+<%  } %>
+
+<% textConsultant = function(){ %>
+   <% return "Consultant" ; %> 
+<%  } %>
+
+<% textemployer = function(){ %>
+   <% return "employer" ; %> 
+<%  } %>
+
+<% textcandidate = function(){ %>
+   <% return "candidate" ; %> 
+<%  } %>
+
+<% textconsultant = function(){ %>
+   <% return "consultant" ; %> 
+<%  } %>
+
+
+<% textinterview = function(){ %>
+   <% return "Interview" ; %> 
+<%  } %>
+
+
+<% textofferletter = function(){ %>
+   <% return "Offer Letter" ; %> 
+<%  } %>
+
+<% textseeofferletter = function(){ %>
+   <% return "See Offerletter" ; %> 
+<%  } %>
+
+<% textsendofferletter = function(){ %>
+   <% return "Send Offerletter" ; %> 
+<%  } %>
+
+<% textscheduleinterview = function(){ %>
+   <% return "Schedule Interview" ; %> 
+<%  } %>
+
+<% textrescheduleinterview = function(){ %>
+   <% return "Re-Schedule Interview" ; %> 
+<%  } %>
+
+
+<% textrejectcandidate = function(){ %>
+   <% return "Reject Candidate" ; %> 
+<%  } %>
+
+<% textsendmessage = function(){ %>
+   <% return "Send Message" ; %> 
+<%  } %>
+
+<% textwithdraw_offerletter = function(){ %>
+   <% return "Withdraw Offer Letter" ; %> 
+<%  } %>
+
+<% textedit_offerletter = function(){ %>
+   <% return "Edit Offer Letter" ; %> 
+<%  } %>
+
+<% textofferletter_withdrawn = function(){ %>
+   <% return "Offer Letter Withdrawn" ; %> 
+<%  } %>
+
+<% textmark_as_defaulted = function(){ %>
+    <% return "Mark As Defaulted" ; %> 
+<% } %>
+
+<% textmark_default = function(){ %>
+    <% return "Mark Default" ; %> 
+<% } %>
+
+<% textjoined = function(){ %>
+    <% return "Joined" ; %> 
+<% } %>
+
+<% textDefaulted = function(){ %>
+    <% return "Defaulted" ; %> 
+<% } %>
+
+<% textrejected = function(){ %>
+    <% return "Rejected" ; %> 
+<% } %>
+
+
+<% textupdate_offerletter = function(){ %>
+    <% return "Update Offer Letter" ; %> 
+<% } %>
+
+<% textdefaulted_offerletter = function(){ %>
+    <% return "Defaulted Offer Letter" ; %> 
+<% } %>
+
+<% textview_profile = function(){ %>
+    <% return "View Full Profile" ; %> 
+<% } %>
+
+<% textadd_new_attachment = function(){ %>
+    <% return "Add New Attachment" ; %> 
+<% } %>
+
+<% text_candidate_name = function(){ %>
+    <% return "Candidate Name" ; %> 
+<% } %>
+
+<% text_job_position = function(){ %>
+    <% return "Job Position" ; %> 
+<% } %>
+
+<% text_interview_title = function(){ %>
+    <% return "Interview Title" ; %> 
+<% } %>
+
+<% text_date_and_time = function(){ %>
+    <% return "Date and Time" ; %> 
+<% } %>
+
+<% text_company_name = function(){ %>
+    <% return "Company Name" ; %> 
+<% } %>
+
+<% text_no_interviews = function(){ %>
+    <% return "No Interviews !" ; %> 
+<% } %>
+
+<% text_no_offerletter = function(){ %>
+    <% return "No Offer Letter !" ; %> 
+<% } %>
+
+<% text_no_upcominginterviews = function(){ %>
+    <% return "No Upcoming Interviews !" ; %> 
+<% } %>
+
+<% text_no_pending_offerletters = function(){ %>
+    <% return "No Pending Offer Letters !" ; %> 
+<% } %>
+
+<% text_designation = function(){ %>
+    <% return "Designation" ; %> 
+<% } %>
+
+<% text_expirydate = function(){ %>
+    <% return "Expiry Date" ; %> 
+<% } %>
+
+<% text_status = function(){ %>
+    <% return "Status" ; %> 
+<% } %>
+
+<% text_offerletter_expiry_date = function(){ %>
+    <% return "Offer Letter Expiry Date" ; %> 
+<% } %>
+
+<% text_reject = function(){ %>
+    <% return "Reject" ; %> 
+<% } %>
+
+<% text_name = function(){ %>
+    <% return "Name" ; %> 
+<% } %>
+
+<% textProfile = function(){ %>
+    <% return "Profile" ; %> 
+<% } %>

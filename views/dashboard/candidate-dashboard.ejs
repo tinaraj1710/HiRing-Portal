@@ -1,0 +1,154 @@
+<% include ../functions/username %>
+<% include ../functions/textcontent %>
+<% include ../functions/datetimeconvert %>
+
+<% if(CurrentUser.role === "candidate"){ %>
+				<div class="candidate-dashboard">
+					<h4 id="main-heading-of-page">Dashboard</h4>
+					<div class="row">
+						<div class="col-lg-8">
+							<div class="row">
+								<div class="col-12">
+								<div class="candidate-stats">
+									<div class="my-stats">
+									  <h5>My Stats</h5>
+									</div>
+									<div class="all-stats-record d-flex">
+										<div class="candidate-data d-flex flex-column">
+											<p class="data-record">
+											<% if(acceptedarr){ %>
+											   <%= acceptedarr.length %>
+											 <% } %>
+											</p>
+											<p class="job-status">Accepted</p>
+											<p class="job-status">Offer Letter</p>
+										</div>
+										<div class="candidate-data d-flex flex-column">
+											<p class="data-record">
+											  <% if(rejectedarr){ %>
+												 <%= rejectedarr.length %>
+											  <% } %> 
+											</p>
+											<p class="job-status">Rejected</p>
+											<p class="job-status">Offer Letter</p>
+										</div>
+										<div id="deafulted-div" class="candidate-data d-flex flex-column">
+											<p class="data-record">
+												<% if(defaultedarr){ %>
+												 <%= defaultedarr.length %>
+												<% } %> 
+											</p>
+											<p class="job-status">Defaulted</p>
+											<p class="job-status">Offer Letter</p>
+										</div>
+										<div class="candidate-data d-flex flex-column">
+											<p class="data-record"><%= alljobs.length %></p>
+											<p class="job-status">Total</p>
+											<p class="job-status">Application</p>
+										</div>
+										<div class="candidate-data d-flex flex-column">
+											<p class="data-record"><%= candidateinterviews.length %></p>
+											<p class="job-status">Interviews</p>
+											<p class="job-status">Pending</p>
+										</div>
+									</div>
+								</div>
+								</div>
+							    <div id="offer-letter-col-12" class="col-12">
+							        <div class="my-offer-letter-div">
+									    <h4>My Offer Letter</h4>
+										<% if(candidateofferletters.length > 0){ %>
+										  <% candidateofferletters.forEach(function(offerletter){ %>
+										    <a class="candidate-dashboard-see-offerletter" href="/user/<%= offerletter.to._id %>/offerletter/<%= offerletter._id %>">
+										      <div class="row d-flex justify-content-between">
+												 <div class="left-session d-flex">
+													<div class="offer-letter-company-name">
+														 <% if(getimgurl(offerletter.author)){ %>
+															  <img src="<%= getimgurl(offerletter.author) %>" alt="profile-image"> 
+														<% }else{ %>
+															 <img src="/images/home/profile-img.jpg" alt="profile-image">
+														<% } %>
+													</div>
+													<div class="sender-details d-flex flex-column">
+														<p><%= getname(offerletter.author) %></p>
+														<p><%= offerletter.position %></p>
+													</div>
+												 </div>
+												 <div class="right-session d-flex flex-column">
+													<p>
+														Date Recieved : <%= offerletter.offerletter.createddate.toDateString() %> 
+													</p>
+													<p>
+														Experied on : <%= offerletter.offerletter.expiring.toDateString() %> 
+													</p>
+													<p><a href="/user/<%= CurrentUser._id %>/offerletter/<%= offerletter._id %>" >View Offer Letter
+														</a>
+													 </p>
+												 </div>
+										      </div>
+										    </a>
+										  <% }); %>
+										  <% }else{ %>
+											 <div class="employer-dashboard-empty-box d-flex flex-column">
+												<p class="no-content-text">
+													<%= text_no_offerletter() %>
+												</p>
+												<p>
+													 <img id="employer-dashboard-empty-box-pendingofferletters" src="/images/home/empty-view.svg">
+												</p>
+								    	    </div>
+										 <% } %>
+									</div>
+									<div class="my-offer-letter-div">
+									    <h4>Upcoming Interview</h4>
+										<% if(upcominginterviews.length > 0){ %>
+										  <% upcominginterviews.forEach(function(interview){ %>
+										    <a class="candidate-dashboard-see-offerletter" href="/user/<%= interview.to._id %>/interview/<%= interview._id %>">
+										      <div class="row d-flex justify-content-between">
+												 <div class="left-session d-flex">
+													<div class="offer-letter-company-name">
+														 <% if(getimgurl(interview.author)){ %>
+															  <img src="<%= getimgurl(interview.author) %>" alt="profile-image"> 
+														<% }else{ %>
+															 <img src="/images/home/profile-img.jpg" alt="profile-image">
+														<% } %>
+													</div>
+													<div class="sender-details d-flex flex-column">
+														<p><%= getname(interview.author) %></p>
+														<p><%= interview.position %></p>
+													</div>
+												 </div>
+												 <div class="right-session-sec d-flex flex-column">
+													 
+													<p class="firstp">
+														Interview Title : <%= interview.interview[interview.interview.length - 1].title %>- 
+													</p>
+													 <% var date = interview.interview[interview.interview.length - 1].date %>
+													<p class="secp">
+														Interview : <%= date.toDateString() %>-<%= converttime(date) %>
+													</p>
+												 </div>
+										      </div>
+										    </a>
+										  <% }); %>
+										  <% }else{ %>
+											 <div class="employer-dashboard-empty-box d-flex flex-column">
+												<p class="no-content-text">
+													<%= text_no_offerletter() %>
+												</p>
+												<p>
+													 <img id="employer-dashboard-empty-box-pendingofferletters" src="/images/home/empty-view.svg">
+												</p>
+								    	    </div>
+										 <% } %>
+									</div>
+							    </div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-4">
+						
+					</div>
+				</div>
+<% } %>
+

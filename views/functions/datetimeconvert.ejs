@@ -1,0 +1,47 @@
+<% converttime = function(time){ %>
+	<% var hrs =  time.getUTCHours(); %>
+	<% var mins =  time.getUTCMinutes(); %>
+	 <%  if(hrs > 12){ %>
+		<%  hrs = hrs % 12; %>
+         <% if(hrs < 10){ %>
+			<%  hrs = "0" + hrs; %>
+          <% }%>
+		<%  var part = "PM"; %>
+	 <% }else if(hrs < 12 && hrs >= 10){ %>
+          <% hrs = hrs; %>
+		 <% var part = "AM"; %>
+	 <% }else if(hrs === 12 && mins > 0){ %>
+	     <% hrs = hrs; %>
+         <% var part = "PM"; %>
+     <% }else if(hrs === 12 && mins === 0){ %>
+	    <% var hrs = hrs; %>
+        <% var part = "PM" %>
+     <% }else if(hrs === 00 && mins === 0){ %>
+	    <% var hrs = 12; %>
+        <% var part = "AM"; %>
+     <% }else{ %>
+		<%  hrs = "0" + hrs; %>
+	    <%	var part = "AM"; %>
+ 	 <% } %>
+	  
+	 <% if(mins < 10){ %>
+		<%  mins = "0" +  mins; %> 
+	 <% } %>
+	  
+	 <%  var finaltime = hrs + ":" + mins + " " + part; %>
+	<%  return finaltime; %>
+ <% } %>
+
+
+<% convertimg  = function(data){ %>
+   <% var extension = data.substring(data.lastIndexOf(".")+1); %>
+   <% var extensionlen = extension.length; %>
+   <% var shortdata = data.substring(0 , 50); %>
+   <% var firstshortdata = data.substring(0,(data.lastIndexOf(".") + 1)); %>
+   <% var lastdata = data.substring(50, firstshortdata.length); %>
+   <% var finalurl = shortdata + "c_scale,h_69,w_106/" + lastdata + "jpeg"; %>
+   <% var finalresults = {} %>
+   <% finalresults.url = finalurl ;  %>
+   <% finalresults.filetype = extension; %>
+   <% return finalresults; %>
+<% } %>

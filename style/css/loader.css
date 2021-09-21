@@ -1,0 +1,96 @@
+.screen-blocker{
+	position : absolute;
+	width : 100%;
+	height : 100%;
+	z-index : 1400;
+}
+
+.main-loader-div{
+	overflow: hidden; 
+	clip: rect(0 0 0 0); 
+	height: 1px; 
+	width: 1px; 
+	margin: -1px; 
+	padding: 0; 
+	border: 0; 
+}
+
+.preloader-all-pages-whole{
+	display : none;
+	width : 100%;
+	height : 100%;
+	position : absolute;
+	display : flex;
+	justify-content : center;
+	z-index : 1500;
+	background: #ffffff82;
+}
+
+
+.preloader-all-pages{
+	display : none;
+	width : 100%;
+	height : 100%;
+	position : absolute;
+	display : flex;
+	justify-content : center;
+	z-index : 1500;
+	background: #ffffff82;
+}
+
+.loading-box {
+	position : relative;
+	top : 43%;
+	width : 48px;
+	height : 48px;
+	z-index : 1800;
+    animation: rotation 1.5s linear infinite;
+}
+
+.loader {
+  stroke-dasharray: 180;
+  stroke-dashoffset: 0;
+  transform-origin: center;
+  stroke: #000;
+  animation: dash-animation 1.5s ease-in-out infinite, strokeColor 5s ease-in-out infinite;
+}
+
+@keyframes strokeColor {
+  0% {
+    stroke: #ffa700;
+  }
+  25% {
+    stroke: #d62d20;
+  }
+  50% {
+    stroke: #0057e7;
+  }
+  75% {
+    stroke: #008744;
+  }
+  100% {
+    stroke: #ffa700;
+  }
+}
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes dash-animation {
+  0% {
+    stroke-dashoffset: 168;
+  }
+  50% {
+    stroke-dashoffset: 87;
+    transform: rotate(73deg);
+  }
+  100% {
+    stroke-dashoffset: 168;
+    transform: rotate(360deg);
+  }
+}

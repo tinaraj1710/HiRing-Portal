@@ -1,0 +1,154 @@
+<% include ../partials/header %>
+<% include ../user-partials/header %>
+<% include ../functions/datetimeconvert %>
+<% include ../functions/username %>
+<% include ../functions/textcontent %>
+
+</div>
+   <div id="offer-letter-content-session">
+	 <div class="offer-letter-page">
+		 <div class="main-heading-of-mainpages d-flex">
+				<div class="back-link-of-page">
+					<a href="/user/<%= CurrentUser._id %>/employer/offerletter/<%= job._id %>">
+						<img src="/images/home/arrow_back.svg" alt="back-arrow">
+					</a>
+				</div>
+				<div>
+					<h4 id="send-offerletter-h4">Offer Letter</h4>
+				</div>
+			</div>
+		
+		 <div class="offer-letter-data-container">
+		    <div class="row">
+			   <div class="col-lg-5 col-xl-4">
+				   <div class="candidate-data-container d-flex justify-content-center flex-column">
+					   <div class="candidate-img-div d-flex justify-content-center">
+						   <% if(getimgurl(candidate)){ %>
+								       <img src="<%= getimgurl(candidate) %>" alt="profile-image"> 
+								 <% }else{ %>
+									  <img src="/images/home/profile-img.jpg" alt="profile-image">
+								 <% } %>
+					   </div>
+					   <p class="candidate-name"><%= getname(candidate) %></p>
+					   <p class="candidate-profession">
+						   <% if(profdata.length > 0){ %>
+							    <%= profdata[0].position %>
+							<% }else{ %>
+							    Unknown
+							<% } %>
+					   </p>
+					  <div class="candidate-basic-data d-flex justify-content-center">
+						   <div>
+						   <p>
+							   <img src="/images/profile/mail.svg"> <%= getemail(candidate) %>
+						   </p>
+						   <p> 
+							    <img src="/images/profile/place.svg" > 
+							   <% if(!candidate.personaldetails.city && candidate.personaldetails.country){ %>
+										      Unknown , <%= candidate.personaldetails.country %>
+										<% }else if(candidate.personaldetails.city && !candidate.personaldetails.country){ %>
+										      <%= candidate.personaldetails.city %> , Unknown
+										<%}else{ %>
+										      Unknown
+										<%} %>
+						   </p>
+						   <p>
+						       <img src="/images/profile/call.svg" > 
+							   <% if(candidate.personaldetails.contnum){ %>
+							        <%= candidate.personaldetails.contnum %>
+							  <%  }else{ %>
+								   Unknown
+							  <% } %>
+						   </p>
+						  </div>
+					   </div>
+					   <p class="candidate-profdata">
+						   <% if(profdata.length > 0){ %>
+						     <% if(profdata[0].text){ %>
+						         <%= profdata[0].text %>
+						     <% } } %>
+					   </p>
+					   <p id="total-default"> <%= totaldefaulted %><%= textdefaulted_offerletter() %></p>
+					   <p class="offerletter-buttons">
+						   <a type="button" id="button-send-offerletter" class="btn btn-primary" 
+							  href="/user/<%= CurrentUser._id %>/<%= job._id %>/resume"><%= textview_profile() %>
+						   </a>
+					   </p>
+					   <p class="offerletter-buttons"><a class="btn btn-sm" id="button-send-message" href="#">Send Message</a></p>
+				   </div>
+			   </div>
+			   <div class="col-lg-7 col-xl-8">
+				  <div class="employer-data-container d-flex flex-column">
+					   <h5 id="send-offer-page" >Offer Letter</h5>
+					   <p class="company-name"><%= employer.organizationdetails.companyname %></p>
+					   <p class="company-address"><%= employer.personaldetails.Paddress %></p>
+					   <p class="contact-info"><%= getemail(employer) %>  <%= employer.personaldetails.contnum %></p>
+					   <form class="submit-forms-whole" action="/user/<%= CurrentUser._id %>/editofferletter/<%= job._id %>" method="POST" enctype="multipart/form-data">
+						   <div class="name-exp-date d-flex justify-content-between">
+								<p>Mr. <%= getname(candidate) %></p>
+							    <div class="exp-date-container d-flex align-items-center">
+									<label for="expiry-date">Offerletter Expiry Date : </label>
+									<% var date = job.offerletter.expiring %>
+									<% if(date.getMonth() < 10 && date.getDate() >= 10){ %>
+									  <input id="expiry-date" type="date" name="expdate" required 
+										   value="<%= date.getFullYear() %>-0<%= date.getMonth() + 1%>-<%= date.getDate() %>">
+									<% }else if(date.getMonth() < 10 && date.getDate() < 10){ %>
+										<input id="expiry-date" type="date" name="expdate" required 
+										   value="<%= date.getFullYear() %>-0<%= date.getMonth() + 1 %>-0<%= date.getDate() %>">
+									<% }else if(date.getMonth() >= 10 && date.getDate() < 10){ %>
+										<input id="expiry-date" type="date" name="expdate" required 
+										   value="<%= date.getFullYear() %>-<%= date.getMonth() + 1 %>-0<%= date.getDate() %>">
+									<% }else{ %>
+										<input id="expiry-date" type="date" name="expdate" required 
+										   value="<%= date.getFullYear() %>-<%= date.getMonth() + 1 %>-<%= date.getDate() %>">
+									<% } %>
+							   </div>
+						   </div>
+							<div class="form-group">
+								<label for="exampleInputEmail1" id="edit-offerletter-jobposition">Job Position</label>
+								<input type="text" id="edit-offerletter-jobposition-input" class="form-control" id="exampleInputEmail1" 
+									   aria-describedby="emailHelp" 
+									   value="<%= job.position %>" name="position">
+						  </div>
+						    <textarea class="form-control" rows="8" name="text" placeholder="write body here.." required><%= job.offerletter.description %></textarea>
+						   <div class="attachment-button-and-container-offerletter d-flex justify-content-start">
+								<% if(job.offerletter.document.length > 0){ %>
+								  <% for(var i = 0 ; i < job.offerletter.document.length ; i++){ %>
+									<div class="pdf-preview">
+										<div class="img-session">
+											<a href="<%= job.offerletter.document[i].dataurl %>" target="_blank">
+					         <img class="main-first-page-of-pdf" src="<%= convertimg(job.offerletter.document[i].dataurl).url %>" slt="pdf-img">
+											</a>
+											<div class="text-of-pdf-card d-flex justify-content-between">
+												<% var data = job.offerletter.document[i].dataurl %>
+												<p class="offer-letter-text">Offerletter.<%= data.substring(data.lastIndexOf(".")+1) %></p>
+												<p class="cross-button-of-pdf"><a href="/user/<%= CurrentUser._id %>/editofferletter/<%= job._id %>/delpdf/<%= job.offerletter.document[i].dataid %>"><img src="/images/home/cross.svg"></a></p>
+											</div>
+
+										</div>
+								    </div>
+									<% }} %>
+							 </div>
+						   <div id="edit-offerletter-attachment-div" class="attachment-button">
+							  <div> 
+								  <label for="attach-file-session2" class="col-form-label">
+									  <a type="button" id="workexp-button" class="btn btn-sm btn-primary"><%= textadd_new_attachment() %> <img id="edit-offerletter-atachment-button" src="/images/resume/attach_file.svg" alt="attachment-img"></a>
+								  </label><span id="attachment-text2">No Files choosen, Yet.</span> 
+								  <input type="file"  class="form-control d-none" id="attach-file-session2" name="filedatas" multiple>
+							   </div>
+							   <p id="update-button-p-of-edit-offerletter">
+								   <button type="submit" id="send-offer-letterbutton" class="btn btn-primary"><%= textupdate_offerletter() %></button>
+							   </p>
+						   </div>
+					   </form>
+				  </div>
+				</div>
+			</div>
+		 </div>	    
+     </div>
+</div>
+
+</div>
+
+<% include ../dashboard/dashboard-popup %> 
+<% include ../partials/footer %>

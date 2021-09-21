@@ -1,0 +1,89 @@
+<% include ../partials/header %>
+<% include ../user-partials/header %>
+<% include ../functions/datetimeconvert %>
+<% include ../functions/username %>
+<% include ../functions/textcontent %>
+
+</div>
+   <div id="offer-letter-content-session">
+		<div class="offer-letter-page">
+			<div class="d-flex">
+			 <div class="back-link-of-page">
+					<a href="/user/<%= CurrentUser._id %>/interviews">
+						<img src="/images/home/arrow_back.svg" alt="back-arrow">
+					</a>
+				</div>
+				<div>
+					<h4 id="main-heading-of-page" class="each-offer-letter-h4">Interview</h4>
+				</div>
+			</div>
+			 <div class="each-offerletter-container">
+				 <div class="row">
+					 <div id="candidate-see-offerletter-company-details" class="col-lg-5 col-xl-4">
+						 <% if(sender){ %>
+						  <div class="each-offerletter-company-details d-flex flex-column">
+							 <div class="company-img-container">
+								 <% if(getimgurl(sender)){ %>
+								       <img src="<%= getimgurl(sender) %>" alt="profile-image"> 
+								 <% }else{ %>
+									  <img src="/images/home/profile-img.jpg" alt="profile-image">
+								 <% } %>
+							 </div>
+							   <div class="d-flex justify-content-center">
+								  <div>
+										 <p class="each-offerletter-company-name"><%= sender.organizationdetails.companyname %></p>
+										 <p><span><i class="fas fa-square-full"></i></span><%= sender.organizationdetails.websiteurl %></p>
+										 <p><span><i class="fas fa-square-full"></i></span><%= getemail(sender) %></p>
+										 <p><span><i class="fas fa-square-full"></i></span>
+										   <% if(!sender.personaldetails.city && sender.personaldetails.country){ %>
+														  Unknown , <%= sender.personaldetails.country %>
+													<% }else if(sender.personaldetails.city && !sender.personaldetails.country){ %>
+														  <%= sender.personaldetails.city %> , Unknown
+													<%}else{ %>
+														  Unknown
+													<%} %>
+										  </p>
+										 <p><span><i class="fas fa-square-full"></i></span><%= sender.organizationdetails.totalemployees %></p>
+								   </div>
+							  </div>
+							 <p class="company-vision"><%= sender.organizationdetails.aboutcompany %></p> 
+							 <p id="offerletter-buttons-of-each-offerletter-candidate"><a class="btn btn-sm" id="button-send-message" href="#">Send Message</a></p>
+						  </div>
+						 <% } %>
+					 </div>
+					 <div class="col-lg-7 col-xl-8">
+						 <div class="each-offerletter-candidate-data">
+							 <h5 id="candidate-interview-summary" >Interview Summary</h5>
+							 <% if(interviews.length > 0){ %>
+								<% interviews.forEach(function(interview){ %>
+							       <div class="each-intervie-of-candidate d-flex flex-column">
+									    <p class="candidate-interview-title"><%= interview.title %> <span> - <%= getname(sender) %></span></p>
+									    <p class="interview-candidate-job-position">Job position : <span><%= jobobj.position %></span></p>
+									    <p class="interview-date-and-time">Interview-Timing : <span><%= interview.date.toDateString() %> - <%= converttime(interview.date) %></span></p>
+									    <p class="ecah-interview-status">Status : 
+									      <button type="button" class="candidate-each-intrerview-status-button"><i class="fas fa-bolt see-status-icon"></i> <%=
+												  interview.status%></button> 
+									   </p>
+							       </div>   
+							    <% }); %>
+							 <% }else{ %>
+								<div class="employer-dashboard-empty-box d-flex flex-column justify-content-center">
+									<p class="no-content-text">
+									    No Interviews !
+									</p>
+									<p>
+										<img id="employer-dashboard-empty-box-pendingofferletters" src="/images/home/empty-view.svg">
+									</p>
+							    </div>
+							 <% } %>
+						 </div>
+					 </div>
+				 </div>
+			</div>
+		</div>
+    </div>
+
+</div>
+
+
+<% include ../partials/footer %>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Dashboard</title>
+	<!-- USER STYLE SHEET -->
+	<meta name="viewport" content="width=device-width, initial-scale=0.8"> 
+	<link rel="stylesheet" type="text/css" href="/css/index.css">
+	<link rel="stylesheet" type="text/css" href="/css/login.css">
+	<link rel="stylesheet" type="text/css" href="/css/register.css">
+	<link rel="stylesheet" type="text/css" href="/css/candidateprof.css">
+	<link rel="stylesheet" type="text/css" href="/css/profile.css">
+	<link rel="stylesheet" type="text/css" href="/css/resume.css">
+	<link rel="stylesheet" type="text/css" href="/css/sidebar.css">
+	<link rel="stylesheet" type="text/css" href="/css/offerletter.css">
+	<link rel="stylesheet" type="text/css" href="/css/employee-dashboard.css">
+	<link rel="stylesheet" type="text/css" href="/css/loader.css">
+	
+	<!-- GOOGLE SITE VERIFICATION LINK   -->
+	<link href="https://fonts.googleapis.com/css2?family=Spartan:wght@300;384;400;500;600;677;700;800&display=swap" rel="stylesheet">
+	
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+	
+	
+	<meta name="google-site-verification" content="otljiocHriIiw6UuW2iGpT1crKHeMl3AyMfjcudGxdg" />
+	
+	<!-- BOOTSTRAP 4 STYLE LINK -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<!-- FONT AWESOME CDN 	 -->
+	 <script src="https://kit.fontawesome.com/7fe6b58c32.js"></script>
+	 
+	<!-- Axios cdn -->
+	 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+</head>
+<body id="our-body">
+	
+	<% if(( error && error.length > 0 )  || (success && success.length >0)){ %>
+	<div class="flashed-container">
+	   <% if( error && error.length > 0 ){ %>
+	     <div id="alertmess" class="alert alert-danger d-flex justify-content-between" role="alert">
+            <p><%= error %></p>
+			 <p>
+				<input type="checkbox" id="flash-container" class="d-none">
+                <label id="close-button-flash" for="flash-container">&times;</label> 
+			 </p>
+         </div>
+       <% } %>
+	
+	   <% if(success && success.length > 0){ %>
+	       <div id="alertmess" class="alert alert-success d-flex justify-content-between" role="alert">
+             <p><%= success %></p>
+			   <p>
+				  <input type="checkbox" id="flash-container" class="d-none">
+                  <label id="close-button-flash" for="flash-container">&times;</label>
+			   </p> 
+          </div>
+       <% } %>
+     </div>
+	<% } %>
+	
+    <div class="screen-blocker main-loader-div">
+    </div>  
+	
+	<div id="whole-loader" class="preloader-all-pages-whole main-loader-div">
+		<svg class="loading-box">
+            <circle class="loader" fill="none" stroke-width="3" stroke-linecap="round" cx="24" 
+					cy="24" r="17"></circle>
+        </svg>
+    </div>
+	
+	

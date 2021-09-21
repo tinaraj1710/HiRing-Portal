@@ -1,0 +1,296 @@
+<% include ../partials/header %>
+<% include ../user-partials/header %>
+<% include ../functions/username %>
+
+</div>
+		<div id="content-resume-session">
+		  <div class="main-heading-of-mainpages d-flex">
+				<div class="back-link-of-page">
+					<a href="/user/<%= CurrentUser._id %>">
+						<img src="/images/home/arrow_back.svg" alt="back-arrow">
+					</a>
+				</div>
+				<div>
+					<h4 id="main-heading-of-page">My Resume</h4>
+				</div>
+			</div>
+	       
+	         <div class="row">
+				<div id="resume-short-data1" class="col-lg-5 col-xl-4">
+					<div id="biodata-container" class="d-flex flex-column align-items-center">
+   						<div class="resume-main-image">
+							<% if(getimgurl(user)){ %>
+								<img id="resume-main-image" src="<%= getimgurl(user) %>" alt="profile-image"> 
+							<% }else{ %>
+								<img id="resume-main-image" src="/images/home/profile-img.jpg" alt="profile-image">
+						    <% } %>
+						</div>
+						<div class="user-resume-name">
+						    <h4><%= getname(user) %></h4>	
+						</div>
+						<div class="position-container">
+							<% if(profdata.length > 0){ %>
+							    <p><%= profdata[0].position %></p>
+							<% }else{ %>
+							    <p>Unknown</p>
+							<% } %>
+						</div>
+					    <div class="resume-email-field-session d-flex justify-content-center">
+							<div class="email-content">
+								<div class="resume-email">
+									  <p>
+										<img class="resume-small-icon" src="/images/profile/mail.svg" alt="mail-icon">
+										<span>
+										    <%= getemail(user) %>
+										</span>
+									</p>
+								</div>
+								<div class="resume-email">
+									<p>
+										<img class="resume-small-icon" src="/images/profile/place.svg" alt="mail-icon">
+										<% if(!user.personaldetails.city && user.personaldetails.country){ %>
+										      <span>Unknown , <%= user.personaldetails.country %></span>
+										<% }else if(user.personaldetails.city && !user.personaldetails.country){ %>
+										      <span><%= user.personaldetails.city %> , Unknown</span>
+										<%}else{ %>
+										      <span>Unknown</span>
+										<%} %>
+									</p>
+								</div>
+								<div class="resume-email">
+									<p>
+										<img class="resume-small-icon" src="/images/profile/call.svg" alt="mail-icon">
+										<%if(user.personaldetails.contnum){ %>
+										     <span><%= user.personaldetails.contnum %></span>
+										<%}else{ %>
+										     <span>Unknown</span>
+										<%} %>
+									</p>
+							    </div>
+							</div>
+							
+						</div>
+						<div class="user-perfessional-desc">
+							<% if(profdata.length > 0){ %>
+							     <p><%= profdata[0].text %></p>
+							<% } %>
+						</div>
+						<p id="total-defaulted-candidate-profile"><%= totaldefaulted %> Defaulted Offer Letter</p>
+						<p>
+							<a type="button" id="button-send-offerletter" class="btn btn-primary" 
+								href="/user/<%= CurrentUser._id %>/profile">
+								View profile
+							</a>
+						</p>
+					</div>
+				</div>
+				<div id="resume-short-data2" class="col-lg-7 col-xl-8">
+					<div id="resume-edit-session" class="d-flex flex-column">
+						 <h4 class="resume-right-main-name"><%= getname(user) %> - 
+							 <% if(profdata.length > 0){ %>
+							    <span><%= profdata[0].position %></span>
+							<% }else{ %>
+							    <span>Unknown</span>
+							<% } %></h4>
+						<div class="proessional-summary">
+							<form class="submit-forms" action="/user/<%= user._id %>/resume/profdata" method="POST">
+								<div id="candidate-resume-prof-date" class="form-group">
+    								<label class="resume-sub-sessions" for="exampleFormControlTextarea1">Professional Summary</label>
+									<% if(profdata.length > 0){ %>
+									  <% if(CurrentUser.role === "employer" || CurrentUser.role === "consultant") { %>
+									    <p><%= profdata[0].text %></p>
+									  <% } %>
+									   <% if(CurrentUser.role === "candidate"){ %>
+									     <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" name="text"><%= profdata[0].text %></textarea>
+									  <% } %>
+								 <%	}else{ %>
+								 <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" placeholder="Write Something about yourself" name="text"></textarea> 
+							  <%	} %>
+  								</div>
+								<% if(CurrentUser.role === "candidate"){ %>
+									<button id="update-button" class="btn btn-sm btn-primary">
+									  update
+								    </button>
+								<% } %>
+							</form>
+						</div>
+						<div class="workexp-session">
+							<div class="sub-title d-flex justify-content-between">
+								<h4>Work Experiences</h4>
+								<% if(CurrentUser.role === "candidate"){ %>
+									 <button type="button" id="workexp-button" class="btn btn-sm btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg"><img class="resume-content-imges-add-button" src="/images/resume/cancel.svg">Add Work Experience</button>
+								<% } %>  
+							</div>
+							<div class="workexp-feeds">
+								<% if(workexps.length > 0){ %>
+								 <% workexps.forEach(function(workexp){ %>
+									<div class="workexp-name d-flex justify-content-between align-items-center">
+										<div class="workexpname">
+											<p><%= workexp.role %>, <span><%= workexp.companyname %></span> 
+												<% if(CurrentUser.role === "candidate"){ %>
+<a type="button" id="edit-button" class="btn btn-sm btn-primary" data-toggle="modal" data-target=".bd-<%= workexp._id %>-modal-lg"><i class="far fa-edit"></i></a>
+												<% } %>
+												 
+												<% if(workexp.fileurl.length > 0){ %>
+												  <a type="button" id="edit-button" class="btn btn-sm btn-primary" data-toggle="modal" data-target=".bd-aj12<%= workexp._id %>-modal-lg">
+													  <img src="/images/resume/attach_file.svg" alt="attachment-img" class="attachment-img">
+												  </a>
+												<% } %>
+											</p>
+										</div>
+										<div id="workexp-session" class="dates-session d-flex">
+											<img class="resume-content-imges" src="/images/resume/calnder.svg" alt="calender-icon">
+												 <% if(workexp.workedfrom === workexp.Workedto){ %>
+												  <p class="expiry-date-of-offerletter-resume"><%= workexp.workedfrom  %></p><span>Currently working</span>
+												<% } else { %>
+												   <p class="expiry-date-of-offerletter-resume"><%= workexp.workedfrom %> <%= workexp.Workedto  %></p>
+												<% } %>	
+										</div>
+									</div>
+									<img class="resume-content-imges-location" src="/images/profile/place.svg" alt="placeimage"><span class="city-name-session"><%= workexp.city %> , <%= workexp.country %></span>
+									<p class="descriptive-text"><%= workexp.text  %></p>
+								<% });  } %>
+							</div>
+						</div>
+						<div class="workexp-session">
+							<div class="sub-title d-flex justify-content-between">
+								<h4>Education</h4>
+								<% if(CurrentUser.role === "candidate"){ %>
+								    <button type="button" id="education-button" class="btn btn-sm btn-primary" data-toggle="modal" data-target=".bd-education-modal-lg"><img class="resume-content-imges-add-button" src="/images/resume/cancel.svg">Add Education</button>
+								<% } %>
+							</div>
+							<div class="workexp-feeds">
+								<% if(educations.length > 0){ %>
+								 <% educations.forEach(function(education){ %>
+									<div class="workexp-name d-flex justify-content-between align-items-center">
+										<div class="workexpname">
+											<p>
+												<%= education.degree %>, <span><%= education.collagename %></span>
+												<% if(CurrentUser.role === "candidate"){ %>
+												   <a type="button" id="edit-button" class="btn btn-sm btn-primary" data-toggle="modal" data-target=".bd-<%= education._id %>-modal-lg"><i class="far fa-edit"></i></a>
+												<% } %>
+												<% if(education.fileurl.length > 0){ %>
+												  <a type="button" id="edit-button" class="btn btn-sm btn-primary" data-toggle="modal" data-target=".bd-ed12<%= education._id %>-modal-lg">
+													<img src="/images/resume/attach_file.svg" alt="attachment-img" class="attachment-img">
+												  </a>
+												<% } %>
+											</p>
+										</div>
+										<div class="dates-session d-flex">
+											<img class="resume-content-imges" src="/images/resume/calnder.svg" alt="calender-icon">
+											<p class="first-span-date"><%= education.studiedfrom  %></p> <p class="second-span-date"><%= education.studiedto  %></p>	
+										</div>
+									</div>
+								    <p id="grade-marks">Grade : <%= education.grade %></p>
+									<img class="resume-content-imges" src="/images/profile/place.svg" alt="placeimage"><span class="city-name-session"><%= education.city %> , <%= education.country %></span>
+									<p class="descriptive-text"><%= education.text  %></p>
+								<% });  } %>
+							</div>
+						</div>
+
+						<div class="workexp-session">
+							<div class="sub-title d-flex justify-content-between">
+								<h4>Awards & Honors</h4>
+								<% if(CurrentUser.role === "candidate"){ %>
+								   <button type="button" id="award-button" class="btn btn-sm btn-primary" data-toggle="modal" data-target=".bd-awards-modal-lg"><img class="resume-content-imges-add-button" src="/images/resume/cancel.svg">Add Awards & Honors</button>
+								<% } %> 
+							</div>
+							<div class="workexp-feeds">
+								<% if(awards.length > 0){ %>
+								 <% awards.forEach(function(award){ %>
+									<div class="workexp-name d-flex justify-content-between align-items-center">
+										<div class="workexpname">
+											<p>
+												<%= award.title %>
+												<% if(CurrentUser.role === "candidate"){ %>
+												  <a type="button" id="edit-button" class="btn btn-sm btn-primary" data-toggle="modal" data-target=".bd-<%= award._id %>-modal-lg"><i class="far fa-edit"></i></a>
+												<% } %>
+											</p>
+										</div>
+										<div class="dates-session d-flex">
+											   <img class="resume-content-imges" src="/images/resume/calnder.svg" alt="calender-icon">
+                                               <p><%= award.date  %></p>	
+										</div>
+									</div>
+								    <p class="descriptive-text"><%= award.text  %></p>
+								<% });  } %>
+								
+							</div>
+						</div>
+						<div class="workexp-session">
+							<div class="sub-title d-flex justify-content-between">
+								<h4>Projects</h4>
+								<% if(CurrentUser.role === "candidate"){ %>
+								    <button type="button" id="award-button"  class="btn btn-sm btn-primary" data-toggle="modal" data-target=".bd-projects-modal-lg"><img class="resume-content-imges-add-button" src="/images/resume/cancel.svg">Add Project</button>
+								<% } %>
+							</div>
+							<div class="workexp-feeds">
+								<% if(projects.length > 0){ %>
+								 <% projects.forEach(function(project){ %>
+									<div class="workexp-name d-flex justify-content-between align-items-center">
+										<div class="workexpname">
+											<p>
+												<%= project.title %>
+												<% if(CurrentUser.role === "candidate"){ %>
+												   <a type="button" id="edit-button" class="btn btn-sm btn-primary" data-toggle="modal" data-target=".bd-<%= project._id %>-modal-lg"><i class="far fa-edit"></i></a>
+												<% } %>
+											</p>
+										</div>
+										<div id="dates-session" class="dates-session d-flex">
+											    <img class="resume-content-imges" src="/images/resume/calnder.svg" alt="calender-icon">
+												<% if(project.datefrom === project.dateto){ %>
+												  <p><%= project.datefrom  %></p> <span>Ongoing Project</span>
+												<% }else{ %>
+											     <p><%= project.datefrom  %> <%= project.dateto %></p>
+												<% } %>
+										</div>
+									</div>
+								    <p class="descriptive-text"><%= project.text  %></p>
+								<% });  } %>
+							</div>
+						</div>
+							<div class="workexp-session">
+								<div class="workexp-feeds">
+									<% if(othersdata.length > 0){ %>
+									 <% othersdata.forEach(function(other){ %>
+										<div class="workexp-name d-flex justify-content-between align-items-center">
+											<div class="workexpname">
+												<p>
+													<%= other.title %>
+													<% if(CurrentUser.role === "candidate"){ %>
+													  <a type="button" id="edit-button"  class="btn btn-sm btn-primary" data-toggle="modal" data-target=".bd-<%= other._id %>-modal-lg"><i class="far fa-edit"></i></a>
+													<% } %>
+												</p>
+											</div>
+										</div>
+										<p class="descriptive-text"><%= other.description  %></p>
+									<% });  } %>
+								</div>
+								<% if(CurrentUser.role === "candidate"){ %>
+								  <div id="custom-session" class="sub-title">
+									<button type="button" id="award-button" class="btn btn-sm btn-primary btn-block" data-toggle="modal" data-target=".bd-others-modal-lg"><img class="resume-content-imges-add-button" src="/images/resume/cancel.svg">Add Custom Session</button>
+								</div>
+								<% } %>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+<!-- All offerletter popup and schedule interview popup -->
+<% include ../resumesubfiles/offerletter %>
+
+<!-- All upload models in resume-upload -->
+<% include ../resumesubfiles/upload %>
+
+<!-- All Resume update models in resume-update -->
+<% include ../resumesubfiles/update %>
+	  
+<!-- Resume Attachment model in attachemt -->
+<% include ../resumesubfiles/attachment %>
+
+
+
+
+
+<% include ../partials/footer %>

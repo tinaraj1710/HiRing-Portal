@@ -1,0 +1,32 @@
+<% include ../partials/header %>
+
+
+    <div class="fluid-container">
+		 <div id="login-page-main-container" class="row mx-md-5">
+			<div id="register-col-lg-4" class="col-lg-4 d-none d-lg-block">
+				 <div class="img-container-of-register">
+					 <img id="signip-login-big-img" src="/images/home/signup.svg">
+				 </div>
+			 </div>
+			 <div id="col-lg-8" class="col-lg-8 px-md-5">
+				<div class="user-type px-xl-4 py-lg-5">
+				  <div class="login-with">
+				    <h4>Reset Password</h4>
+			      </div> 
+				  <form action="/reset/<%= token %>" method="POST">
+  						<div class="form-group">
+    						<label class="form-label-input" for="exampleInputEmail1"><strong>New Password</strong></label>
+    						<input type="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="password">
+  						</div>
+					  <div class="form-group">
+    						<label class="form-label-input" for="exampleInputEmail1"><strong>Confirm Password</strong></label>
+    						<input type="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="confpassword">
+  						</div>
+						<button id="login-page-login-button" type="submit" class="btn btn-primary">Reset Password</button>
+					</form>  
+				</div>
+			 </div>
+		 </div>
+     </div>
+
+<% include ../partials/footer %>
