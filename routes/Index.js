@@ -1,11 +1,11 @@
-var  router           =    require("express").Router(),
-	 passport         =    require("passport"),
-	 bcrypt           =    require("bcrypt"),
-	 User             =    require("../models/user"),
-	 Notification     =    require("../models/notification"),
-	 Profdata         = 	require("../models/resume/professionaldata.js"),
-	 Education        =    require("../models/resume/education.js"),
-	 Workexp    	  =    require("../models/resume/workexp.js"),
+var  router            =    require("express").Router(),
+	 passport          =    require("passport"),
+	 bcrypt            =    require("bcrypt"),
+	 User              =    require("../models/user"),
+	 Notification      =    require("../models/notification"),
+	 Profdata          = 	require("../models/resume/professionaldata.js"),
+	 Education         =    require("../models/resume/education.js"),
+	 Workexp    	   =    require("../models/resume/workexp.js"),
 	 Award             =    require("../models/resume/award.js"),
 	 Other             =     require("../models/resume/other.js"),
      Project           =    require("../models/resume/project.js"),
@@ -36,23 +36,22 @@ router.get("/" , function(req,res){
 
 
 // HOME PAGE
-router.get("/dashboard" , function(req,res){
+router.get("/dashboard" , function(req, res){
 	res.render("authentication/register.ejs");
 });
 
 
-// All Authencation routes ================================
+// All Authencation routes (Local Login) ================================
 // LOGIN ROUTE 
 router.get("/dashboard/auth/login", middleware.alreadyLoggedin   , function(req, res){
 	res.render("authentication/login.ejs");
 });
 
 
-// LOGIN PAGE
+// LOGIN POST REQUEST ===
 router.post('/dashboard/auth/login', passport.authenticate('local', { 
 	failureRedirect: '/dashboard/auth/login',
-	failureFlash: 'Invalid username or password.'}),
-   function(req, res) {
+	failureFlash: 'Invalid username or password.'}), function(req, res) {
 	
 	req.flash("success" , "Welcome " + req.user.local.firstname + " " + req.user.local.lastname);
 	if(req.user.role === "employer"){
@@ -64,82 +63,76 @@ router.post('/dashboard/auth/login', passport.authenticate('local', {
 	}else{
 		res.redirect('/user/' + req.user._id);
 	}
-    
-  });
+});
+
+
 
 // REGISTER ROUTE
-router.get("/dashboard/register" , middleware.alreadyLoggedin ,  function(req,res){
+router.get("/dashboard/register" , middleware.alreadyLoggedin ,  function(req,  res){
 	res.render("authentication/register.ejs");
 });
+
 
 // REGISTER USER USING LOCAL STRATEGY
 router.post("/dashboard/register" , async function(req,res){
 	// REGISTER USER
 	if(req.body.confpass === req.body.password){
 		try {
-			 var hashedpass = await bcrypt.hash(req.body.password , 10);
-		     User.findOne({"local.email" : req.body.email} , function(err , founduser){
-			   if(err){
-				    return console.log(err);
-			     }
-				 	if(founduser){
-					  // USER WITH THIS EMAIL ALREADY EXIST
-						req.flash("error" , "User with this Email Address already exist");
-					    return res.redirect("/dashboard/register");
-				     }
-				    // USER WITH THIS EMAIL ADDRESS DOES NOT EXIST CREATE NEW USER
-				     
-					User.create({
-						"local.email" : req.body.email,
-						"local.password" : hashedpass,
-						"local.firstname" : req.body.firstname,
-						"local.lastname" : req.body.lastname,
-			    		} , async function(err , createduser){
-							if(err)
-							 return	console.log(err);
-							
-								const accessToken = await oAuth2Client.getAccessToken();
-								let smtpTransport = nodemailer.createTransport({
-									host: 'smtp.gmail.com',
-									port: 465,
-									secure: true,
-									service: 'gmail',
-									auth : {
-											type : "OAUTH2",
-											user : process.env.PERSONAL_EMAIL,
-											clientId: process.env.GMAIL_GOOGLE_CLIENT_ID,
-											clientSecret : process.env.GMAIL_GOOGLE_CLIENT_SECRET,
-											refreshToken : process.env.GOOGLE_REDIRECT_URL,
-											accessToken : accessToken.token
-									}
-								});
+			var hashedpass = await bcrypt.hash(req.body.password , 10);
+			let founduser = await User.findOne({"local.email" : req.body.email});
+			if(founduser){
+				req.flash("error" , "User with this Email Address already exist");
+				return res.redirect("/dashboard/register"); 
+			}
 
-								let token = await randomBytes(20).toString('hex');
-								createduser.local.verifyEmailToken = token;
-								await createduser.save();
+			let createduser = await User.create({
+				"local.email" : req.body.email,
+				"local.password" : hashedpass,
+				"local.firstname" : req.body.firstname,
+				"local.lastname" : req.body.lastname,
+			});
 
-								var mailOptions = {
-									to: createduser.local.email,
-									from: process.env.PERSONAL_EMAIL,
-									subject: 'Employee Project verify Email Address',
-									text: 'Please click on the following link to verify you email address, or paste this into your browser to complete the process:\n\n' + process.env.WEBSITEURL + '/verify/' + token + '\n\n' +
-									'If you did not request this, please ignore this email \n'
-								};
+			const accessToken = await oAuth2Client.getAccessToken();
+			let smtpTransport = nodemailer.createTransport({
+				host: 'smtp.gmail.com',
+				port: 465,
+				secure: true,
+				service: 'gmail',
+				auth : {
+						type : "OAUTH2",
+						user : process.env.PERSONAL_EMAIL,
+						clientId: process.env.GMAIL_GOOGLE_CLIENT_ID,
+						clientSecret : process.env.GMAIL_GOOGLE_CLIENT_SECRET,
+						refreshToken : process.env.GOOGLE_REDIRECT_URL,
+						accessToken : accessToken.token
+				}
+			});
 
-								smtpTransport.sendMail(mailOptions, function(err) {
-									if(err){
-										req.flash("error" , "Something went wrong");
-										res.redirect("/");
-									}
+			let token = await randomBytes(20).toString('hex');
+			createduser.local.verifyEmailToken = token;
+			await createduser.save();
 
-									req.flash("success" , "An verification email has been send to " + createduser.local.email + " with the futher Instructions to verify your Email.");
-									res.redirect('/dashboard/register/');
-								});
-						   });
-					});
+			var mailOptions = {
+				to: createduser.local.email,
+				from: process.env.PERSONAL_EMAIL,
+				subject: 'Employee Project verify Email Address',
+				text: 'Please click on the following link to verify you email address, or paste this into your browser to complete the process:\n\n' + process.env.WEBSITEURL + '/verify/' + token + '\n\n' +
+				'If you did not request this, please ignore this email \n'
+			};
 
+			smtpTransport.sendMail(mailOptions, function(err) {
+				if(err){
+					req.flash("error" , "Something went wrong");
+					res.redirect("/");
+				}
+
+				req.flash("success" , "An verification email has been send to " + createduser.local.email + " with the futher Instructions to verify your Email.");
+				res.redirect('/dashboard/register/');
+			});
 	    }catch(err){
 			console.log(err);
+			req.flash("error" , err.message);
+			res.redirect("/dashboard/register");
 		}
 	}else{
 		req.flash("error" , "Your password and confirm password does not match");
@@ -148,69 +141,90 @@ router.post("/dashboard/register" , async function(req,res){
 }); 
 
 
-// VERIFY EMAIL ADDRESS SESSION
-router.get("/verify/:token" , function(req,res){
-	User.findOne({"local.verifyEmailToken" : req.params.token} , function(err , user){
-		if(err)
-			return console.log(err);
-		
+
+// VERIFY EMAIL ADDRESS SECTION  === 
+router.get("/verify/:token" , async function(req,res){
+	try{
+		let user = await User.findOne({"local.verifyEmailToken" : req.params.token});
 		user.local.emailverified = true;
-		user.save();
+		await user.save();
 		req.flash("Your Email verification is done");
 		req.login(user , function(err){
 			if(err){
 				return console.log(err);
 			}
+
 			req.flash("success" , "Please select appropriate role");
 			res.redirect("/user/" + req.user._id + "/selectrole");
 		});
-	});
+
+	}catch(err){
+		console.log(err);
+		req.flash("error" , err.message);
+		res.redirect("/dashboard/register");
+	}
+});
+
+
+
+
+// Role selector of local login system
+router.get("/user/:id/selectrole" , middleware.isLoggedin , async function(req , res){
+	try{
+		var user = await User.findById(req.params.id);
+		if(user){
+			res.render("authentication/index.ejs");
+		}else{
+			req.flash("error" , "Something went wrong");
+			res.redirect("/dashboard/register");
+		}
+	}catch(err){
+		console.log(err);
+		req.flash("error" , err.message);
+		res.redirect("/dashboard/register");
+	}
 });
 
 
 // Role selector of local login system
-router.get("/user/:id/selectrole" , middleware.isLoggedin ,async function(req , res){
-    var user = await User.findById(req.params.id);
-	if(user){
-		res.render("authentication/index.ejs");
-	}else{
-		req.flash("error" , "Something went wrong");
-		res.redirect("/dashboard/register");
-	}
-})
-
-
-// Role selector of local login system
-router.get("/user/:id/registerrole/:role" , middleware.isLoggedin ,async function(req , res){
+router.get("/user/:id/registerrole/:role" , middleware.isLoggedin, async function(req , res){
 	if(req.params.role === "candidate" || req.params.role === "employer" || req.params.role === "consultant"){
-		var user = await User.findById(req.params.id);
-		user.role = req.params.role;
-		user.save();
-		// Get Full name of user
-		if(user.local.firstname){
-			var fullname = user.local.firstname + " " + user.local.lastname; 
-		}else if(user.googleauth.fullname){
-			var fullname = user.googleauth.fullname;
-		}else{
-			var fullname = user.linkedinauth.fullname;
-		}
-
-		req.flash("success" , "Welcome " + fullname);
-		if(req.user.role === "employer"){
+		try{
+			var user = await User.findById(req.params.id);
+			user.role = req.params.role;
+			await user.save();
+			// Get Full name of user
+			var fullname = "";
+			if(user.local.firstname){
+			    fullname = user.local.firstname + " " + user.local.lastname; 
+			}else if(user.googleauth.fullname){
+			    fullname = user.googleauth.fullname;
+			}else{
+			    fullname = user.linkedinauth.fullname;
+			}
+			req.flash("success" , "Welcome " + fullname);
+			console.log(" ===> " + req.user);
+			if(req.user.role === "employer"){
 			    if(req.user.organizationdetails.companyname && req.user.organizationdetails.websiteurl 
 				       && req.user.organizationdetails.totalemployees && req.user.organizationdetails.aboutcompany){
 					   res.redirect('/user/' + req.user._id);
 				}else{
 					res.redirect('/user/' + req.user._id + "/employer/profile");
 				}
-	    }else{
-		    res.redirect('/user/' + req.user._id);
-	     }
+			}else{
+				res.redirect('/user/' + req.user._id);
+			}
+		}catch(err){
+			console.log(err);
+			req.flash("error" , err.message);
+		    res.redirect("/user/"  + req.user._id + "/selectrole");
+		}
 	}else{
 		req.flash("error" , "Please select the correct role that is given in the option");
 		res.redirect("/user/"  + req.user._id + "/selectrole");
 	}
 });
+
 
 
 // RESET PASSWORD SESSION 
@@ -228,6 +242,7 @@ router.post('/dashboard/forgot', async function(req, res, next) {
 				req.flash("error", "No account with that email address exists.");
 				return res.redirect("/dashboard/forgot");
 			}
+
 			user.local.resetPasswordToken = token;
 			user.local.resetPasswordExpires = Date.now() + 3600000; // 1 hour
 			await user.save();
@@ -248,26 +263,26 @@ router.post('/dashboard/forgot', async function(req, res, next) {
 				}
 			});
 
-			var mailOptions = {
+		    var mailOptions = {
 				to: user.local.email,
 				from: process.env.PERSONAL_EMAIL,
 				subject: 'Employee Project Password Reset',
 				text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
-				  'Please click on the following link, or paste this into your browser to complete the process:\n\n' + process.env.WEBSITEURL + 
-				  '/reset/' + token + '\n\n' +
-				  'If you did not request this, please ignore this email and your password will remain unchanged.\n'
-			  };
+					'Please click on the following link, or paste this into your browser to complete the process:\n\n' + process.env.WEBSITEURL + 
+					'/reset/' + token + '\n\n' +
+					'If you did not request this, please ignore this email and your password will remain unchanged.\n'
+			};
 
-				smtpTransport.sendMail(mailOptions, function(err) {
-					if(err){
-							req.flash("error" , "Something went wrong, please try again.");
-							res.redirect("/dashboard/forgot");
-					}else{
-						console.log("Password reset was successful");
-						req.flash("success" , "An Email has been send to " + req.body.email +   " with the futher instructions to reset your password.");
+			smtpTransport.sendMail(mailOptions, function(err) {
+				if(err){
+						req.flash("error" , "Something went wrong, please try again.");
 						res.redirect("/dashboard/forgot");
-					}
-				});
+				}else{
+					console.log("Password reset was successful");
+					req.flash("success" , "An Email has been send to " + req.body.email +   " with the futher instructions to reset your password.");
+					res.redirect("/dashboard/forgot");
+				}
+			});
 	 }catch(err){
 		 req.flash("error" , "Something went wrong while doing password reset. Please try again.");
 		 res.redirect("/dashboard/forgot");
@@ -277,14 +292,21 @@ router.post('/dashboard/forgot', async function(req, res, next) {
 
 
 // Reset password token link route
-router.get('/reset/:token', function(req, res) {
-	  User.findOne({ "local.resetPasswordToken": req.params.token, "local.resetPasswordExpires": { $gt: Date.now() } },     function(err, user) {
+router.get('/reset/:token', async function(req, res) {
+	try{
+		let user = await User.findOne({ "local.resetPasswordToken": req.params.token, "local.resetPasswordExpires": { $gt: Date.now() } });
 		if (!user) {
-		  req.flash("error", "Password reset token is invalid or has expired.");
-		  return res.redirect('/dashboard/forgot');
+			req.flash("error", "Password reset token is invalid or has expired.");
+			return res.redirect('/dashboard/forgot');
 		}
+
 		res.render("authentication/reset.ejs", {token: req.params.token});
-	  });
+
+	}catch(err){
+		console.log(err);
+		req.flash("error" , err.message);
+		res.redirect('/dashboard/forgot');
+	}
 });
 
 
@@ -297,6 +319,7 @@ router.post('/reset/:token', async function(req, res) {
 			req.flash("error", "Password reset token is invalid or has expired.");
 			return res.redirect('back');
 		}
+
 		if(req.body.password === req.body.confpassword) {
 			var hashedpass = await bcrypt.hash(req.body.password , 10);
 			user.local.password = hashedpass;
@@ -362,6 +385,10 @@ router.get("/dashboard/auth/logout" , function(req,res){
 	 res.redirect("/dashboard");
 });
 // ===========================================================
+
+
+
+
 
 
 //  Candidates Routes ========================================

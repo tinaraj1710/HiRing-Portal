@@ -7,19 +7,11 @@ var   express 			 = 	  require("express"),
 	  multer             =    require("multer"),
       passport           =    require("passport"),
 	  googleAuthRoutes   =    require("./routes/google-auth"),
-	  googleAuthSetup    =    require("./config/google-config"),
 	  linkedinAuthRoutes =    require("./routes/linkedin-auth"),
-	  linkedinAuthSetup  =    require("./config/linkedin-config"),
-	  localAuthSetup     =    require("./config/local-config"),
 	  indexRoutes        =    require("./routes/Index"),
 	  resumeRoutes       =    require("./routes/resumeRoutes"),
 	  jobroutes          =    require("./routes/job"),
-	  User               =    require("./models/user.js"), 
-	  Education          =    require("./models/resume/education.js"),
-	  Workexp            =    require("./models/resume/workexp.js"),
-	  Award              =    require("./models/resume/award.js"),
-	  Profdata           = 	  require("./models/resume/professionaldata.js"),
-	  Resume             = 	  require("./models/resume/resume.js"),
+	  User               =    require("./models/user.js"),
 	  cookieSession      =    require("cookie-session"),
 	  bodyParser         =    require("body-parser");
 
@@ -87,8 +79,17 @@ app.use(require("express-session")({
 app.use(flash());
 
 // PASSPORT AUTH SETUP ========
+// passport.serializeUser(function(user, done) {
+// 	done(null, user);
+// });
+  
+// passport.deserializeUser(function(user, done) {
+// 	done(null, user);
+// });
+
 app.use(passport.initialize());
 app.use(passport.session()); 
+
 
 // VARIABLES THAT ARE ACCESSBLE TO ALL PAGES =========
 app.use(async function(req,res,next){
