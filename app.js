@@ -1,4 +1,5 @@
 require('dotenv').config();
+var path = require('path');
 var   express 			 = 	  require("express"),
  	  app 				 = 	  express(),
 	  mongoose           =    require("mongoose"),
@@ -79,17 +80,16 @@ app.use(require("express-session")({
 app.use(flash());
 
 // PASSPORT AUTH SETUP ========
-// passport.serializeUser(function(user, done) {
-// 	done(null, user);
-// });
-  
-// passport.deserializeUser(function(user, done) {
-// 	done(null, user);
-// });
-
 app.use(passport.initialize());
+// app.use(passport.serializeUser(function(user, done) {
+// 	done(null, user);
+// }));
+  
+// app.use(passport.deserializeUser(function(user, done) {
+// 	done(null, user);
+// }));
 app.use(passport.session()); 
-
+require(path.join(__dirname, 'auth.config'))(passport);
 
 // VARIABLES THAT ARE ACCESSBLE TO ALL PAGES =========
 app.use(async function(req,res,next){

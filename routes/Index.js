@@ -51,6 +51,7 @@ router.get("/dashboard/auth/login", middleware.alreadyLoggedin   , function(req,
 // LOGIN POST REQUEST ===
 router.post('/dashboard/auth/login', passport.authenticate('local', { 
 	failureRedirect: '/dashboard/auth/login',
+	session: false,
 	failureFlash: 'Invalid username or password.'}), function(req, res) {
 	
 	req.flash("success" , "Welcome " + req.user.local.firstname + " " + req.user.local.lastname);
