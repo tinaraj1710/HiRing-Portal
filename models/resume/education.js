@@ -16,11 +16,11 @@ var EducationSchema = new mongoose.Schema({
 		dataid : "String"
 	   }],
 	author : {
-		       id: {
-			      type : mongoose.Schema.Types.ObjectId,
-			      ref : "User"
-		        }
-	          }	
+		id: {
+			type : mongoose.Schema.Types.ObjectId,
+			ref : "User"
+		}
+		}	
 });
 
 module.exports = mongoose.model("Education" , EducationSchema);

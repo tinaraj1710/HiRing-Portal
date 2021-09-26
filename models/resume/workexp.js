@@ -12,13 +12,13 @@ var WorkexprienceSchema = new mongoose.Schema({
 	fileurl : [{
 		dataurl : "String",
 		dataid : "String"
-	   }],
+	}],
 	author : {
 		       id: {
 			      type : mongoose.Schema.Types.ObjectId,
 			      ref : "User"
 		        }
-	          }	
+	}	
 });
 
 module.exports = mongoose.model("Workexp" , WorkexprienceSchema);

@@ -1,5 +1,4 @@
 require('dotenv').config();
-var path = require('path');
 var   express 			 = 	  require("express"),
  	  app 				 = 	  express(),
 	  mongoose           =    require("mongoose"),
@@ -8,18 +7,28 @@ var   express 			 = 	  require("express"),
 	  multer             =    require("multer"),
       passport           =    require("passport"),
 	  googleAuthRoutes   =    require("./routes/google-auth"),
+	  googleAuthSetup    =    require("./config/google-config"),
 	  linkedinAuthRoutes =    require("./routes/linkedin-auth"),
+	  linkedinAuthSetup  =    require("./config/linkedin-config"),
+	  localAuthSetup     =    require("./config/local-config"),
 	  indexRoutes        =    require("./routes/Index"),
 	  resumeRoutes       =    require("./routes/resumeRoutes"),
 	  jobroutes          =    require("./routes/job"),
-	  User               =    require("./models/user.js"),
+	  User               =    require("./models/user.js"), 
+	  Education          =    require("./models/resume/education.js"),
+	  Workexp            =    require("./models/resume/workexp.js"),
+	  Award              =    require("./models/resume/award.js"),
+	  Profdata           = 	  require("./models/resume/professionaldata.js"),
+	  Resume             = 	  require("./models/resume/resume.js"),
 	  cookieSession      =    require("cookie-session"),
 	  bodyParser         =    require("body-parser");
 
 
 // MONGODB DATABASE SETUP
-mongoose.set("debug" , true);
-mongoose.Promise = Promise;
+// mongoose.set("debug" , true);
+// mongoose.Promise = Promise;
+
+
 mongoose.connect(process.env.DATABASEURL , { 
     useNewUrlParser: true, 
     useUnifiedTopology : true,
@@ -29,7 +38,6 @@ mongoose.connect(process.env.DATABASEURL , {
 }).catch(err => {
     console.log("Got Error ===> " , err.message);
 });
-
 
 // STYLE FILES ========
 app.use(express.static(__dirname + "/style"));
@@ -81,15 +89,8 @@ app.use(flash());
 
 // PASSPORT AUTH SETUP ========
 app.use(passport.initialize());
-// app.use(passport.serializeUser(function(user, done) {
-// 	done(null, user);
-// }));
-  
-// app.use(passport.deserializeUser(function(user, done) {
-// 	done(null, user);
-// }));
 app.use(passport.session()); 
-require(path.join(__dirname, 'auth.config'))(passport);
+
 
 // VARIABLES THAT ARE ACCESSBLE TO ALL PAGES =========
 app.use(async function(req,res,next){

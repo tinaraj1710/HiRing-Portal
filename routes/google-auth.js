@@ -9,7 +9,9 @@ router.get("/google" , passport.authenticate("google" , {
 });
 
 // GOOGLE REDIRECT URL AFTER LOGIN
-router.get("/google/redirect" , passport.authenticate("google" ,  { failureRedirect: '/dashboard/auth/login' }) ,  function(req,res){
+router.get("/google/redirect" , passport.authenticate("google" ,  { 
+	failureRedirect: '/dashboard/auth/login',
+ }) ,  function(req,res){
 	if(req.user.role){
 		req.flash("success" , "Welcome " + req.user.googleauth.fullname);
 		if(req.user.role === "employer"){

@@ -23,7 +23,7 @@ var JobSchema = new mongoose.Schema({
 	offerletter : {
 	    type : mongoose.Schema.Types.ObjectId,
 		ref : "OfferLetter"	
- 	 },
+ 	},
 	interview : [{
 		type : mongoose.Schema.Types.ObjectId,
 		ref : "Interview"
