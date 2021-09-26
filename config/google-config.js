@@ -18,7 +18,7 @@ passport.deserializeUser(function(id , done){
 
 // PASSPORT JS GOOGLE LOGIN ===================
 passport.use(new GoogleStrategy({
-	callbackURL	: "https://employeehiringportal1710.herokuapp.com/dashboard/auth/google/redirect",
+	callbackURL	: `${process.env.WEBSITEURL}/dashboard/auth/google/redirect`,
 	clientID : process.env.GOOGLE_CLIENT_ID,
 	clientSecret : process.env.GOOGLE_CLIENT_SECRET,
 	passReqToCallback : true
